@@ -1,4 +1,5 @@
 language: ruby
 rvm:
-  - ruby-2.3.0@tip
+  - ruby-2.3.0
 script: "./build_all.sh"
+
