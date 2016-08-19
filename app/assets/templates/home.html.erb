@@ -1,6 +1,43 @@
 <div class="container">
-  <h1>The Home View!</h1>
-  <ul>
-    <li ng-repeat="thing in things">{{thing}}</li>
-  </ul>
+  <h1 class="text-center">The Home View!</h1>
+  <br>
+
+  <div class="col-xs-4">
+    <h3>Add new item</h3>
+    <form>
+      <div class="form-group">
+        <label for="inputName">Name</label>
+        <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="newItem.name">
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model=newItem.show> Show in list?
+        </label>
+      </div>
+      <button type="submit" class="btn btn-success" ng-if="!editing" ng-click="addItem()">Submit</button>
+      <button type="submit" class="btn btn-success" ng-if="editing" ng-click="saveItem()">Save</button>
+    </form>
+  </div>
+
+  <div class="col-xs-6" style="float:right;">
+    <h3>Product list</h3><h5 style="color: red;">* hidden items</h5>
+    <table class="table table-hover">
+    <thead">
+      <tr><th>Name</th><th>Actions</th></tr>
+    </thead>
+    <tbody ng-repeat="item in items">
+      <tr>
+        <td ng-if="!item.show" style="color:red;">{{item.name}}</td>
+        <td ng-if="item.show">{{item.name}}</td>
+        <td>
+          <button class="btn btn-success" ng-if="item.show" ng-click="showOrHide(item)">Hide</button>
+          <button class="btn btn-success" ng-if="!item.show" ng-click="showOrHide(item)">Show</button>
+          <button class="btn btn-info" ng-click="edit(item)">Edit</button>
+          <button class="btn btn-danger" ng-click="delete(item)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+  
 </div>

@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
   root 'application#index'
-  get '*path' => 'application#index'
+
+  resources :items do
+    member do
+      get '/show_or_hide' => 'items#show_or_hide'
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
