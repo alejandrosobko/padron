@@ -9,7 +9,7 @@ angular.module('myApp')
         $scope.addItem = function() {
             if ($scope.newItem && $scope.newItem.name.trim() == "") { return; }
             itemsFactory.addItem($scope.newItem);
-            $scope.newItem = {};
+            $scope.newItem = { name:'', show: true };
         };
 
         $scope.showOrHide = function(item) {
