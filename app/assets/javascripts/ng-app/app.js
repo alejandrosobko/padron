@@ -1,5 +1,5 @@
 angular
-    .module('myApp', ['ngAnimate', 'ui.router', 'templates'])
+    .module('myApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstrap'])
 
     .factory('itemsFactory', ['$http', function($http) {
         var o = {
