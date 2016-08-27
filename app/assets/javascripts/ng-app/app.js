@@ -17,7 +17,7 @@ angular
             $http.post('/items.json', item).then(function successCallback(response) {
                 o.items.push(response.data);
             });
-        }
+        };
 
         o.delete = function(item) {
             var index = o.items.indexOf(item);
@@ -26,24 +26,24 @@ angular
                     o.items.splice(index, 1);
                 });
             }
-        }
+        };
 
         o.showOrHide = function(item) {
             $http.get('/items/' + item.id + '/show_or_hide.json').then(function successCallback(response) {
                   item.show = response.data;
             });
-        }
+        };
 
         o.saveItem = function(item) {
             $http.put('/items/' + item.id, item).then(function successCallback(response) {
                 item = response.data; // TODO: No anda 
             });
-        }
+        };
 
         return o;
     }])
 
-    .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('home', {
                 url: '/',
