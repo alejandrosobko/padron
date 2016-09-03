@@ -28,22 +28,41 @@
     <br><br>
 
     <table class="table table-hover">
-    <thead>
-      <tr><th>Name</th><th>Actions</th></tr>
-    </thead>
-    <tbody data-ng-repeat="item in items | filter:{name: nameSearched}">
-      <tr>
-        <td data-ng-if="!item.show" style="color:red;">{{item.name}}</td>
-        <td data-ng-if="item.show">{{item.name}}</td>
-        <td>
-          <button class="btn btn-success" data-ng-if="item.show" data-ng-click="showOrHide(item)">Hide</button>
-          <button class="btn btn-success" data-ng-if="!item.show" data-ng-click="showOrHide(item)">Show</button>
-          <button class="btn btn-info" data-ng-click="edit(item)">Edit</button>
-          <button class="btn btn-danger" data-ng-click="delete(item)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
+      <thead>
+        <tr><th>Name</th><th>Actions</th></tr>
+      </thead>
+      <tbody data-ng-repeat="item in items | filter:{name: nameSearched}">
+        <tr>
+          <td data-ng-if="!item.show" style="color:red;">{{item.name}}</td>
+          <td data-ng-if="item.show">{{item.name}}</td>
+          <td>
+            <button class="btn btn-success" data-ng-if="item.show" data-ng-click="showOrHide(item)">Hide</button>
+            <button class="btn btn-success" data-ng-if="!item.show" data-ng-click="showOrHide(item)">Show</button>
+            <button class="btn btn-info" data-ng-click="edit(item)">Edit</button>
+            <button type="button" class="btn btn-danger" aria-label="Close" data-toggle="modal" data-target="#confirm-delete">Delete</button>
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
-  
+
+  <div class="modal fade" id="confirm-delete{{$item}}" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Delete item?</h4>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure want to delete {{$item}}?</p>
+          <p>This action cannot be undone</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-danger btn-ok" data-dismiss="modal" data-ng-click="delete(item)">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
