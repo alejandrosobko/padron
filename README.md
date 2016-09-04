@@ -19,3 +19,4 @@ Workflow:  [workflow](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Work
 * `gem install bundler`
 * `bundle install`
 * `rake db:migrate`
+* `rake db:seed` if you need fake data in db
