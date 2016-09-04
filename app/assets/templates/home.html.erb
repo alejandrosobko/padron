@@ -1,9 +1,16 @@
 <div class="container">
-  <h1 class="text-center">The Home View!</h1>
+  <h2 class="text-center">Padrón de odontólogos</h2>
   <br>
 
   <div class="row">
-    <h3 class="input-group">Dentists</h3>
+    <div class="form-inline">
+      <div class="col-xs-6">
+        <div class="form-group">
+          <label for="search">Buscar</label>
+          <input type="text" class="form-control" id="search" placeholder="Nombre, apellido, matrícula..." data-ng-model="searched">
+        </div>
+      </div>
+    </div>
     <div class="col-xs-12"></div>
       <table class="table table-hover">
         <thead>
@@ -22,7 +29,7 @@
             <th>Días y horarios de atención</th>
           </tr>
         </thead>
-        <tbody data-ng-repeat="dentist in dentists">
+        <tbody data-ng-repeat="dentist in dentists | filter:searched">
           <tr>
             <td>{{dentist.name}}</td>
             <td>{{dentist.surname}}</td>
