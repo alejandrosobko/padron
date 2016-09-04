@@ -2,64 +2,60 @@
   <h1 class="text-center">The Home View!</h1>
   <br>
 
-  <div class="col-xs-4">
-    <div class="row">
-      <h3>Add new item</h3>
-      <form>
-        <div class="form-group">
-          <label for="inputName">Name</label>
-          <input type="text" class="form-control" id="inputName" placeholder="Name" data-ng-model="newItem.name">
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" data-ng-model=newItem.show> Show in list?
-          </label>
-        </div>
-        <button type="submit" class="btn btn-success" data-ng-if="!editing" data-ng-click="addItem()">Submit</button>
-        <button type="submit" class="btn btn-success" data-ng-if="editing" data-ng-click="saveItem()">Save</button>
-      </form>
-    </div>
+  <div class="row">
+    <h3 class="input-group">Dentists</h3>
+    <div class="col-xs-12"></div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Matrícula</th>
+            <th>Localidad</th>
+            <th>Institución</th>
+            <th>Calle</th>
+            <th>Número</th>
+            <th>Teléfono</th>
+            <th>Celular</th>
+            <th>E-mail</th>
+            <th>Especialidad</th>
+            <th>Días y horarios de atención</th>
+          </tr>
+        </thead>
+        <tbody data-ng-repeat="dentist in dentists">
+          <tr>
+            <td>{{dentist.name}}</td>
+            <td>{{dentist.surname}}</td>
+            <td>{{dentist.enrollment}}</td>
+            <td>{{dentist.location}}</td>
+            <td>{{dentist.institution}}</td>
+            <td>{{dentist.street}}</td>
+            <td>{{dentist.number}}</td>
+            <td>{{dentist.telephone}}</td>
+            <td>{{dentist.cellphone}}</td>
+            <td>{{dentist.email}}</td>
+            <td>{{dentist.specialty}}</td>
+            <td>{{dentist.attention_datetime}}</td>
+          </tr>
+        </tbody>
+      </table>
   </div>
+</div>
 
-  <div class="col-xs-6" style="float:right;">
-    <h3 class="input-group">Product list</h3>
-    <h5 style="color: red;">* hidden items</h5>
-    <input type="text" class="form-control" placeholder="Search for name" data-ng-model="nameSearched">
-    <br><br>
-
-    <table class="table table-hover">
-      <thead>
-        <tr><th>Name</th><th>Actions</th></tr>
-      </thead>
-      <tbody data-ng-repeat="item in items | filter:{name: nameSearched}">
-        <tr>
-          <td data-ng-if="!item.show" style="color:red;">{{item.name}}</td>
-          <td data-ng-if="item.show">{{item.name}}</td>
-          <td>
-            <button class="btn btn-success" data-ng-if="item.show" data-ng-click="showOrHide(item)">Hide</button>
-            <button class="btn btn-success" data-ng-if="!item.show" data-ng-click="showOrHide(item)">Show</button>
-            <button class="btn btn-info" data-ng-click="edit(item)">Edit</button>
-            <button type="button" class="btn btn-danger" aria-label="Close" data-toggle="modal" data-target="#confirm-delete">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="modal fade" id="confirm-delete{{$item}}" tabindex="-1" role="dialog">
+  <div class="modal fade" id="confirm-delete{{$dentist}}" tabindex="-1" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Delete item?</h4>
+          <h4 class="modal-title" id="myModalLabel">Delete dentist?</h4>
         </div>
         <div class="modal-body">
-          <p>Are you sure want to delete {{$item}}?</p>
+          <p>Are you sure want to delete {{$dentist}}?</p>
           <p>This action cannot be undone</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-danger btn-ok" data-dismiss="modal" data-ng-click="delete(item)">Delete</a>
+          <a class="btn btn-danger btn-ok" data-dismiss="modal" data-ng-click="delete(dentist)">Delete</a>
         </div>
       </div>
     </div>

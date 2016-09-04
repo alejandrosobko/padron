@@ -1,42 +1,36 @@
 angular
     .module('myApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstrap'])
 
-    .factory('itemsFactory', ['$http', function($http) {
+    .factory('dentistFactory', ['$http', function($http) {
         var o = {
-            items: []
+            dentists: []
         };
 
         o.getAll = function() {
-            $http.get('/items.json').then(function successCallback(response) {
-                angular.copy(response.data, o.items);
+            $http.get('/dentists.json').then(function successCallback(response) {
+                angular.copy(response.data, o.dentists);
             });
-            return o.items;
+            return o.dentists;
         };
 
-        o.addItem = function(item) {
-            $http.post('/items.json', item).then(function successCallback(response) {
-                o.items.push(response.data);
+        o.addDentist = function(dentist) {
+            $http.post('/dentists.json', dentist).then(function successCallback(response) {
+                o.dentists.push(response.data);
             });
         };
 
-        o.delete = function(item) {
-            var index = o.items.indexOf(item);
+        o.delete = function(dentist) {
+            var index = o.dentists.indexOf(dentist);
             if (index > -1) {
-                $http.delete('/items/' + item.id + '.json').then(function successCallback(response) {
-                    o.items.splice(index, 1);
+                $http.delete('/dentists/' + dentist.id + '.json').then(function successCallback() {
+                    o.dentists.splice(index, 1);
                 });
             }
         };
 
-        o.showOrHide = function(item) {
-            $http.get('/items/' + item.id + '/show_or_hide.json').then(function successCallback(response) {
-                  item.show = response.data;
-            });
-        };
-
-        o.saveItem = function(item) {
-            $http.put('/items/' + item.id, item).then(function successCallback(response) {
-                item = response.data; // TODO: No anda 
+        o.saveDentist = function(dentist) {
+            $http.put('/dentists/' + dentist.id, dentist).then(function successCallback(response) {
+                dentist = response.data;
             });
         };
 
@@ -45,15 +39,15 @@ angular
 
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
-            .state('home', {
+            .state('dentists', {
                 url: '/',
                 templateUrl: '/assets/home.html',
-                controller: 'HomeCtrl',
+                controller: 'DentistCtrl',
                 resolve: {
-                itemPromise: ['itemsFactory', function(itemsFactory){
-                    return itemsFactory.getAll();
-                }]
-              }
+                    dentistPromise: ['dentistFactory', function(dentistFactory){
+                        return dentistFactory.getAll();
+                    }]
+                }
             })
             .state('dashboard', {
                 abstract: true,
