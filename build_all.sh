@@ -2,5 +2,5 @@
 
 set -e
 bundle install
-rake db:migrate
+bin/rake db:migrate RAILS_ENV=test
 bundle exec rake
