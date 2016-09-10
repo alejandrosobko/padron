@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xs-12"></div>
+    <div class="col-xs-12" data-ng-show="!toView">
       <table class="table table-hover">
         <thead>
           <tr>
@@ -31,7 +31,7 @@
         </thead>
         <tbody data-ng-repeat="dentist in dentists | filter:searched">
           <tr>
-            <td>{{dentist.name}}</td>
+            <td data-ng-click="viewOnly(dentist)">{{dentist.name}}</td>
             <td>{{dentist.surname}}</td>
             <td>{{dentist.enrollment}}</td>
             <td>{{dentist.location}}</td>
@@ -46,6 +46,84 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="col-xs-10" data-ng-show="toView">
+      <div data-ng-click="removeToView()">X</div>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="name" class="col-sm-2 control-label">Nombre </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputName" disabled data-ng-model="toView.name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="surname" class="col-sm-2 control-label">Apellido</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputSurname" disabled data-ng-model="toView.surname">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="surname" class="col-sm-2 control-label">Matrícula</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputEnrollment" disabled data-ng-model="toView.enrollment">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="surname" class="col-sm-2 control-label">Localidad</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputLocation" disabled data-ng-model="toView.location">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="surname" class="col-sm-2 control-label">Institución</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputInstitute" disabled data-ng-model="toView.institution">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="surname" class="col-sm-2 control-label">Calle</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputStreet" disabled data-ng-model="toView.street">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="surname" class="col-sm-2 control-label">Número</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputNumber" disabled data-ng-model="toView.number">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="surname" class="col-sm-2 control-label">Teléfono</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputTelephone" disabled data-ng-model="toView.telephone">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="surname" class="col-sm-2 control-label">Celular</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputCellphone" disabled data-ng-model="toView.cellphone">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="surname" class="col-sm-2 control-label">E-mail</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputEmail" disabled data-ng-model="toView.email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="surname" class="col-sm-2 control-label">Especialidad</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputSpeciality" disabled data-ng-model="toView.specialty">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="surname" class="col-sm-2 control-label">Días y horarios de atención</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputAttention" disabled data-ng-model="toView.attention_datetime">
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 
