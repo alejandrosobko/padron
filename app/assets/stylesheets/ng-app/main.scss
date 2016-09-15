@@ -1,3 +1,13 @@
 @import 'bootstrap-sass-official/assets/stylesheets/bootstrap';
 //@import "dashboard";
 //@import "globals";
+
+@font-face {
+  font-family: "Roboto Regular";
+  src: url(/assets/Roboto/Roboto-Regular.ttf) format("truetype");
+}
+
+body {
+  font-family: 'Roboto Regular', sans-serif;
+  color: #555;
+}
