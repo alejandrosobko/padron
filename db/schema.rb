@@ -11,17 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160904171927) do
-
-  create_table "comments", force: :cascade do |t|
-    t.string   "body"
-    t.integer  "upvotes"
-    t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "comments", ["post_id"], name: "index_comments_on_post_id"
+ActiveRecord::Schema.define(version: 20160917182604) do
 
   create_table "dentists", force: :cascade do |t|
     t.string   "name"
@@ -38,21 +28,6 @@ ActiveRecord::Schema.define(version: 20160904171927) do
     t.datetime "attention_datetime"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-  end
-
-  create_table "items", force: :cascade do |t|
-    t.string   "name"
-    t.boolean  "show"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.string   "title"
-    t.string   "link"
-    t.integer  "upvotes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
