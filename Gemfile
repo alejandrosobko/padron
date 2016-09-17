@@ -7,7 +7,6 @@ gem 'angular-rails-templates'
 gem 'sprockets', '3.6.3'
 gem 'responders', '~> 2.0'
 gem 'angular_rails_csrf'
-gem 'rspec', '~> 3.4'
 ###
 
 
@@ -45,6 +44,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec-rails', '~> 3.5.0'
 end
 
 group :development do
