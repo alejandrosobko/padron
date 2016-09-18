@@ -1,152 +1,60 @@
 <div class="container">
-  <h2 class="text-center">Padrón de odontólogos</h2>
-  <br>
-
+  <div class="row text-center">
+    <h2>Padrón de odontólogos</h2>
+  </div>
   <div class="row">
     <div class="form-inline">
-      <div class="col-xs-6">
+      <div class="col-xs-8">
         <div class="form-group">
           <label for="search">Buscar</label>
-          <input type="text" class="form-control" id="search" placeholder="Nombre, apellido ..." data-ng-model="searched"
-                 data-uib-tooltip="Busque por cualquier campo"
-                 data-tooltip-placement="top"
-                 data-tooltip-trigger="'mouseenter'">
+          <input type="text" class="form-control" id="search" placeholder="Ingrese cualquier campo" data-ng-model="searched">
         </div>
       </div>
     </div>
-    <div class="col-xs-12" data-ng-show="!toView">
+    <div class="col-xs-12" data-ng-show="searched.length > 1">
+      <div class="form-group">
+        <label for="buttonCreate">No encontrás al que buscas?</label>
+        <button class="btn btn-primary" data-ui-sref="load_or_edit">Crear</button>
+      </div>
+    </div>
+    <div class="col-xs-12">
       <table class="table table-hover">
         <thead>
-          <tr>
-            <th>Apellido</th>
-            <th>Nombre</th>
-            <th>Matrícula</th>
-            <th>Localidad</th>
-            <th>Institución</th>
-            <th>Calle</th>
-            <th>Número</th>
-            <th>Teléfono</th>
-            <th>Celular</th>
-            <th>E-mail</th>
-            <th>Especialidad</th>
-            <th>Días y horarios de atención</th>
-          </tr>
+        <tr>
+          <th>Apellido</th>
+          <th>Nombre</th>
+          <th>Matrícula</th>
+          <th>Localidad</th>
+          <th>Institución</th>
+          <th>Calle</th>
+          <th>Número</th>
+          <th>Teléfono</th>
+          <th>Celular</th>
+          <th>E-mail</th>
+          <th>Especialidad</th>
+          <th>Días y horarios de atención</th>
+        </tr>
         </thead>
         <tbody data-ng-repeat="dentist in dentists | filter:searched">
-          <tr>
-            <td data-ng-click="viewOnly(dentist)">{{dentist.surname}}</td>
-            <td>{{dentist.name}}</td>
-            <td>{{dentist.enrollment}}</td>
-            <td>{{dentist.location}}</td>
-            <td>{{dentist.institution}}</td>
-            <td>{{dentist.street}}</td>
-            <td>{{dentist.number}}</td>
-            <td>{{dentist.telephone}}</td>
-            <td>{{dentist.cellphone}}</td>
-            <td>{{dentist.email}}</td>
-            <td>{{dentist.specialty}}</td>
-            <td>{{dentist.attention_datetime}}</td>
-          </tr>
+        <tr>
+          <td data-ui-sref="load_or_edit" data-ng-click="viewOnly(dentist)">{{dentist.surname}}</td>
+          <td>{{dentist.name}}</td>
+          <td>{{dentist.enrollment}}</td>
+          <td>{{dentist.location}}</td>
+          <td>{{dentist.institution}}</td>
+          <td>{{dentist.street}}</td>
+          <td>{{dentist.number}}</td>
+          <td>{{dentist.telephone}}</td>
+          <td>{{dentist.cellphone}}</td>
+          <td>{{dentist.email}}</td>
+          <td>{{dentist.specialty}}</td>
+          <td>{{dentist.attention_datetime}}</td>
+        </tr>
         </tbody>
       </table>
     </div>
-    <div class="col-xs-10" data-ng-show="toView">
-      <div data-ng-click="removeToView()">X</div>
-      <form class="form-horizontal">
-        <div class="form-group">
-          <label for="name" class="col-sm-2 control-label">Nombre </label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputName" disabled data-ng-model="toView.name">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="surname" class="col-sm-2 control-label">Apellido</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputSurname" disabled data-ng-model="toView.surname">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="surname" class="col-sm-2 control-label">Matrícula</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputEnrollment" disabled data-ng-model="toView.enrollment">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="surname" class="col-sm-2 control-label">Localidad</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputLocation" disabled data-ng-model="toView.location">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="surname" class="col-sm-2 control-label">Institución</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputInstitute" disabled data-ng-model="toView.institution">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="surname" class="col-sm-2 control-label">Calle</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputStreet" disabled data-ng-model="toView.street">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="surname" class="col-sm-2 control-label">Número</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputNumber" disabled data-ng-model="toView.number">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="surname" class="col-sm-2 control-label">Teléfono</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputTelephone" disabled data-ng-model="toView.telephone">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="surname" class="col-sm-2 control-label">Celular</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputCellphone" disabled data-ng-model="toView.cellphone">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="surname" class="col-sm-2 control-label">E-mail</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputEmail" disabled data-ng-model="toView.email">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="surname" class="col-sm-2 control-label">Especialidad</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputSpeciality" disabled data-ng-model="toView.specialty">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="surname" class="col-sm-2 control-label">Días y horarios de atención</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputAttention" disabled data-ng-model="toView.attention_datetime">
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
 
-  <div class="modal fade" id="confirm-delete{{$dentist}}" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Delete dentist?</h4>
-        </div>
-        <div class="modal-body">
-          <p>Are you sure want to delete {{$dentist}}?</p>
-          <p>This action cannot be undone</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-danger btn-ok" data-dismiss="modal" data-ng-click="delete(dentist)">Delete</a>
-        </div>
-      </div>
-    </div>
-  </div>
+    <div data-ui-view></div>
 
+  </div>
 </div>
