@@ -2,12 +2,6 @@ Rails.application.routes.draw do
 
   root 'application#index'
 
-  resources :items do
-    member do
-      get '/show_or_hide' => 'items#show_or_hide'
-    end
-  end
-
   get 'dentists/:id' => 'dentists#show'
   get 'dentists' => 'dentists#index'
 
