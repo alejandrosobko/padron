@@ -1,58 +1,8 @@
-angular
-    .module('myApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstrap'])
-
-    .factory('dentistFactory', ['$http', function($http) {
-        var o = {
-            dentists: []
-        };
-
-        o.getAll = function() {
-            $http.get('/dentists.json').then(
-                function successCallback(response) {
-                    angular.copy(response.data, o.dentists)
-                }, function errorCallback(error) {
-                    console.log("Error getting all dentists: " + error);
-                });
-            return o.dentists;
-        };
-
-        o.addDentist = function(dentist) {
-            $http.post('/dentists.json', dentist).then(
-                function successCallback(response) {
-                    o.dentists.push(response.data);
-                }, function errorCallback(error) {
-                    console.log("Error adding a dentist: " + error);
-                });
-        };
-
-        o.delete = function(dentist) {
-            var index = o.dentists.indexOf(dentist);
-            if (index > -1) {
-                $http.delete('/dentists/' + dentist.id + '.json').then(
-                    function successCallback() {
-                        o.dentists.splice(index, 1);
-                    }, function errorCallback(error) {
-                        console.log("Error deleting a dentist: " + error);
-                    });
-            }
-        };
-
-        o.saveDentist = function(dentist) {
-            $http.put('/dentists/' + dentist.id, dentist).then(
-                function successCallback(response) {
-                    dentist = response.data;
-                }, function errorCallback(error) {
-                    console.log("Error saving a dentist: " + error);
-                });
-        };
-
-        return o;
-    }])
-
+angular.module('myApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstrap'])
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('dentists', {
-                url: '/',
+                url: '',
                 templateUrl: '/assets/home.html',
                 controller: 'DentistCtrl',
                 resolve: {
@@ -60,6 +10,10 @@ angular
                         return dentistFactory.getAll();
                     }]
                 }
+            })
+            .state('load_or_edit', {
+                url: '',
+                templateUrl: 'load_or_edit.html'
             })
             .state('dashboard', {
                 abstract: true,
