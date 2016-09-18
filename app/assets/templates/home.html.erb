@@ -21,9 +21,9 @@
       <table class="table table-hover">
         <thead>
         <tr>
+          <th>Matrícula</th>
           <th>Apellido</th>
           <th>Nombre</th>
-          <th>Matrícula</th>
           <th>Localidad</th>
           <th>Institución</th>
           <th>Calle</th>
@@ -36,10 +36,10 @@
         </tr>
         </thead>
         <tbody data-ng-repeat="dentist in dentists | filter:searched">
-        <tr>
-          <td data-ui-sref="load_or_edit" data-ng-click="viewOnly(dentist)">{{dentist.surname}}</td>
-          <td>{{dentist.name}}</td>
+        <tr data-ui-sref="load_or_edit" data-ng-click="viewOnly(dentist)">
           <td>{{dentist.enrollment}}</td>
+          <td>{{dentist.surname}}</td>
+          <td>{{dentist.name}}</td>
           <td>{{dentist.location}}</td>
           <td>{{dentist.institution}}</td>
           <td>{{dentist.street}}</td>
