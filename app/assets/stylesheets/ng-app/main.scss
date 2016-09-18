@@ -1,13 +1,21 @@
-@import 'bootstrap-sass-official/assets/stylesheets/bootstrap';
-//@import "dashboard";
-//@import "globals";
+/*
+ * This file contains the styles for all dentists view and load/edit dentist view
+ */
 
-@font-face {
-  font-family: "Roboto Regular";
-  src: url(/assets/Roboto/Roboto-Regular.ttf) format("truetype");
+.row-pointer { cursor: pointer; }
+.padding-top-30 { padding-top: 30px; }
+.padding-top-20 { padding-top: 20px; }
+
+input#search {
+  display: inline-block;
+  box-shadow: none;
+  border-top: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-radius: 0 !important;
 }
 
-body {
-  font-family: 'Roboto Regular', sans-serif;
-  color: #555;
+h4.search {
+  display: inline-block;
+  padding-right: 10px;
 }

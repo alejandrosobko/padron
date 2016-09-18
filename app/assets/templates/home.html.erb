@@ -2,22 +2,28 @@
   <div class="row text-center">
     <h2>Padrón de odontólogos</h2>
   </div>
+</div>
+<div class="container-fluid">
   <div class="row">
-    <div class="form-inline">
-      <div class="col-xs-8">
-        <div class="form-group">
-          <label for="search">Buscar</label>
+    <div class="col-xs-10 col-xs-offset-1">
+      <div class="form-inline">
+        <div class="form-group padding-top-30">
+          <h4 class="search">Buscar</h4>
           <input type="text" class="form-control" id="search" placeholder="Ingrese cualquier campo" data-ng-model="searched">
         </div>
       </div>
     </div>
-    <div class="col-xs-12" data-ng-show="searched.length > 1">
+  </div>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 padding-top-20" data-ng-show="searched.length > 1">
       <div class="form-group">
         <label for="buttonCreate">No encontrás al que buscas?</label>
-        <button class="btn btn-primary" data-ui-sref="load_or_edit">Crear</button>
+        <button class="btn btn-success" data-ui-sref="load_or_edit">Crear</button>
       </div>
     </div>
-    <div class="col-xs-12">
+  </div>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 padding-top-30">
       <table class="table table-hover">
         <thead>
         <tr>
@@ -36,7 +42,7 @@
         </tr>
         </thead>
         <tbody data-ng-repeat="dentist in dentists | filter:searched">
-        <tr data-ui-sref="load_or_edit" data-ng-click="viewOnly(dentist)">
+        <tr data-ui-sref="load_or_edit" data-ng-click="viewOnly(dentist)" class="row-pointer">
           <td>{{dentist.enrollment}}</td>
           <td>{{dentist.surname}}</td>
           <td>{{dentist.name}}</td>
@@ -53,8 +59,6 @@
         </tbody>
       </table>
     </div>
-
-    <div data-ui-view></div>
-
   </div>
 </div>
+<div data-ui-view></div>
