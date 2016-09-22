@@ -1,21 +1,18 @@
 /*
- * This file contains the styles for all dentists view and load/edit dentist view
+ * This file contains the styles for home.html and load_or_edit.html
  */
 
 .row-pointer { cursor: pointer; }
 .padding-top-30 { padding-top: 30px; }
 .padding-top-20 { padding-top: 20px; }
-
-input#search {
-  display: inline-block;
-  box-shadow: none;
-  border-top: 0 !important;
-  border-left: 0 !important;
-  border-right: 0 !important;
-  border-radius: 0 !important;
-}
+input#search { display: inline-block; }
 
 h4.search {
   display: inline-block;
   padding-right: 10px;
+}
+
+.light-title {
+  font-family: 'Roboto Light', sans-serif !important;
+  font-size: 25px;
 }
