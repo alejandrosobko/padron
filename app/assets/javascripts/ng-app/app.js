@@ -13,7 +13,8 @@ angular.module('myApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstrap'])
             })
             .state('load_or_edit', {
                 url: '',
-                templateUrl: 'forms/load_or_edit.html'
+                templateUrl: 'forms/load_or_edit.html',
+                controller: 'LoadOrEditCtrl'
             })
             .state('dashboard', {
                 abstract: true,
