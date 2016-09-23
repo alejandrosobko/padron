@@ -5,7 +5,7 @@ RSpec.describe Dentist, :type => :model do
   describe 'empty dentist' do
     it 'should can save an empty dentist' do
       dentist = Dentist.new
-      assert dentist.save
+      expect(dentist.save).to eq(true)
     end
   end
 

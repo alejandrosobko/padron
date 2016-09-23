@@ -22,7 +22,6 @@ class DentistsController < ApplicationController
 
   def destroy
     Dentist.find(params[:id]).destroy!
-
     respond_with Dentist.all
   end
 
