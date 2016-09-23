@@ -2,5 +2,6 @@
 
 set -e
 bundle install
-bin/rake db:migrate RAILS_ENV=test
+RAILS_ENV=test
+bin/rake db:migrate
 bundle exec rspec
