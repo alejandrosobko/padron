@@ -2,6 +2,7 @@
 
 set -e
 bundle install
-RAILS_ENV=test
-bin/rake db:migrate
+bin/rake db:migrate RAILS_ENV=test
+
+bundle exec rake secret | xargs echo -e 'test:\n  secret_key_base:' > config/secrets.yml
 bundle exec rspec
