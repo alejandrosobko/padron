@@ -2,7 +2,7 @@ angular.module('myApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstrap'])
   .config(($stateProvider, $urlRouterProvider) ->
     $stateProvider
       .state('dentists', {
-        url: '',
+        url: '/',
         templateUrl: '/assets/home.html',
         controller: 'DentistCtrl',
         resolve: {
@@ -11,11 +11,16 @@ angular.module('myApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstrap'])
           ]
         }
       })
-      .state('load_or_edit', {
-        url: '',
+      .state('load', {
+        url: '/nuevo',
         templateUrl: 'forms/load_or_edit.html',
         controller: 'LoadOrEditCtrl'
        })
+      .state('edit', {
+        url: '/editar/:dentistId',
+        templateUrl: 'forms/load_or_edit.html',
+        controller: 'LoadOrEditCtrl'
+      })
       .state('dashboard', {
         abstract: true,
         url: '/dashboard',
