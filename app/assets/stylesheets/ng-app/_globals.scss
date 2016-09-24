@@ -2,12 +2,8 @@
 @import 'main';
 @import 'dashboard';
 
-@font-face {
-  font-family: "Roboto Regular";
-  src: url(/assets/Roboto/Roboto-Regular.ttf) format("truetype");
-}
-
 body {
-  font-family: 'Roboto Regular', sans-serif !important;
+  font-family: 'Roboto', sans-serif;
   color: #555;
+  background-color: #FAFAFA;
 }
