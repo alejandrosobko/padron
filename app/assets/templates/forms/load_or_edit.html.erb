@@ -2,80 +2,81 @@
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <div class="row">
-        <span class="light-title">Nueva visita</span>
+        <span class="light-title" data-ng-hide="editMode">Nueva visita</span>
+        <span class="light-title" data-ng-show="editMode">Editar visita</span>
       </div>
       <div>
         <form class="form-horizontal text-center">
           <div class="form-group">
             <label for="inputName" class="col-sm-2 control-label">Nombre </label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputName" data-ng-model="toView.name">
+              <input type="text" class="form-control" id="inputName" data-ng-model="visitToEdit.dentist.name">
             </div>
           </div>
           <div class="form-group">
             <label for="inputSurname" class="col-sm-2 control-label">Apellido</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputSurname" data-ng-model="toView.surname">
+              <input type="text" class="form-control" id="inputSurname" data-ng-model="visitToEdit.dentist.surname">
             </div>
           </div>
           <div class="form-group">
             <label for="inputEnrollment" class="col-sm-2 control-label">Matrícula</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputEnrollment" data-ng-model="toView.enrollment">
+              <input type="text" class="form-control" id="inputEnrollment" data-ng-model="visitToEdit.dentist.enrollment">
             </div>
           </div>
           <div class="form-group">
             <label for="inputLocation" class="col-sm-2 control-label">Localidad</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputLocation" data-ng-model="toView.location">
+              <input type="text" class="form-control" id="inputLocation" data-ng-model="visitToEdit.dentist.location">
             </div>
           </div>
           <div class="form-group">
             <label for="inputInstitute" class="col-sm-2 control-label">Institución</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputInstitute" data-ng-model="toView.institution">
+              <input type="text" class="form-control" id="inputInstitute" data-ng-model="visitToEdit.dentist.institution">
             </div>
           </div>
           <div class="form-group">
             <label for="inputStreet" class="col-sm-2 control-label">Calle</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputStreet" data-ng-model="toView.street">
+              <input type="text" class="form-control" id="inputStreet" data-ng-model="visitToEdit.dentist.street">
             </div>
           </div>
           <div class="form-group">
             <label for="inputNumber" class="col-sm-2 control-label">Número</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputNumber" data-ng-model="toView.number">
+              <input type="text" class="form-control" id="inputNumber" data-ng-model="visitToEdit.dentist.number">
             </div>
           </div>
           <div class="form-group">
             <label for="inputTelephone" class="col-sm-2 control-label">Teléfono</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputTelephone" data-ng-model="toView.telephone">
+              <input type="text" class="form-control" id="inputTelephone" data-ng-model="visitToEdit.dentist.telephone">
             </div>
           </div>
           <div class="form-group">
             <label for="inputCellphone" class="col-sm-2 control-label">Celular</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputCellphone" data-ng-model="toView.cellphone">
+              <input type="text" class="form-control" id="inputCellphone" data-ng-model="visitToEdit.dentist.cellphone">
             </div>
           </div>
           <div class="form-group">
             <label for="inputEmail" class="col-sm-2 control-label">E-mail</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputEmail" data-ng-model="toView.email">
+              <input type="text" class="form-control" id="inputEmail" data-ng-model="visitToEdit.dentist.email">
             </div>
           </div>
           <div class="form-group">
             <label for="inputSpeciality" class="col-sm-2 control-label">Especialidad</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputSpeciality" data-ng-model="toView.specialty">
+              <input type="text" class="form-control" id="inputSpeciality" data-ng-model="visitToEdit.dentist.specialty">
             </div>
           </div>
           <div class="form-group">
             <label for="inputDaysAttention" class="col-sm-2 control-label">Días de atención</label>
             <div class="col-sm-10">
-              <!--<input type="text" class="form-control" id="inputAttention" data-ng-model="toView.attention_datetime">-->
+              <!--<input type="text" class="form-control" id="inputAttention" data-ng-model="visitToEdit.dentist.attention_datetime">-->
               <input type="checkbox">Lunes
               <input type="checkbox">Martes
               <input type="checkbox">Miercoles
@@ -96,7 +97,21 @@
           <div class="form-group">
             <label for="inputAttention" class="col-sm-2 control-label">Días y horarios de atención</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputAttention" data-ng-model="toView.attention_datetime">
+              <input type="text" class="form-control" id="inputAttention" data-ng-model="visitToEdit.dentist.attention_datetime">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputVisitDate" class="col-sm-2 control-label">Fecha de visita</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputVisitDate" data-ng-model="visitToEdit.visit_date">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="areaObservations" class="col-sm-2 control-label">Observaciones</label>
+            <div class="col-sm-10">
+              <textarea name="observations" id="areaObservations" class="form-control" cols="30" rows="5"
+                        data-ng-model="visitToEdit.observations">
+              </textarea>
             </div>
           </div>
           <div class="form-group">

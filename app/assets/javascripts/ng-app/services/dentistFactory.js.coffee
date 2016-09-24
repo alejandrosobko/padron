@@ -1,6 +1,5 @@
 angular.module('myApp').factory('dentistFactory', ['$http', ($http) ->
-
-  o = { dentists: [] }
+  o = {dentists: []}
 
   o.getAll = ->
     $http.get('/dentists.json').then(
