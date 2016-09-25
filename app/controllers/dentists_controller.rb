@@ -14,8 +14,7 @@ class DentistsController < ApplicationController
 
   def update
     dentist = Dentist.find(params[:id])
-    dentist.name = params[:dentist][:name]
-    dentist.save!
+    dentist.update!(dentist_params)
 
     respond_with dentist
   end

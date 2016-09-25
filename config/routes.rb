@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'dentists/:id' => 'dentists#show'
   get 'dentists' => 'dentists#index'
+  put 'dentists/:id' => 'dentists#update'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

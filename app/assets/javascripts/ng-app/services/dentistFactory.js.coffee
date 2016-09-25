@@ -13,12 +13,14 @@ angular.module('myApp').factory('dentistFactory', ['$http', ($http) ->
       (response) -> angular.copy(response.data, o.dentists),
       (error) -> console.log("Error getting the dentist by id: #{error}")
     )
+    return o.dentists
 
-  o.addDentist = (dentist) ->
+  o.add = (dentist) ->
     $http.post("/dentists.json#{dentist}").then(
       (response) -> o.dentists.push(response.data),
       (error) -> console.log("Error adding a dentist: #{error}")
     )
+    return o.dentists
 
   o.delete = (dentist) ->
     index = o.dentists.indexOf(dentist)
@@ -27,12 +29,20 @@ angular.module('myApp').factory('dentistFactory', ['$http', ($http) ->
         (response) -> o.dentists.splice(index, 1),
         (error) -> console.log("Error deleting a dentist: #{error}")
       )
+    return o.dentists
 
-  o.saveDentist = (dentistId) ->
-    $http.put("/dentists/#{dentistId}", dentist).then(
-      (response) -> dentist = response.data,
+  o.save = (dentist) ->
+    toSave =
+      id: dentist.id, name: dentist.name, surname: dentist.surname, enrollment: dentist.enrollment,
+      location: dentist.location, institution: dentist.institution, enrollment: dentist.enrollment,
+      street: dentist.street, number: dentist.number, telephone: dentist.telephone, cellphone: dentist.cellphone,
+      email: dentist.email, specialty: dentist.specialty, attention_datetime: dentist.attention_datetime
+
+    $http.put("/dentists/#{dentist.id}.json", toSave).then(
+      (response) -> response,
       (error) -> console.log("Error saving a dentist: #{error}")
     )
+    return o.dentists
 
   return o
 ])
