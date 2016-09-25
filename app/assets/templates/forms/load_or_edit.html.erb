@@ -1,127 +1,102 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
-      <div class="row">
-        <span class="light-title" data-ng-hide="editMode">Nueva visita</span>
-        <span class="light-title" data-ng-show="editMode">Editar odontólogo</span>
-      </div>
-      <div>
-        <form class="form-horizontal text-center">
+    <div class="col-xs-10 col-xs-offset-2 light-title">
+      <span data-ng-hide="editMode">Nueva visita</span>
+      <span data-ng-show="editMode">Editar odontólogo</span>
+    </div>
+    <div class="row">
+      <form>
+        <div class="col-xs-4 col-xs-offset-1">
           <div class="form-group">
-            <label for="inputName" class="col-sm-2 control-label">Nombre </label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputName" data-ng-model="dentistToEdit.name">
-            </div>
+            <label for="inputName">Nombre </label>
+            <input type="text" class="form-control" id="inputName" data-ng-model="dentistToEdit.name">
           </div>
           <div class="form-group">
-            <label for="inputSurname" class="col-sm-2 control-label">Apellido</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputSurname" data-ng-model="dentistToEdit.surname">
-            </div>
+            <label for="inputSurname">Apellido</label>
+            <input type="text" class="form-control" id="inputSurname" data-ng-model="dentistToEdit.surname">
           </div>
           <div class="form-group">
-            <label for="inputEnrollment" class="col-sm-2 control-label">Matrícula</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputEnrollment" data-ng-model="dentistToEdit.enrollment">
-            </div>
+            <label for="inputEnrollment">Matrícula</label>
+            <input type="text" class="form-control" id="inputEnrollment" data-ng-model="dentistToEdit.enrollment">
           </div>
           <div class="form-group">
-            <label for="inputLocation" class="col-sm-2 control-label">Localidad</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputLocation" data-ng-model="dentistToEdit.location">
-            </div>
+            <label for="inputLocation">Localidad</label>
+            <input type="text" class="form-control" id="inputLocation" data-ng-model="dentistToEdit.location">
           </div>
           <div class="form-group">
-            <label for="inputInstitute" class="col-sm-2 control-label">Institución</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputInstitute" data-ng-model="dentistToEdit.institution">
-            </div>
+            <label for="inputInstitute">Institución</label>
+            <input type="text" class="form-control" id="inputInstitute" data-ng-model="dentistToEdit.institution">
           </div>
           <div class="form-group">
-            <label for="inputStreet" class="col-sm-2 control-label">Calle</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputStreet" data-ng-model="dentistToEdit.street">
-            </div>
+            <label for="inputStreet">Calle</label>
+            <input type="text" class="form-control" id="inputStreet" data-ng-model="dentistToEdit.street">
           </div>
           <div class="form-group">
-            <label for="inputNumber" class="col-sm-2 control-label">Número</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputNumber" data-ng-model="dentistToEdit.number">
-            </div>
+            <label for="inputNumber">Número</label>
+            <input type="text" class="form-control" id="inputNumber" data-ng-model="dentistToEdit.number">
+          </div>
+        </div>
+        <div class="col-xs-4 col-xs-offset-2">
+          <div class="form-group">
+            <label for="inputTelephone">Teléfono</label>
+            <input type="text" class="form-control" id="inputTelephone" data-ng-model="dentistToEdit.telephone">
           </div>
           <div class="form-group">
-            <label for="inputTelephone" class="col-sm-2 control-label">Teléfono</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputTelephone" data-ng-model="dentistToEdit.telephone">
-            </div>
+            <label for="inputCellphone">Celular</label>
+            <input type="text" class="form-control" id="inputCellphone" data-ng-model="dentistToEdit.cellphone">
           </div>
           <div class="form-group">
-            <label for="inputCellphone" class="col-sm-2 control-label">Celular</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputCellphone" data-ng-model="dentistToEdit.cellphone">
-            </div>
+            <label for="inputEmail">E-mail</label>
+            <input type="text" class="form-control" id="inputEmail" data-ng-model="dentistToEdit.email">
           </div>
           <div class="form-group">
-            <label for="inputEmail" class="col-sm-2 control-label">E-mail</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputEmail" data-ng-model="dentistToEdit.email">
-            </div>
+            <label for="inputSpeciality">Especialidad</label>
+            <input type="text" class="form-control" id="inputSpeciality" data-ng-model="dentistToEdit.specialty">
           </div>
           <div class="form-group">
-            <label for="inputSpeciality" class="col-sm-2 control-label">Especialidad</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputSpeciality" data-ng-model="dentistToEdit.specialty">
-            </div>
+            <label for="inputDaysAttention">Días de atención</label>
+            <br>
+            <input type="checkbox" id="inputDaysAttention">Lunes
+            <input type="checkbox" id="inputDaysAttention">Martes
+            <input type="checkbox" id="inputDaysAttention">Miercoles
+            <input type="checkbox" id="inputDaysAttention">Jueves
+            <br>
+            <input type="checkbox" id="inputDaysAttention">Viernes
+            <input type="checkbox" id="inputDaysAttention">Sabado
+            <input type="checkbox" id="inputDaysAttention">Domingo
           </div>
           <div class="form-group">
-            <label for="inputDaysAttention" class="col-sm-2 control-label">Días de atención</label>
-            <div class="col-sm-10">
-              <!--<input type="text" class="form-control" id="inputAttention" data-ng-model="dentistToEdit.attention_datetime">-->
-              <input type="checkbox">Lunes
-              <input type="checkbox">Martes
-              <input type="checkbox">Miercoles
-              <input type="checkbox">Jueves
-              <input type="checkbox">Viernes
-              <input type="checkbox">Sabado
-              <input type="checkbox">Domingo
-            </div>
-            <div class="col-sm-4">
-              <label for="">Desde</label>
-              <input type="number">
-            </div>
-            <div class="col-sm-4">
-              <label for="">Hasta</label>
-              <input type="number">
-            </div>
+            <label for="desde">Desde</label>
+            <input type="number" id="desde">
           </div>
           <div class="form-group">
-            <label for="inputAttention" class="col-sm-2 control-label">Días y horarios de atención</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputAttention" data-ng-model="dentistToEdit.attention_datetime">
-            </div>
+            <label for="hasta">Hasta</label>
+            <input type="number" id="hasta">
+          </div>
+          <div class="form-group">
+            <label for="inputAttention">Días y horarios de atención</label>
+            <input type="text" class="form-control" id="inputAttention" data-ng-model="dentistToEdit.attention_datetime">
           </div>
           <div data-ng-hide="editMode">
             <div class="form-group">
-              <label for="inputVisitDate" class="col-sm-2 control-label">Fecha de visita</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputVisitDate" data-ng-model="dentistToEdit.dentist.visit_date">
-              </div>
+              <label for="inputVisitDate">Fecha de visita</label>
+              <input type="text" class="form-control" id="inputVisitDate" data-ng-model="dentistToEdit.dentist.visit_date">
             </div>
             <div class="form-group">
-              <label for="areaObservations" class="col-sm-2 control-label">Observaciones</label>
-              <div class="col-sm-10">
+              <label for="areaObservations">Observaciones</label>
               <textarea name="observations" id="areaObservations" class="form-control" cols="30" rows="5"
                         data-ng-model="dentistToEdit.dentist.observations">
-              </textarea>
-              </div>
+            </textarea>
             </div>
           </div>
+        </div>
+        <div class="col-xs-4 col-xs-offset-1">
           <div class="form-group">
             <button class="btn btn-sm btn-default" type="button" data-ng-click="removeToView()" data-ui-sref="dentists">Cancelar</button>
             <button class="btn btn-sm btn-success" type="button">Guardar</button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
