@@ -1,7 +1,7 @@
 class Visit < ActiveRecord::Base
-  has_one :visitor
-  has_one :dentist
-  validates_presence_of :dentist, :visitor, :visit_date
+  belongs_to :visitor
+  belongs_to :dentist
+  validates_presence_of :visitor, :dentist, :visit_date
 
   def as_json(options = {})
     super(options)

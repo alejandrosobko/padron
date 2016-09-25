@@ -1,5 +1,5 @@
 class Dentist < ActiveRecord::Base
-  belongs_to :visit
+  has_one :visit
 
   def as_json(options = {})
     super(options)
