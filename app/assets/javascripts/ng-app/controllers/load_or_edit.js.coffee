@@ -5,4 +5,8 @@ angular.module('myApp').controller('LoadOrEditCtrl', ($scope, $stateParams, visi
 
   if $scope.editMode
     dentistFactory.get($stateParams.dentistId).then((response) -> $scope.dentistToEdit = response)
+
+  $scope.save = ->
+    if $scope.editMode
+      dentistFactory
 )
