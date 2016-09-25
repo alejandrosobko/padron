@@ -1,57 +1,57 @@
-<div class="container">
+<div class="container" data-ng-controller="NewOrEditCtrl as newOrEdit">
   <div class="row">
     <div class="col-xs-10 col-xs-offset-2 light-title">
-      <span data-ng-hide="editMode">Nueva visita</span>
-      <span data-ng-show="editMode">Editar odontólogo</span>
+      <span data-ng-hide="newOrEdit.editMode">Nuevo odontólogo</span>
+      <span data-ng-show="newOrEdit.editMode">Editar odontólogo</span>
     </div>
     <div class="row">
       <form>
         <div class="col-xs-4 col-xs-offset-1">
           <div class="form-group">
             <label for="inputName">Nombre </label>
-            <input type="text" class="form-control" id="inputName" data-ng-model="dentistToEdit.name">
+            <input type="text" class="form-control" id="inputName" data-ng-model="newOrEdit.dentistToEdit.name">
           </div>
           <div class="form-group">
             <label for="inputSurname">Apellido</label>
-            <input type="text" class="form-control" id="inputSurname" data-ng-model="dentistToEdit.surname">
+            <input type="text" class="form-control" id="inputSurname" data-ng-model="newOrEdit.dentistToEdit.surname">
           </div>
           <div class="form-group">
             <label for="inputEnrollment">Matrícula</label>
-            <input type="text" class="form-control" id="inputEnrollment" data-ng-model="dentistToEdit.enrollment">
+            <input type="text" class="form-control" id="inputEnrollment" data-ng-model="newOrEdit.dentistToEdit.enrollment">
           </div>
           <div class="form-group">
             <label for="inputLocation">Localidad</label>
-            <input type="text" class="form-control" id="inputLocation" data-ng-model="dentistToEdit.location">
+            <input type="text" class="form-control" id="inputLocation" data-ng-model="newOrEdit.dentistToEdit.location">
           </div>
           <div class="form-group">
             <label for="inputInstitute">Institución</label>
-            <input type="text" class="form-control" id="inputInstitute" data-ng-model="dentistToEdit.institution">
+            <input type="text" class="form-control" id="inputInstitute" data-ng-model="newOrEdit.dentistToEdit.institution">
           </div>
           <div class="form-group">
             <label for="inputStreet">Calle</label>
-            <input type="text" class="form-control" id="inputStreet" data-ng-model="dentistToEdit.street">
+            <input type="text" class="form-control" id="inputStreet" data-ng-model="newOrEdit.dentistToEdit.street">
           </div>
           <div class="form-group">
             <label for="inputNumber">Número</label>
-            <input type="text" class="form-control" id="inputNumber" data-ng-model="dentistToEdit.number">
+            <input type="text" class="form-control" id="inputNumber" data-ng-model="newOrEdit.dentistToEdit.number">
           </div>
         </div>
         <div class="col-xs-4 col-xs-offset-2">
           <div class="form-group">
             <label for="inputTelephone">Teléfono</label>
-            <input type="text" class="form-control" id="inputTelephone" data-ng-model="dentistToEdit.telephone">
+            <input type="text" class="form-control" id="inputTelephone" data-ng-model="newOrEdit.dentistToEdit.telephone">
           </div>
           <div class="form-group">
             <label for="inputCellphone">Celular</label>
-            <input type="text" class="form-control" id="inputCellphone" data-ng-model="dentistToEdit.cellphone">
+            <input type="text" class="form-control" id="inputCellphone" data-ng-model="newOrEdit.dentistToEdit.cellphone">
           </div>
           <div class="form-group">
             <label for="inputEmail">E-mail</label>
-            <input type="text" class="form-control" id="inputEmail" data-ng-model="dentistToEdit.email">
+            <input type="text" class="form-control" id="inputEmail" data-ng-model="newOrEdit.dentistToEdit.email">
           </div>
           <div class="form-group">
             <label for="inputSpeciality">Especialidad</label>
-            <input type="text" class="form-control" id="inputSpeciality" data-ng-model="dentistToEdit.specialty">
+            <input type="text" class="form-control" id="inputSpeciality" data-ng-model="newOrEdit.dentistToEdit.specialty">
           </div>
           <div class="form-group">
             <label for="inputDaysAttention">Días de atención</label>
@@ -75,25 +75,25 @@
           </div>
           <div class="form-group">
             <label for="inputAttention">Días y horarios de atención</label>
-            <input type="text" class="form-control" id="inputAttention" data-ng-model="dentistToEdit.attention_datetime">
+            <input type="text" class="form-control" id="inputAttention" data-ng-model="newOrEdit.dentistToEdit.attention_datetime">
           </div>
-          <div data-ng-hide="editMode">
+          <div data-ng-hide="newOrEdit.editMode">
             <div class="form-group">
               <label for="inputVisitDate">Fecha de visita</label>
-              <input type="text" class="form-control" id="inputVisitDate" data-ng-model="dentistToEdit.dentist.visit_date">
+              <input type="text" class="form-control" id="inputVisitDate" data-ng-model="newOrEdit.dentistToEdit.dentist.visit_date">
             </div>
             <div class="form-group">
               <label for="areaObservations">Observaciones</label>
               <textarea name="observations" id="areaObservations" class="form-control" cols="30" rows="5"
-                        data-ng-model="dentistToEdit.dentist.observations">
+                        data-ng-model="newOrEdit.dentistToEdit.dentist.observations">
             </textarea>
             </div>
           </div>
         </div>
         <div class="col-xs-4 col-xs-offset-1">
           <div class="form-group">
-            <button class="btn btn-sm btn-default" type="button" data-ng-click="removeToView()" data-ui-sref="dentists">Cancelar</button>
-            <button class="btn btn-sm btn-success" type="button" data-ng-click="save()">Guardar</button>
+            <button class="btn btn-sm btn-default" type="button" data-ng-click="newOrEdit.removeToView()" data-ui-sref="dentists">Cancelar</button>
+            <button class="btn btn-sm btn-success" type="button" data-ng-click="newOrEdit.save()">Guardar</button>
           </div>
         </div>
       </form>

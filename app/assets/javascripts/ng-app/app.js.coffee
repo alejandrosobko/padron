@@ -4,7 +4,7 @@ angular.module('myApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstrap'])
       .state('dentists', {
         url: '/',
         templateUrl: '/assets/home.html',
-        controller: 'DentistCtrl',
+        controller: 'DentistCtrl as dentist',
         resolve: {
           dentistPromise: ['dentistFactory', (dentistFactory) ->
             return dentistFactory.getAll()
@@ -13,13 +13,13 @@ angular.module('myApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstrap'])
       })
       .state('load', {
         url: '/nuevo',
-        templateUrl: 'forms/load_or_edit.html',
-        controller: 'LoadOrEditCtrl'
+        templateUrl: 'forms/new_or_edit.html',
+        controller: 'NewOrEditCtrl as newOrEdit'
        })
       .state('edit', {
         url: '/editar/:dentistId',
-        templateUrl: 'forms/load_or_edit.html',
-        controller: 'LoadOrEditCtrl'
+        templateUrl: 'forms/new_or_edit.html',
+        controller: 'NewOrEditCtrl as newOrEdit'
       })
       .state('dashboard', {
         abstract: true,
