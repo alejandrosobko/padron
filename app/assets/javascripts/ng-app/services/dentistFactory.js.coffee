@@ -8,6 +8,12 @@ angular.module('myApp').factory('dentistFactory', ['$http', ($http) ->
     )
     return o.dentists
 
+  o.get = (dentistId) ->
+    $http.get("/dentists/#{dentistId}.json").then(
+      (response) -> angular.copy(response.data, o.dentists),
+      (error) -> console.log("Error getting the dentist by id: " + error)
+    )
+
   o.addDentist = (dentist) ->
     $http.post('/dentists.json', dentist).then(
       (response) -> o.dentists.push(response.data),

@@ -1,5 +1,8 @@
-angular.module('myApp').controller('LoadOrEditCtrl', ($scope, $stateParams, visitFactory) ->
+angular.module('myApp').controller('LoadOrEditCtrl', ($scope, $stateParams, visitFactory, dentistFactory) ->
   $scope.days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
   $scope.editMode = $stateParams.dentistId
-  $scope.visitToEdit = visitFactory.getByDentistId($stateParams.dentistId) if $scope.editMode
+  $scope.dentistToEdit = {}
+
+  if $scope.editMode
+    dentistFactory.get($stateParams.dentistId).then((response) -> $scope.dentistToEdit = response)
 )
