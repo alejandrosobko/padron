@@ -4,15 +4,17 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, visitFactory,
   @editMode = $stateParams.dentistId
   @dentistToEdit = {}
 
-  @handleError = (error) ->
-    growl.error("<b>Error</b><br> Algo salió mal cargando los datos")
-    console.log(error)
+  @handleError = (error, errorMessage=null) ->
+    if errorMessage
+      growl.error("<b>Error</b><br> #{errorMessage}")
+    else
+      growl.error("<b>Error</b><br> Algo salió mal cargando los datos")
 
   dentistFactory.get($stateParams.dentistId,
     (response) ->
       if self.editMode
         self.dentistToEdit = response.data
-    (error) -> self.handleError(error)
+    (error) -> self.handleError(error, "No se pudo obtener al usuario")
   )
 
   @update = ->
