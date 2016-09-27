@@ -4,16 +4,19 @@ angular.module('myApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstrap', 
       .state('dentists', {
         url: '/',
         templateUrl: '/assets/home.html',
-        controller: 'DentistCtrl as dentist'
+        controller: 'DentistCtrl as dentistCtrl'
       })
-      .state('load', {
+      .state('form', {
+        abstract: true,
+        url: '',
+        templateUrl: 'forms/new_or_edit.html'
+      })
+      .state('form.new', {
         url: '/nuevo',
-        templateUrl: 'forms/new_or_edit.html',
         controller: 'NewOrEditCtrl as newOrEdit'
        })
-      .state('edit', {
+      .state('form.edit', {
         url: '/editar/:dentistId',
-        templateUrl: 'forms/new_or_edit.html',
         controller: 'NewOrEditCtrl as newOrEdit'
       })
       .state('dashboard', {

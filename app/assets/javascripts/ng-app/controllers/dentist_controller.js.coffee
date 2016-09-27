@@ -1,7 +1,6 @@
 angular.module('myApp').controller('DentistCtrl', (dentistFactory, growl) ->
   self = @
   @dentists = []
-  @errors = []
 
   @handleError = (error) ->
     growl.error("<b>Error</b><br> Algo salió mal cargando los datos")

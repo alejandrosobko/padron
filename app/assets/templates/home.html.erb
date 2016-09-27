@@ -18,7 +18,7 @@
     <div class="col-xs-10 col-xs-offset-1 padding-top-20" data-ng-show="dentistCtrl.searched.length > 2">
       <div class="form-group">
         <label for="buttonCreate">No encontrás al que buscas?</label>
-        <button class="btn btn-success" data-ui-sref="load">Crear</button>
+        <button class="btn btn-success" data-ui-sref="form.new">Crear</button>
       </div>
     </div>
   </div>
@@ -41,8 +41,8 @@
           <th>Días y horarios de atención</th>
         </tr>
         </thead>
-        <tbody data-ng-repeat="dentist in dentistCtrl.dentists">
-        <tr data-ui-sref="edit({dentistId: dentist.id})" class="row-pointer">
+        <tbody data-ng-repeat="dentist in dentistCtrl.dentists | filter:dentistCtrl.searched">
+        <tr data-ui-sref="form.edit({dentistId: dentist.id})" class="row-pointer">
           <td>{{dentist.enrollment}}</td>
           <td>{{dentist.surname}}</td>
           <td>{{dentist.name}}</td>
