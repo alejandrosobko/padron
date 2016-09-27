@@ -4,12 +4,7 @@ angular.module('myApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstrap'])
       .state('dentists', {
         url: '/',
         templateUrl: '/assets/home.html',
-        controller: 'DentistCtrl as dentist',
-        resolve: {
-          dentistPromise: ['dentistFactory', (dentistFactory) ->
-            return dentistFactory.getAll()
-          ]
-        }
+        controller: 'DentistCtrl as dentist'
       })
       .state('load', {
         url: '/nuevo',

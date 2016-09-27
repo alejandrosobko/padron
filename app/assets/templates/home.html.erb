@@ -3,19 +3,19 @@
     <h2>Padrón de odontólogos</h2>
   </div>
 </div>
-<div class="container-fluid" data-ng-controller="DentistCtrl as dentist">
+<div class="container-fluid" data-ng-controller="DentistCtrl as dentistCtrl">
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1">
       <div class="form-inline">
         <div class="form-group padding-top-30">
           <h4 class="search">Buscar</h4>
-          <input type="text" class="form-control" id="search" placeholder="Ingrese cualquier campo" data-ng-model="dentist.searched">
+          <input type="text" class="form-control" id="search" placeholder="Ingrese cualquier campo" data-ng-model="dentistCtrl.searched">
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-10 col-xs-offset-1 padding-top-20" data-ng-show="dentist.searched.length > 2">
+    <div class="col-xs-10 col-xs-offset-1 padding-top-20" data-ng-show="dentistCtrl.searched.length > 2">
       <div class="form-group">
         <label for="buttonCreate">No encontrás al que buscas?</label>
         <button class="btn btn-success" data-ui-sref="load">Crear</button>
@@ -41,7 +41,7 @@
           <th>Días y horarios de atención</th>
         </tr>
         </thead>
-        <tbody data-ng-repeat="dentist in dentist.dentists | filter:dentist.searched">
+        <tbody data-ng-repeat="dentist in dentistCtrl.dentists">
         <tr data-ui-sref="edit({dentistId: dentist.id})" class="row-pointer">
           <td>{{dentist.enrollment}}</td>
           <td>{{dentist.surname}}</td>
