@@ -13,8 +13,5 @@ angular.module('myApp').controller('DentistCtrl', (dentistFactory, growl) ->
     (error) -> self.handleError(error)
   )
 
-  @removeToView = ->
-    @toView = null
-
   @
 )
