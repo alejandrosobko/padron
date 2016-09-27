@@ -1,5 +1,5 @@
-angular.module('myApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstrap'])
-  .config(($stateProvider, $urlRouterProvider) ->
+angular.module('myApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstrap', 'angular-growl'])
+  .config(($stateProvider, $urlRouterProvider, growlProvider) ->
     $stateProvider
       .state('dentists', {
         url: '/',
@@ -35,5 +35,5 @@ angular.module('myApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstrap'])
       })
 
     $urlRouterProvider.otherwise('/')
-
+    growlProvider.globalTimeToLive(4000)
   )
