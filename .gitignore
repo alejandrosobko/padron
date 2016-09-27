@@ -8,6 +8,7 @@ config/initializers/secret_token.rb
 config/secrets.yml
 config/secrets_backup.yml
 /vendor/assets/bower_components
+/lib/assets/bower_components
 /vendor/bundle
 .idea
 .rake_tasks~
