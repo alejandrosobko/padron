@@ -9,6 +9,8 @@ class VisitsController < ApplicationController
   end
 
   def create
+    # visit_params[:dentist] = Dentist.create(params[:dentist])
+    # visit_params[:visitor] = Visitor.create(params[:visitor])
     respond_with Visit.create(visit_params)
   end
 
@@ -21,7 +23,8 @@ class VisitsController < ApplicationController
   private
 
   def visit_params
-    params.require(:visit).permit(:visitor, :dentist, :visit_date)
+    params[:visit_date] = DateTime.parse(params.fetch(:visit_date, DateTime.now)).utc.iso8601
+    params.require(:visit).permit(:visitor, :dentist, :visit_date, :observations)
   end
 
 end
