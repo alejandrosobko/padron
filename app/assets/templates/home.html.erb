@@ -24,9 +24,10 @@
   </div>
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1 padding-top-30">
-      <table class="table table-hover">
+      <table class="table table-hover table-nonfluid">
         <thead>
         <tr>
+          <th>Nueva</th>
           <th>Matrícula</th>
           <th>Apellido</th>
           <th>Nombre</th>
@@ -42,19 +43,20 @@
         </tr>
         </thead>
         <tbody data-ng-repeat="dentist in dentistCtrl.dentists | filter:dentistCtrl.searched">
-        <tr data-ui-sref="form.edit({dentistId: dentist.id})" class="row-pointer">
-          <td>{{dentist.enrollment}}</td>
-          <td>{{dentist.surname}}</td>
-          <td>{{dentist.name}}</td>
-          <td>{{dentist.location}}</td>
-          <td>{{dentist.institution}}</td>
-          <td>{{dentist.street}}</td>
-          <td>{{dentist.number}}</td>
-          <td>{{dentist.telephone}}</td>
-          <td>{{dentist.cellphone}}</td>
-          <td>{{dentist.email}}</td>
-          <td>{{dentist.specialty}}</td>
-          <td>{{dentist.attention_datetime}}</td>
+        <tr class="row-pointer">
+          <td><button class="btn btn-xs btn-success">+</button></td>
+          <td data-ui-sref="form.edit({dentistId: dentist.id})" >{{dentist.enrollment}}</td>
+          <td data-ui-sref="form.edit({dentistId: dentist.id})" >{{dentist.surname}}</td>
+          <td data-ui-sref="form.edit({dentistId: dentist.id})" >{{dentist.name}}</td>
+          <td data-ui-sref="form.edit({dentistId: dentist.id})" >{{dentist.location}}</td>
+          <td data-ui-sref="form.edit({dentistId: dentist.id})" >{{dentist.institution}}</td>
+          <td data-ui-sref="form.edit({dentistId: dentist.id})" >{{dentist.street}}</td>
+          <td data-ui-sref="form.edit({dentistId: dentist.id})" >{{dentist.number}}</td>
+          <td data-ui-sref="form.edit({dentistId: dentist.id})" >{{dentist.telephone}}</td>
+          <td data-ui-sref="form.edit({dentistId: dentist.id})" >{{dentist.cellphone}}</td>
+          <td data-ui-sref="form.edit({dentistId: dentist.id})" >{{dentist.email}}</td>
+          <td data-ui-sref="form.edit({dentistId: dentist.id})" >{{dentist.specialty}}</td>
+          <td data-ui-sref="form.edit({dentistId: dentist.id})" >{{dentist.attention_datetime}}</td>
         </tr>
         </tbody>
       </table>
