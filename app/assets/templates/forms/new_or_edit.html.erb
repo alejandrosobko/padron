@@ -1,4 +1,4 @@
-<div class="container" data-ng-controller="NewOrEditCtrl as newOrEditCtrl">
+<div class="container" data-ng-controller="NewOrEditCtrl as newOrEditCtrl" xmlns="http://www.w3.org/1999/html">
   <div class="row">
     <div class="col-xs-10 col-xs-offset-2 light-title">
       <span data-ng-hide="newOrEditCtrl.editMode">Nuevo odontólogo</span>
@@ -84,10 +84,17 @@
             </div>
             <div class="form-group">
               <label for="inputVisitDate">Fecha de visita</label>
-              <input type="text" class="form-control" id="inputVisitDate" data-uib-datepicker-popup
-                     data-ng-model="newOrEditCtrl.newVisit.visit_date" data-is-open="newOrEditCtrl.popup.opened"
-                     data-datepicker-options="newOrEditCtrl.dateOptions" data-ng-required="true"
-                     data-close-text="Close" data-ng-click="newOrEditCtrl.open()"/>
+              <div class="input-group">
+                <input type="text" class="form-control" id="inputVisitDate" data-uib-datepicker-popup="dd-MM-yyyy"
+                       data-ng-model="newOrEditCtrl.newVisit.visit_date" data-is-open="newOrEditCtrl.popup.opened"
+                       data-datepicker-options="newOrEditCtrl.dateOptions" data-ng-required="true" data-close-text="Salir"
+                       data-current-text="Hoy" data-clear-text="Limpiar" data-ng-click="newOrEditCtrl.open()"/>
+                <span class="input-group-btn">
+                  <button type="button" class="form-control btn btn-default" data-ng-click="newOrEditCtrl.open()">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                  </button>
+                </span>
+              </div>
             </div>
             <div class="form-group">
               <label for="areaObservations">Observaciones</label>

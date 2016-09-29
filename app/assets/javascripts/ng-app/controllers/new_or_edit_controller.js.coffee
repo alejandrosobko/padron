@@ -20,7 +20,7 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, dentistFactor
       dentistFactory.update(@dentistToEdit,
         (response) ->
           self.dentistToEdit = {}
-          growl.success('Guardado correctamente')
+          growl.success('<b>Perfecto</b><br> Se actualizó correctamente')
           $location.path('/')
         (error) -> self.handleError(error)
       )
@@ -89,7 +89,6 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, dentistFactor
     showWeeks: true
 
   @dateOptions =
-    formatYear: 'yy',
     maxDate: @today()
     minDate: new Date startingDay: 1
 
@@ -99,7 +98,8 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, dentistFactor
   @setDate = (year, month, day) ->
     @newVisit.visit_date = new Date(year, month, day)
 
-  @popup = opened: false
+  @popup =
+    opened: false
 
 
   @
