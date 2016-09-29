@@ -19,6 +19,10 @@ angular.module('myApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstrap', 
         url: '/editar/:dentistId',
         controller: 'NewOrEditCtrl as newOrEdit'
       })
+      .state('other', {
+        url: '/other',
+        templateUrl: 'other.html'
+      })
 
     $urlRouterProvider.otherwise('/')
     growlProvider.globalTimeToLive(4000)
