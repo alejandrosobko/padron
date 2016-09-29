@@ -3,6 +3,7 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, dentistFactor
   @days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
   @editMode = $stateParams.dentistId
   @dentistToEdit = {}
+  @visitor = {'name': ''}
   @newVisit = {}
 
   @handleError = (error, errorMessage = null) ->
@@ -50,7 +51,7 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, dentistFactor
     visitFactory.save(newVisit,
       (response) ->
         self.newVisit = {}
-        growl.success('Se creó el odontólogo correctamente')
+        growl.success('<b>Perfecto</b><br> Se creó el odontólogo correctamente')
         $location.path('/')
       (error) -> self.handleError(error)
     )
@@ -59,6 +60,14 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, dentistFactor
     $location.path('/')
     self.dentistToEdit = {}
 
+  @delete = ->
+    dentistFactory.delete(@dentistToEdit.id).then(
+      (response) ->
+        self.dentistToEdit = {}
+        growl.info('<b>Perfecto</b><br> Se borró el odontólogo correctamente')
+        $location.path('/')
+      (error) -> self.handleError(error)
+    )
 
   # TODO: Crear directiva
 

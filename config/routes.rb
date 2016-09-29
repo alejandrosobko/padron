@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'dentists/:id' => 'dentists#show'
   get 'dentists' => 'dentists#index'
   put 'dentists/:id' => 'dentists#update'
+  delete 'dentists/:id' => 'dentists#destroy'
   get 'visits' => 'visits#index'
   post 'visits' => 'visits#create'
 
