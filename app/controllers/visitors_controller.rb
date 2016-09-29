@@ -1,20 +1,20 @@
 class VisitorsController < ApplicationController
 
   def index
-    respond_with Visitor.all
+    render json: Visitor.all
   end
 
   def show
-    respond_with Visitor.find(params[:id])
+    render json: Visitor.find(params[:id])
   end
 
   def create
-    respond_with Visitor.create(visitor_params)
+    render json: Visitor.create(visitor_params)
   end
 
   def destroy
     Visitor.find(params[:id]).destroy!
-    respond_with Visitor.all
+    render json: Visitor.all
   end
 
 

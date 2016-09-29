@@ -1,27 +1,27 @@
 class DentistsController < ApplicationController
 
   def index
-    respond_with Dentist.all
+    render json: Dentist.all
   end
 
   def show
-    respond_with Dentist.find(params[:id])
+    render json: Dentist.find(params[:id])
   end
 
   def create
-    respond_with Dentist.create(dentist_params)
+    render json: Dentist.create(dentist_params)
   end
 
   def update
     dentist = Dentist.find(params[:id])
     dentist.update!(dentist_params)
 
-    respond_with dentist
+    render json: dentist
   end
 
   def destroy
     Dentist.find(params[:id]).destroy!
-    respond_with Dentist.all
+    render json: Dentist.all
   end
 
 

@@ -1,22 +1,26 @@
 class VisitsController < ApplicationController
 
   def index
-    respond_with Visit.all
+    render json: Visit.all
   end
 
   def show
-    respond_with Visit.find(params[:id])
+    render json: Visit.find(params[:id])
   end
 
   def create
-    # visit_params[:dentist] = Dentist.create(params[:dentist])
-    # visit_params[:visitor] = Visitor.create(params[:visitor])
-    respond_with Visit.create(visit_params)
+    visit = Visit.new(visit_params)
+    begin
+      to_render = visit.save!
+    rescue Exception => e
+      to_render = "Error creating new visit: #{e.message}"
+    end
+    render json: to_render
   end
 
   def destroy
     Visit.find(params[:id]).destroy!
-    respond_with Visit.all
+    render json: Visit.all
   end
 
 
