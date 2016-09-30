@@ -1,4 +1,4 @@
-angular.module('myApp').controller('DentistCtrl', (dentistFactory, growl) ->
+angular.module('myApp').controller('DentistCtrl', (dentistFactory, growl, $uibModal) ->
   self = @
   @dentists = []
 
@@ -11,6 +11,17 @@ angular.module('myApp').controller('DentistCtrl', (dentistFactory, growl) ->
       self.dentists = response.data
     (error) -> self.handleError(error)
   )
+
+  @openModal = (dentist) ->
+    $uibModal.open(
+      templateUrl: 'extras/modal.html'
+      controller: 'ModalCtrl as ModalCtrl'
+      resolve: {
+        dentist: ->
+          dentist
+      }
+    )
+
 
   @
 )

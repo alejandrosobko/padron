@@ -47,7 +47,7 @@
         </thead>
         <tbody data-ng-repeat="dentist in dentistCtrl.dentists | filter:dentistCtrl.searched">
         <tr class="row-pointer">
-          <td><button class="btn btn-xs btn-success">+</button></td>
+          <td><button class="btn btn-xs btn-success" data-ng-click="dentistCtrl.openModal(dentist)">+</button></td>
           <td data-ui-sref="form.edit({dentistId: dentist.id})" >{{dentist.enrollment}}</td>
           <td data-ui-sref="form.edit({dentistId: dentist.id})" >{{dentist.surname}}</td>
           <td data-ui-sref="form.edit({dentistId: dentist.id})" >{{dentist.name}}</td>
