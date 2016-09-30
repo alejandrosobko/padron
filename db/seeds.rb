@@ -24,13 +24,13 @@ dentists = [{name: 'Alejandro', surname: 'Sobko', enrollment: 1234, location: 'Q
              institution: 'Diente Limpio', street: 'Rio Gallegos', number: 8989, telephone: 42897223,
              cellphone: 1578823712, email: 'agustin.r@gmail.com', specialty: 'Caries'}]
 
-Dentist.create(dentists)
-
 visitors = [{name: 'Juan'}, {name: 'Carlos'}, {name: 'Eduardo'}, {name: 'Gaston'}, {name: 'Fernando'}]
-Visitor.create(visitors)
+visit_dates = [DateTime.new(2016, 02, 23), DateTime.new(2016, 03, 13), DateTime.new(2016, 03, 19), DateTime.new(2016, 05, 03), DateTime.new(2016, 06, 04)]
+observations = ['Birthday', 'New pencils', 'Best derivations', 'New note books', 'Control']
 
-Visit.create([{dentist: Dentist.find(1), visitor: Visitor.find(1), visit_date: DateTime.new(2016, 02, 23), observations: 'Birthday'},
-              {dentist: Dentist.find(2), visitor: Visitor.find(2), visit_date: DateTime.new(2016, 03, 13), observations: 'New pencils'},
-              {dentist: Dentist.find(3), visitor: Visitor.find(3), visit_date: DateTime.new(2016, 03, 19), observations: 'Best derivations'},
-              {dentist: Dentist.find(4), visitor: Visitor.find(4), visit_date: DateTime.new(2016, 05, 03), observations: 'New note books'},
-              {dentist: Dentist.find(5), visitor: Visitor.find(5), visit_date: DateTime.new(2016, 06, 04), observations: 'Control'}])
+dentists.zip(visitors, [0, 1, 2, 3, 4]).each do |dentist, visitor, index|
+  Visit.create({dentist: Dentist.new(dentist),
+                visitor: Visitor.new(visitor),
+                visit_date: visit_dates[index],
+                observations: observations[index]})
+end

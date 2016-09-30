@@ -29,7 +29,6 @@ class VisitsController < ApplicationController
 
   private
 
-
   def dentist_params
     params.require(:dentist).permit(:name, :surname, :enrollment, :location, :institution, :street, :number, :telephone,
                                     :cellphone, :email, :specialty, :attention_datetime)
