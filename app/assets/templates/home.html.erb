@@ -21,6 +21,9 @@
         <button class="btn btn-success" data-ui-sref="form.new">Crear</button>
       </div>
     </div>
+    <div class="form-group col-xs-10 col-xs-offset-1 padding-top-20" data-ng-show="dentistCtrl.dentists.length < 1">
+      <h4>No hay odontólogos cargados <button class="btn btn-success" data-ui-sref="form.new">Crear</button></h4>
+    </div>
   </div>
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1 padding-top-30">
