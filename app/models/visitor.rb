@@ -1,5 +1,4 @@
 class Visitor < ActiveRecord::Base
-  has_one :visit
 
   def as_json(options = {})
     super(options)

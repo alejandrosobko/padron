@@ -9,11 +9,13 @@ class VisitsController < ApplicationController
   end
 
   def create
-    params[:dentist] = Dentist.create(dentist_params)
-    params[:visitor] = Visitor.create(visitor_params)
+    dentist = Dentist.find_or_initialize_by dentist_params
+    visitor = Visitor.find_or_initialize_by visitor_params
+    visit = Visit.new({dentist: dentist, visitor: visitor, visit_date: visit_date_parsed,
+                                                           observations: params[:visit][:observations]})
     begin
-      to_render = Visit.create(visit_params)
-    rescue Exception => e
+      to_render = visit.save!
+    rescue => e
       to_render = "Error creating new visit: #{e.message}"
     end
     render json: to_render
@@ -27,10 +29,6 @@ class VisitsController < ApplicationController
 
   private
 
-  def visit_params
-    params[:visit_date] = DateTime.parse(params.fetch(:visit_date, DateTime.now)).utc.iso8601
-    params.require(:visit).permit(:visitor, :dentist, :visit_date, :observations)
-  end
 
   def dentist_params
     params.require(:dentist).permit(:name, :surname, :enrollment, :location, :institution, :street, :number, :telephone,
@@ -39,6 +37,10 @@ class VisitsController < ApplicationController
 
   def visitor_params
     params.require(:visitor).permit(:name)
+  end
+
+  def visit_date_parsed
+    DateTime.parse(params.fetch(:visit_date, DateTime.now)).utc.iso8601
   end
 
 end
