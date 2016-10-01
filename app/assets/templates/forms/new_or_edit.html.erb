@@ -65,17 +65,13 @@
             <input type="checkbox" id="inputDaysAttention">Sabado
             <input type="checkbox" id="inputDaysAttention">Domingo
           </div>
-          <div class="form-group">
+          <div class="form-group col-xs-4">
             <label for="desde">Desde</label>
-            <input type="number" id="desde">
+            <input type="number" class="form-control" id="desde">
           </div>
-          <div class="form-group">
+          <div class="form-group col-xs-4">
             <label for="hasta">Hasta</label>
-            <input type="number" id="hasta">
-          </div>
-          <div class="form-group">
-            <label for="inputAttention">Días y horarios de atención</label>
-            <input type="text" class="form-control" id="inputAttention" data-ng-model="newOrEditCtrl.dentistToEdit.attention_datetime">
+            <input class="form-control" type="number" id="hasta">
           </div>
           <div data-ng-hide="newOrEditCtrl.editMode">
             <div class="form-group">
