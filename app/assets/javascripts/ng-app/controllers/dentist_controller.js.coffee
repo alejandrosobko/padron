@@ -1,6 +1,8 @@
 angular.module('myApp').controller('DentistCtrl', (dentistFactory, growl, $uibModal) ->
   self = @
   @dentists = []
+  @fieldToOrder = 'surname'
+  @reversed = false
 
   @handleError = (error) ->
     growl.error("<b>Error</b><br> Algo salió mal cargando los datos")
@@ -21,6 +23,10 @@ angular.module('myApp').controller('DentistCtrl', (dentistFactory, growl, $uibMo
           dentist
       }
     )
+
+  @orderBy = (field) ->
+    @fieldToOrder = field
+    @reversed = !@reversed
 
 
   @

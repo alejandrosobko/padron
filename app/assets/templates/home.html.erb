@@ -32,8 +32,8 @@
         <tr>
           <th>Nueva</th>
           <th>Matrícula</th>
-          <th>Apellido</th>
-          <th>Nombre</th>
+          <th data-ng-click="dentistCtrl.orderBy('surname')">Apellido</th>
+          <th data-ng-click="dentistCtrl.orderBy('name')">Nombre</th>
           <th>Localidad</th>
           <th>Institución</th>
           <th>Calle</th>
@@ -45,7 +45,8 @@
           <th>Días y horarios de atención</th>
         </tr>
         </thead>
-        <tbody data-ng-repeat="dentist in dentistCtrl.dentists | filter:dentistCtrl.searched">
+        <tbody data-ng-repeat="dentist in dentistCtrl.dentists | orderBy:dentistCtrl.fieldToOrder:dentistCtrl.reversed
+                                                               | filter:dentistCtrl.searched">
         <tr class="row-pointer">
           <td><button class="btn btn-xs btn-success" data-ng-click="dentistCtrl.openModal(dentist)">+</button></td>
           <td data-ui-sref="form.edit({dentistId: dentist.id})" >{{dentist.enrollment}}</td>
