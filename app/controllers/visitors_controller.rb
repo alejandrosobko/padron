@@ -9,7 +9,13 @@ class VisitorsController < ApplicationController
   end
 
   def create
-    render json: Visitor.create(visitor_params)
+    visitor = VisitorService.new(params).create
+    begin
+      to_render = visitor.save!
+    rescue => e
+      to_render = "Error creating new visitor: #{e.message}"
+    end
+    render json: to_render
   end
 
   def destroy
@@ -17,10 +23,4 @@ class VisitorsController < ApplicationController
     render json: Visitor.all
   end
 
-
-  private
-
-  def visitor_params
-    params.require(:visitor).permit(:name)
-  end
 end
