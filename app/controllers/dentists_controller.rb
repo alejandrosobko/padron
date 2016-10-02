@@ -9,7 +9,7 @@ class DentistsController < ApplicationController
   end
 
   def create
-    dentist = DentistService.new(params).create
+    dentist = DentistService.new(params).find_or_new
     begin
       to_render = dentist.save!
     rescue => e

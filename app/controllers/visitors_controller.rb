@@ -9,7 +9,7 @@ class VisitorsController < ApplicationController
   end
 
   def create
-    visitor = VisitorService.new(params).create
+    visitor = VisitorService.new(params).find_or_new
     begin
       to_render = visitor.save!
     rescue => e

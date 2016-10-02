@@ -4,7 +4,7 @@ class VisitorService
     @params = params
   end
 
-  def create
+  def find_or_new
     if @params[:visitor][:id]
       Visitor.find(@params[:visitor][:id])
     else

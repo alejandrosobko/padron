@@ -4,7 +4,7 @@ class DentistService
     @params = params
   end
 
-  def create
+  def find_or_new
     if @params[:dentist][:id]
       Dentist.find(@params[:dentist][:id])
     else

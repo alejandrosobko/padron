@@ -5,8 +5,8 @@ class VisitService
   end
 
   def create
-    dentist = DentistService.new(@params).create
-    visitor = VisitorService.new(@params).create
+    dentist = DentistService.new(@params).find_or_new
+    visitor = VisitorService.new(@params).find_or_new
     Visit.new({dentist: dentist,
                visitor: visitor,
                visit_date: visit_date_parsed,
