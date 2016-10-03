@@ -1,11 +1,9 @@
-<div class="container">
+<div class="container" data-ng-controller="DentistCtrl as dentistCtrl">
   <div class="row text-center">
     <h2>Padrón de odontólogos</h2>
   </div>
-</div>
-<div class="container-fluid" data-ng-controller="DentistCtrl as dentistCtrl">
   <div class="row">
-    <div class="col-xs-4 col-xs-offset-1">
+    <div class="col-xs-4">
       <div class="form-horizontal">
         <div class="form-group padding-top-30">
           <label for="inputSearch" class="col-sm-2 control-label search">Buscar</label>
@@ -17,20 +15,20 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-10 col-xs-offset-1 padding-top-20" data-ng-show="dentistCtrl.searched.length > 2">
+    <div class="col-xs-10 padding-top-20" data-ng-show="dentistCtrl.searched.length > 2">
       <div class="form-group">
         <label for="buttonCreate">No encontrás al que buscas?</label>
         <button class="btn btn-success" data-ui-sref="form.new">Crear</button>
       </div>
     </div>
-    <div class="form-group col-xs-10 col-xs-offset-1 padding-top-20" data-ng-show="dentistCtrl.dentists.length < 1">
+    <div class="form-group col-xs-10 padding-top-20" data-ng-show="dentistCtrl.dentists.length < 1">
       <h4>No hay odontólogos cargados
         <button class="btn btn-success" data-ui-sref="form.new">Crear</button>
       </h4>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-10 col-xs-offset-1 padding-top-30">
+    <div class="col-xs-12 padding-top-30">
       <table class="table table-hover table-nonfluid">
         <thead>
         <tr>
@@ -46,7 +44,6 @@
           <th>Celular</th>
           <th>E-mail</th>
           <th>Especialidad</th>
-          <th>Días y horarios de atención</th>
         </tr>
         </thead>
         <tbody data-ng-repeat="dentist in dentistCtrl.dentists | orderBy:dentistCtrl.fieldToOrder:dentistCtrl.reversed
@@ -71,7 +68,6 @@
           <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.cellphone}}</td>
           <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.email}}</td>
           <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.specialty}}</td>
-          <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.attention_datetime}}</td>
         </tr>
         </tbody>
       </table>
