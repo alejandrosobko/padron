@@ -14,11 +14,10 @@
                            data-ng-model="ModalCtrl.visitor.name">
                 </div>
             </div>
-            <div class="form-group">
-                <label for="inputVisitDate" class="control-label col-xs-4">Fecha de visita </label>
+            <div class="form-group" data-ng-controller="NewOrEditCtrl as newOrEditCtrl">
+                <label class="control-label col-xs-4">Fecha de visita </label>
                 <div class="col-xs-7">
-                    <input type="text" class="form-control" id="inputVisitDate"
-                           data-ng-model="ModalCtrl.newVisit.visit_date">
+                    <datepicker></datepicker>
                 </div>
             </div>
             <div class="form-group">
