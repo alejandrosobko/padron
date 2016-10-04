@@ -10,8 +10,8 @@ input#search { display: inline-block; }
 label.search {
   font-size: 18px;
   font-weight: 400;
+  margin-top: -2px;
 }
 
-.table-nonfluid {
-  width: auto !important;
-}
+.panel-without-padding { padding: 0; }
+.table-without-margin { margin: 0; }
