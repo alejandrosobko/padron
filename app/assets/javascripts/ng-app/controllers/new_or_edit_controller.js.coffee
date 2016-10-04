@@ -69,47 +69,6 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, dentistFactor
       (error) -> self.handleError(error)
     )
 
-  # TODO: Crear directiva
-
-  getDayClass = (data) ->
-    date = data.date
-    mode = data.mode
-    if mode == 'day'
-      dayToCheck = new Date(date).setHours(0, 0, 0, 0)
-      i = 0
-      while i < @events.length
-        currentDay = new Date(@events[i].date).setHours(0, 0, 0, 0)
-        if dayToCheck == currentDay
-          return @events[i].status
-        i++
-    ''
-
-  @today = ->
-    @newVisit.visit_date = new Date
-
-  @today()
-
-  @clear = ->
-    @newVisit.visit_date = null
-
-  @inlineOptions =
-    customClass: getDayClass
-    minDate: new Date
-    showWeeks: true
-
-  @dateOptions =
-    maxDate: @today()
-    minDate: new Date startingDay: 1
-
-  @open = ->
-    @popup.opened = true
-
-  @setDate = (year, month, day) ->
-    @newVisit.visit_date = new Date(year, month, day)
-
-  @popup =
-    opened: false
-
 
   @
 )

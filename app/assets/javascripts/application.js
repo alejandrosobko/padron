@@ -12,12 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sass-official
 //= require angular
 //= require angular-animate
 //= require angular-ui-router
 //= require angular-rails-templates
 //= require angular-bootstrap
+//= require bootstrap-sprockets
+//= require turbolinks
 //= require angular-growl-v2
 //= require_tree .
 //= require_tree ../templates
