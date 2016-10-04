@@ -1,0 +1,123 @@
+<div class="container" data-ng-controller="NewOrEditCtrl as newOrEditCtrl" xmlns="http://www.w3.org/1999/html">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-2 light-title">
+      <span data-ng-hide="newOrEditCtrl.editMode">Nuevo odontólogo</span>
+      <span data-ng-show="newOrEditCtrl.editMode">Editar odontólogo</span>
+    </div>
+    <div class="row">
+      <form>
+        <div class="col-xs-4 col-xs-offset-1">
+          <div class="form-group">
+            <label for="inputName">Nombre </label>
+            <input type="text" class="form-control" id="inputName" data-ng-model="newOrEditCtrl.dentistToEdit.name">
+          </div>
+          <div class="form-group">
+            <label for="inputSurname">Apellido</label>
+            <input type="text" class="form-control" id="inputSurname" data-ng-model="newOrEditCtrl.dentistToEdit.surname">
+          </div>
+          <div class="form-group">
+            <label for="inputEnrollment">Matrícula</label>
+            <input type="text" class="form-control" id="inputEnrollment" data-ng-model="newOrEditCtrl.dentistToEdit.enrollment">
+          </div>
+          <div class="form-group">
+            <label for="inputLocation">Localidad</label>
+            <input type="text" class="form-control" id="inputLocation" data-ng-model="newOrEditCtrl.dentistToEdit.location">
+          </div>
+          <div class="form-group">
+            <label for="inputInstitute">Institución</label>
+            <input type="text" class="form-control" id="inputInstitute" data-ng-model="newOrEditCtrl.dentistToEdit.institution">
+          </div>
+          <div class="form-group">
+            <label for="inputStreet">Calle</label>
+            <input type="text" class="form-control" id="inputStreet" data-ng-model="newOrEditCtrl.dentistToEdit.street">
+          </div>
+          <div class="form-group">
+            <label for="inputNumber">Número</label>
+            <input type="text" class="form-control" id="inputNumber" data-ng-model="newOrEditCtrl.dentistToEdit.number">
+          </div>
+        </div>
+        <div class="col-xs-4 col-xs-offset-2">
+          <div class="form-group">
+            <label for="inputTelephone">Teléfono</label>
+            <input type="text" class="form-control" id="inputTelephone" data-ng-model="newOrEditCtrl.dentistToEdit.telephone">
+          </div>
+          <div class="form-group">
+            <label for="inputCellphone">Celular</label>
+            <input type="text" class="form-control" id="inputCellphone" data-ng-model="newOrEditCtrl.dentistToEdit.cellphone">
+          </div>
+          <div class="form-group">
+            <label for="inputEmail">E-mail</label>
+            <input type="text" class="form-control" id="inputEmail" data-ng-model="newOrEditCtrl.dentistToEdit.email">
+          </div>
+          <div class="form-group">
+            <label for="inputSpeciality">Especialidad</label>
+            <input type="text" class="form-control" id="inputSpeciality" data-ng-model="newOrEditCtrl.dentistToEdit.specialty">
+          </div>
+          <div class="form-group">
+            <label for="inputDaysAttention">Días de atención</label>
+            <br>
+            <input type="checkbox" id="inputDaysAttention">Lunes
+            <input type="checkbox" id="inputDaysAttention">Martes
+            <input type="checkbox" id="inputDaysAttention">Miercoles
+            <input type="checkbox" id="inputDaysAttention">Jueves
+            <br>
+            <input type="checkbox" id="inputDaysAttention">Viernes
+            <input type="checkbox" id="inputDaysAttention">Sabado
+            <input type="checkbox" id="inputDaysAttention">Domingo
+          </div>
+          <div class="form-group col-xs-4">
+            <label for="desde">Desde</label>
+            <input type="number" class="form-control" id="desde">
+          </div>
+          <div class="form-group col-xs-4">
+            <label for="hasta">Hasta</label>
+            <input class="form-control" type="number" id="hasta">
+          </div>
+          <div data-ng-hide="newOrEditCtrl.editMode">
+            <div class="form-group">
+              <label for="inputVisitorName">Nombre del visitador</label>
+              <input type="text" class="form-control" id="inputVisitorName" data-ng-model="newOrEditCtrl.visitor.name">
+            </div>
+            <div class="form-group">
+              <label for="inputVisitDate">Fecha de visita</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="inputVisitDate" data-uib-datepicker-popup="dd-MM-yyyy"
+                       data-ng-model="newOrEditCtrl.newVisit.visit_date" data-is-open="newOrEditCtrl.popup.opened"
+                       data-datepicker-options="newOrEditCtrl.dateOptions" data-ng-required="true" data-close-text="Salir"
+                       data-current-text="Hoy" data-clear-text="Limpiar" data-ng-click="newOrEditCtrl.open()"/>
+                <span class="input-group-btn">
+                  <button type="button" class="form-control btn btn-default" data-ng-click="newOrEditCtrl.open()">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                  </button>
+                </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="areaObservations">Observaciones</label>
+              <textarea name="observations" id="areaObservations" class="form-control" cols="30" rows="5"
+                        data-ng-model="newOrEditCtrl.newVisit.observations">
+            </textarea>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4 col-xs-offset-1">
+          <div class="form-group">
+            <button class="btn btn-sm btn-info" type="button" data-ng-show="newOrEditCtrl.editMode"
+                    data-ng-click="newOrEditCtrl.update()">Actualizar
+            </button>
+
+            <button class="btn btn-sm btn-info" type="button" data-ng-hide="newOrEditCtrl.editMode"
+                    data-ng-click="newOrEditCtrl.save()">Guardar
+            </button>
+
+            <button class="btn btn-sm btn-default" type="button" data-ng-click="newOrEditCtrl.removeToView()">Cancelar</button>
+
+          </div>
+        </div>
+        <div style="float: right" data-ng-show="newOrEditCtrl.editMode">
+          <button class="btn btn-sm btn-danger" type="button" data-ng-click="newOrEditCtrl.delete()">Borrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

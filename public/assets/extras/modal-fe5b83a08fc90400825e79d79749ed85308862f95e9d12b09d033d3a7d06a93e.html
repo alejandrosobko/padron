@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Nueva visita</h4>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label>Odontólogo:</label> {{ModalCtrl.dentist.name}}
+            </div>
+            <div class="form-group">
+                <label for="inputNameVisitor" class="control-label col-xs-4">Nombre del visitador</label>
+                <div class="col-xs-7">
+                    <input type="text" class="form-control" id="inputNameVisitor"
+                           data-ng-model="ModalCtrl.visitor.name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputVisitDate" class="control-label col-xs-4">Fecha de visita </label>
+                <div class="col-xs-7">
+                    <input type="text" class="form-control" id="inputVisitDate"
+                           data-ng-model="ModalCtrl.newVisit.visit_date">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputVisitObservations" class="control-label col-xs-4">Observaciones </label>
+                <div class="col-xs-7">
+                            <textarea class="form-control" id="inputVisitObservations"
+                                      data-ng-model="ModalCtrl.newVisit.observations" cols="20" rows="3"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-info" type="button" data-ng-click="ModalCtrl.ok()">Guardar</button>
+        <button class="btn btn-default" type="button" data-ng-click="ModalCtrl.cancel()">Cancelar</button>
+    </div>
+</div>
