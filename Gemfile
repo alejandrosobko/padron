@@ -7,6 +7,7 @@ gem 'angular-rails-templates'
 gem 'sprockets', '3.6.3'
 gem 'responders', '~> 2.0'
 gem 'angular_rails_csrf'
+gem 'bootstrap-sass'
 ###
 
 
