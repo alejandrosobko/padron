@@ -9,8 +9,8 @@ RSpec.describe Visit, :type => :model do
     end
 
     it 'should can save a new visit with dentist, visit and visit date' do
-      dentist = Dentist.new
-      visitor = Visitor.new
+      dentist = build(:dentist, :empty)
+      visitor = build(:visitor, :empty)
       visit = Visit.new({dentist: dentist, visitor: visitor, visit_date: DateTime.new})
 
       expect(visit.observations).to be nil
