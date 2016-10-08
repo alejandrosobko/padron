@@ -29,46 +29,49 @@
           </div>
         </div>
       </div>
-      <div class="panel-body panel-without-padding">
-        <table class="table table-bordered table-without-margin">
+      <div class="panel-body">
+        <table class="table table-hover">
           <thead>
           <tr>
-            <th>Nueva</th>
+            <th data-ng-click="dentistCtrl.orderBy('surname')">
+              <span data-uib-tooltip="Ordenar por apellido"
+                    data-tooltip-placement="top"
+                    data-tooltip-trigger="'mouseenter'"
+                    data-tooltip-popup-delay="300">Odontólogo</span>
+            </th>
             <th>Matrícula</th>
-            <th data-ng-click="dentistCtrl.orderBy('surname')">Apellido</th>
-            <th data-ng-click="dentistCtrl.orderBy('name')">Nombre</th>
-            <th>Localidad</th>
             <th>Institución</th>
-            <th>Calle</th>
-            <th>Número</th>
-            <th>Teléfono</th>
-            <th>Celular</th>
-            <th>E-mail</th>
+            <th>Ubicación</th>
             <th>Especialidad</th>
+            <th>Contacto</th>
+            <th>Nueva visita</th>
           </tr>
           </thead>
           <tbody data-ng-repeat="dentist in dentistCtrl.dentists | orderBy:dentistCtrl.fieldToOrder:dentistCtrl.reversed
-                                                               | filter:dentistCtrl.searched">
+                                                                 | filter:dentistCtrl.searched">
           <tr class="row-pointer">
-            <td>
+            <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.name}} {{dentist.surname}}</td>
+            <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.enrollment}}</td>
+            <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.institution}}</td>
+            <td data-ui-sref="form.edit({dentistId: dentist.id})">
+              <span data-ng-show="dentist.street">{{dentist.street}}, </span>
+              <span data-ng-show="dentist.number">{{dentist.number}} </span>
+              <span data-ng-show="dentist.location">({{dentist.location}})</span>
+            </td>
+            <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.specialty}}</td>
+            <td data-ui-sref="form.edit({dentistId: dentist.id})">
+              <span data-ng-show="dentist.telephone">{{dentist.telephone}} <br></span>
+              <span data-ng-show="dentist.cellphone">{{dentist.cellphone}} <br></span>
+              <span data-ng-show="dentist.email">{{dentist.email}}</span>
+            </td>
+            <td class="text-center">
               <button class="btn btn-xs btn-success" data-ng-click="dentistCtrl.openModal(dentist)"
                       data-uib-tooltip="Registrar nueva visita"
-                      data-tooltip-placement="left"
+                      data-tooltip-placement="right"
                       data-tooltip-trigger="'mouseenter'"
                       data-tooltip-popup-delay="300">+
               </button>
             </td>
-            <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.enrollment}}</td>
-            <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.surname}}</td>
-            <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.name}}</td>
-            <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.location}}</td>
-            <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.institution}}</td>
-            <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.street}}</td>
-            <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.number}}</td>
-            <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.telephone}}</td>
-            <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.cellphone}}</td>
-            <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.email}}</td>
-            <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.specialty}}</td>
           </tr>
           </tbody>
         </table>
