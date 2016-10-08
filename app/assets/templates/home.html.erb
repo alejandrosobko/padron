@@ -37,7 +37,10 @@
               <span data-uib-tooltip="Ordenar por apellido"
                     data-tooltip-placement="top"
                     data-tooltip-trigger="'mouseenter'"
-                    data-tooltip-popup-delay="300">Odontólogo</span>
+                    data-tooltip-popup-delay="300">Odontólogo
+                <span class="glyphicon glyphicon-triangle-top" data-ng-show="!dentistCtrl.reversed"></span>
+                <span class="glyphicon glyphicon-triangle-bottom" data-ng-show="dentistCtrl.reversed"></span>
+              </span>
             </th>
             <th>Matrícula</th>
             <th>Institución</th>
