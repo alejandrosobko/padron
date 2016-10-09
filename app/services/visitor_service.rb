@@ -7,17 +7,10 @@ class VisitorService
   def find_or_new
     if @params[:visitor][:id]
       visitor = Visitor.find(@params[:visitor][:id])
-      visitor.update! visitor_params
+      visitor.update! @params[:visitor]
     else
-      Visitor.new(visitor_params)
+      Visitor.new({name: @params[:visitor][:name]})
     end
-  end
-
-
-  private
-
-  def visitor_params
-    @params.require(:visitor).permit(:name)
   end
 
 end

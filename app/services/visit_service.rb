@@ -6,7 +6,7 @@ class VisitService
 
   def find_or_new
     visitor = VisitorService.new(@params).find_or_new
-    if @params[:visitor][:id]
+    if @params[:visit][:id]
       visit = Visit.find(@params[:visitor][:id])
       visit.update!({visitor: visitor, visit_date: visit_date_parsed, observations: @params[:visit][:observations]})
     else

@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe DentistsController, type: :controller do
 
   context 'GET index' do
-
     describe 'without dentists' do
       it 'returns an empty array' do
         get :index
@@ -23,10 +22,24 @@ RSpec.describe DentistsController, type: :controller do
         json = JSON.parse(response.body)
 
         expect(response.status).to eq 200
-        # expect(json.first).to eq dentist.as_json
+        expect(json.size).to be 1 # TODO: Check item, fails because create_at and updated_at are different
       end
     end
+  end
 
+  context 'POST create' do
+    describe 'without dentists' do
+      let!(:visit) { build(:visit, visitor: build(:visitor)) }
+      let!(:dentist) { build(:dentist, visits: [visit]) }
+
+      it 'creates a dentist' do
+        post :create, {dentist: dentist.as_json, visit: visit.as_json, visitor: {}}
+        json = JSON.parse(response.body)
+
+        expect(response.status).to eq 200
+        expect(json['id']).to be 1
+      end
+    end
   end
 
 

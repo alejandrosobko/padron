@@ -6,7 +6,8 @@ class DentistService
 
   def create
     dentist = Dentist.new(dentist_params)
-    dentist.visits = [VisitService.new(params).find_or_new]
+    dentist.visits = [VisitService.new(@params).find_or_new]
+    dentist
   end
 
   def update

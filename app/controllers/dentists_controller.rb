@@ -11,7 +11,8 @@ class DentistsController < ApplicationController
   def create
     dentist = DentistService.new(params).create
     begin
-      to_render = dentist.save!
+      dentist.save!
+      to_render = dentist
     rescue => e
       to_render = "Error creating new dentist: #{e.message}"
     end
