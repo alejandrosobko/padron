@@ -30,7 +30,7 @@ RSpec.describe DentistsController, type: :controller do
   context 'POST create' do
     describe 'without data' do
       it 'should throw exception' do
-        expect{post :create, {dentist: {}}}.to raise_error(ActionController::ParameterMissing)
+        expect { post :create, {dentist: {}} }.to raise_error(ActionController::ParameterMissing)
       end
     end
 
@@ -48,5 +48,22 @@ RSpec.describe DentistsController, type: :controller do
     end
   end
 
+  context 'PUT update' do
+    let!(:visit) { build(:visit, visitor: build(:visitor)) }
+    let!(:dentist) { build(:dentist, visits: [visit], name: 'Ale') }
+    before { post :create, {dentist: dentist.as_json, visit: visit.as_json, visitor: {}} }
+
+    describe 'update dentist' do
+      it 'updates dentist' do
+        expect(dentist.name).to eq 'Ale'
+
+        put :update, id: 1, dentist: {id: 1, name: 'NewAle'}
+        json = JSON.parse(response.body)
+
+        expect(response.status).to eq 200
+        expect(json['name']).to eq 'NewAle'
+      end
+    end
+  end
 
 end

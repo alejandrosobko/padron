@@ -11,8 +11,9 @@ class DentistService
   end
 
   def update
-    dentist = Dentist.find(@params[:id])
+    dentist = Dentist.find(@params[:dentist][:id])
     dentist.update!(dentist_params)
+    dentist
   end
 
 
