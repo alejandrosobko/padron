@@ -28,7 +28,13 @@ RSpec.describe DentistsController, type: :controller do
   end
 
   context 'POST create' do
-    describe 'without dentists' do
+    describe 'without data' do
+      it 'should throw exception' do
+        expect{post :create, {dentist: {}}}.to raise_error(ActionController::ParameterMissing)
+      end
+    end
+
+    describe 'with data' do
       let!(:visit) { build(:visit, visitor: build(:visitor)) }
       let!(:dentist) { build(:dentist, visits: [visit]) }
 
