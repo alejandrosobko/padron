@@ -4,8 +4,8 @@ RSpec.describe Visitor, :type => :model do
 
   describe 'empty visitor' do
     it 'should can save an empty visitor' do
-      visitor = Visitor.new
-      expect(visitor.save).to eq(true)
+      visitor = build(:visitor, :empty)
+      expect(visitor.save).to be true
     end
   end
 
