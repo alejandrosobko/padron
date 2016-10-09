@@ -48,21 +48,33 @@ RSpec.describe DentistsController, type: :controller do
     end
   end
 
-  context 'PUT update' do
+  describe 'update dentist' do
     let!(:visit) { build(:visit, visitor: build(:visitor)) }
     let!(:dentist) { build(:dentist, visits: [visit], name: 'Ale') }
     before { post :create, {dentist: dentist.as_json, visit: visit.as_json, visitor: {}} }
 
-    describe 'update dentist' do
-      it 'updates dentist' do
-        expect(dentist.name).to eq 'Ale'
+    it 'updates dentist' do
+      expect(dentist.name).to eq 'Ale'
 
-        put :update, id: 1, dentist: {id: 1, name: 'NewAle'}
-        json = JSON.parse(response.body)
+      put :update, id: 1, dentist: {id: 1, name: 'NewAle'}
+      json = JSON.parse(response.body)
 
-        expect(response.status).to eq 200
-        expect(json['name']).to eq 'NewAle'
-      end
+      expect(response.status).to eq 200
+      expect(json['name']).to eq 'NewAle'
+    end
+  end
+
+  describe 'create visit from dentist' do
+    let!(:visit) { create(:visit, visitor: create(:visitor)) }
+    let!(:dentist) { create(:dentist, visits: [visit], name: 'Ale') }
+
+    it 'creates a new visit' do
+      expect(dentist.visits.size).to eq 1
+
+      post :create_visit, id: 1, visit: build(:visit, visitor: build(:visitor)).as_json, visitor: {}
+
+      expect(response.status).to eq 200
+      expect(Dentist.find(dentist.id).visits.size).to eq 2
     end
   end
 
