@@ -29,8 +29,8 @@ visit_dates = [DateTime.new(2016, 02, 23), DateTime.new(2016, 03, 13), DateTime.
 observations = ['Birthday', 'New pencils', 'Best derivations', 'New note books', 'Control']
 
 dentists.zip(visitors, [0, 1, 2, 3, 4]).each do |dentist, visitor, index|
-  Visit.create({dentist: Dentist.new(dentist),
-                visitor: Visitor.new(visitor),
-                visit_date: visit_dates[index],
-                observations: observations[index]})
+  visit = Visit.new({visitor: Visitor.new(visitor),
+                     visit_date: visit_dates[index],
+                     observations: observations[index]})
+  Dentist.create!(dentist.merge(visits: [visit]))
 end
