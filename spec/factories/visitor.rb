@@ -1,10 +1,7 @@
 FactoryGirl.define do
   factory :visitor, class: Visitor do
 
-    trait :empty do
-    end
-
-    trait :complete do
+    trait :with_data do
       name 'Alejandro'
     end
 

@@ -1,11 +1,8 @@
 FactoryGirl.define do
   factory :visit, class: Visit do
+    visit_date DateTime.now
 
-    trait :empty do
-    end
-
-    trait :complete do
-      visit_date DateTime.now.utc
+    trait :with_data do
       observations 'Some observation for this visit'
     end
 

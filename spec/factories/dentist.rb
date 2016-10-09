@@ -1,10 +1,7 @@
 FactoryGirl.define do
   factory :dentist, class: Dentist do
 
-    trait :empty do
-    end
-
-    trait :complete do
+    trait :with_data do
       name 'Alejandro'
       surname 'Sobko'
       enrollment 1234
