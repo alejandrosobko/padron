@@ -9,8 +9,7 @@ angular.module('myApp').controller('DentistCtrl', (dentistFactory, growl, $uibMo
     console.log(error.statusText)
 
   dentistFactory.getAll(
-    (response) ->
-      self.dentists = response.data
+    (response) -> self.dentists = response.data
     (error) -> self.handleError(error)
   )
 
