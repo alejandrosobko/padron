@@ -27,6 +27,20 @@ RSpec.describe DentistsController, type: :controller do
     end
   end
 
+  describe 'GET with id' do
+    let!(:visit) { create(:visit, visitor: create(:visitor)) }
+    let!(:dentist) { create(:dentist, name: 'Ale', visits: [visit]) }
+
+    it 'returns a dentist with id = 1' do
+      get :show, id: 1
+      json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(json['id']).to be 1
+      expect(json['name']).to eq 'Ale'
+    end
+  end
+
   context 'POST create' do
     describe 'without data' do
       it 'should throw exception' do
@@ -69,7 +83,7 @@ RSpec.describe DentistsController, type: :controller do
     let!(:dentist) { create(:dentist, visits: [visit], name: 'Ale') }
 
     it 'creates a new visit' do
-      expect(dentist.visits.size).to eq 1
+      expect(Dentist.find(dentist.id).visits.size).to eq 1
 
       post :create_visit, id: 1, visit: build(:visit, visitor: build(:visitor)).as_json, visitor: {}
 
