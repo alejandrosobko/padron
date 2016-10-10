@@ -1,4 +1,4 @@
-angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, dentistFactory, visitFactory, $location, growl) ->
+angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, dentistFactory, $location, growl) ->
   self = @
   @days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
   @editMode = $stateParams.dentistId
@@ -27,34 +27,61 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, dentistFactor
       )
 
   @save = ->
-    dentistToSave =
-      name: @dentistToEdit.name,
-      surname: @dentistToEdit.surname,
-      enrollment: @dentistToEdit.enrollment,
-      location: @dentistToEdit.location,
-      institution: @dentistToEdit.institution,
-      enrollment: @dentistToEdit.enrollment,
-      street: @dentistToEdit.street,
-      number: @dentistToEdit.number,
-      telephone: @dentistToEdit.telephone,
-      cellphone: @dentistToEdit.cellphone,
-      email: @dentistToEdit.email,
-      specialty: @dentistToEdit.specialty,
+    visit = {visit_date: @newVisit.visit_date, observations: @newVisit.observations}
+    visitor = @visitor
+    dentist =
+      name: @dentistToEdit.name
+      surname: @dentistToEdit.surname
+      enrollment: @dentistToEdit.enrollment
+      location: @dentistToEdit.location
+      institution: @dentistToEdit.institution
+      enrollment: @dentistToEdit.enrollment
+      street: @dentistToEdit.street
+      number: @dentistToEdit.number
+      telephone: @dentistToEdit.telephone
+      cellphone: @dentistToEdit.cellphone
+      email: @dentistToEdit.email
+      specialty: @dentistToEdit.specialty
       attention_datetime: @dentistToEdit.attention_datetime
 
-    newVisit =
-      visit_date: @newVisit.visit_date,
-      observations: @newVisit.observations,
-      dentist: dentistToSave,
-      visitor: @visitor
-
-    visitFactory.save(newVisit,
+    dentistFactory.add({visit, visitor, dentist},
       (response) ->
         self.newVisit = {}
+        self.dentistToEdit = {}
         growl.success('<b>Perfecto</b><br> Se creó el odontólogo correctamente')
         $location.path('/')
       (error) -> self.handleError(error)
     )
+
+  @new_visit = ->
+    visit: {visit_date: @newVisit.visit_date, observations: @newVisit.observations}
+    visitor: @visitor
+    dentist:
+      id: @dentistToEdit.id
+      name: @dentistToEdit.name
+      surname: @dentistToEdit.surname
+      enrollment: @dentistToEdit.enrollment
+      location: @dentistToEdit.location
+      institution: @dentistToEdit.institution
+      enrollment: @dentistToEdit.enrollment
+      street: @dentistToEdit.street
+      number: @dentistToEdit.number
+      telephone: @dentistToEdit.telephone
+      cellphone: @dentistToEdit.cellphone
+      email: @dentistToEdit.email
+      specialty: @dentistToEdit.specialty
+      attention_datetime: @dentistToEdit.attention_datetime
+
+    dentistFactory.create_visit({visit, visitor, dentist},
+      (response) ->
+        self.newVisit = {}
+        self.dentistToEdit = {}
+        growl.success('<b>Perfecto</b><br> Se creó el odontólogo correctamente')
+        $location.path('/')
+      (error) -> self.handleError(error)
+    )
+
+
 
   @removeToView = ->
     $location.path('/')
