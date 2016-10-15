@@ -13,7 +13,10 @@
 The workflow is described in the following link. Here you can look a normal flow of this application.
 
 Workflow:  [workflow](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Workflow) 
- 
+
+Architecture documentation [Architecture Doc](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Arquitectura)
+
+Responsibility of the components [Components Doc](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Responsabilidades)
 
 ### Installation
 
