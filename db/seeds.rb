@@ -7,7 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-# TODO: No tienen dias y horarios de atencion
 dentists = [{name: 'Alejandro', surname: 'Sobko', enrollment: 1234, location: 'Quilmes',
              institution: 'TIP Inc', street: 'Mitre', number: 123, telephone: 42789999,
              cellphone: 1534498431, email: 'alejandro@gmail.com', specialty: 'Ortodoncia'},
@@ -32,5 +31,7 @@ dentists.zip(visitors, [0, 1, 2, 3, 4]).each do |dentist, visitor, index|
   visit = Visit.new({visitor: Visitor.new(visitor),
                      visit_date: visit_dates[index],
                      observations: observations[index]})
-  Dentist.create!(dentist.merge(visits: [visit]))
+
+  days = WorkableDay.new({day: 'Lunes', workable_hours: [WorkableHour.new({from: 9, to: 10}), WorkableHour.new({from: 12, to: 15})]})
+  Dentist.create!(dentist.merge(visits: [visit], work_calendar: WorkCalendar.new({workable_days: [days]})))
 end
