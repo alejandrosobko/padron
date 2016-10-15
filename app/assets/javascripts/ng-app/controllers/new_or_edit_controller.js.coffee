@@ -42,7 +42,6 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, dentistFactor
       cellphone: @dentistToEdit.cellphone
       email: @dentistToEdit.email
       specialty: @dentistToEdit.specialty
-      attention_datetime: @dentistToEdit.attention_datetime
 
     dentistFactory.add({visit, visitor, dentist},
       (response) ->
@@ -70,7 +69,6 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, dentistFactor
       cellphone: @dentistToEdit.cellphone
       email: @dentistToEdit.email
       specialty: @dentistToEdit.specialty
-      attention_datetime: @dentistToEdit.attention_datetime
 
     dentistFactory.create_visit({visit, visitor, dentist},
       (response) ->

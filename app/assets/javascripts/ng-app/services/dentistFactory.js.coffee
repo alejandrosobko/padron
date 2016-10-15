@@ -18,7 +18,7 @@ angular.module('myApp').factory('dentistFactory', ['$http', ($http) ->
       id: dentist.id, name: dentist.name, surname: dentist.surname, enrollment: dentist.enrollment,
       location: dentist.location, institution: dentist.institution, enrollment: dentist.enrollment,
       street: dentist.street, number: dentist.number, telephone: dentist.telephone, cellphone: dentist.cellphone,
-      email: dentist.email, specialty: dentist.specialty, attention_datetime: dentist.attention_datetime
+      email: dentist.email, specialty: dentist.specialty
     $http.put("/dentists/#{dentist.id}.json", toSave).then(callback, errorHandler)
 
   o.create_visit = (json, callback, errorHandler) ->
