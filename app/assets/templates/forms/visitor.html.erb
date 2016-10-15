@@ -1,0 +1,18 @@
+<div class="col-xs-4 col-xs-offset-1">
+  <div class="form-group">
+    <label for="inputVisitorName">Nombre del visitador</label>
+    <input type="text" class="form-control" id="inputVisitorName" data-ng-model="newOrEditCtrl.visitor.name">
+  </div>
+  <div class="form-group">
+    <label for="inputVisitDate">Fecha de visita</label>
+    <datepicker></datepicker>
+  </div>
+</div>
+<div class="col-xs-4 col-xs-offset-2">
+  <div class="form-group">
+    <label for="areaObservations">Observaciones</label>
+    <textarea name="observations" id="areaObservations" class="form-control" cols="35" rows="5"
+              data-ng-model="newOrEditCtrl.newVisit.observations">
+      </textarea>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="col-xs-11 text-right padding-top-20">
+  <div class="form-group">
+    <button class="btn btn-success" type="button" data-ng-show="newOrEditCtrl.editMode" data-ng-click="newOrEditCtrl.update()">
+      Actualizar
+    </button>
+
+    <button class="btn btn-success" type="button" data-ng-hide="newOrEditCtrl.editMode" data-ng-click="newOrEditCtrl.save()">
+      Guardar
+    </button>
+
+    <button class="btn btn-default" type="button" data-ng-click="newOrEditCtrl.removeToView()">Cancelar</button>
+
+    <button class="btn btn-danger" type="button" data-ng-click="newOrEditCtrl.delete()" data-ng-show="newOrEditCtrl.editMode" title="Eliminar">
+      <span class="glyphicon glyphicon-trash"></span>
+    </button>
+  </div>
+</div>
