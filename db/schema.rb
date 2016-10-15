@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160925020654) do
+ActiveRecord::Schema.define(version: 20161015050516) do
 
   create_table "dentists", force: :cascade do |t|
     t.string   "name"
@@ -47,5 +47,32 @@ ActiveRecord::Schema.define(version: 20160925020654) do
 
   add_index "visits", ["dentist_id"], name: "index_visits_on_dentist_id"
   add_index "visits", ["visitor_id"], name: "index_visits_on_visitor_id"
+
+  create_table "work_calendars", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "dentist_id"
+  end
+
+  add_index "work_calendars", ["dentist_id"], name: "index_work_calendars_on_dentist_id"
+
+  create_table "workable_days", force: :cascade do |t|
+    t.string   "day"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "work_calendar_id"
+  end
+
+  add_index "workable_days", ["work_calendar_id"], name: "index_workable_days_on_work_calendar_id"
+
+  create_table "workable_hours", force: :cascade do |t|
+    t.integer  "from"
+    t.integer  "to"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "workable_day_id"
+  end
+
+  add_index "workable_hours", ["workable_day_id"], name: "index_workable_hours_on_workable_day_id"
 
 end
