@@ -5,7 +5,8 @@ class DentistService
   end
 
   def create
-    dentist = Dentist.new(dentist_params)
+    work_calendar = WorkCalendarService.new(@params).create
+    dentist = Dentist.new(dentist_params.merge(work_calendar: work_calendar))
     dentist.visits = [VisitService.new(@params).find_or_new]
     dentist
   end

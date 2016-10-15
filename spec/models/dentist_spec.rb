@@ -11,7 +11,7 @@ RSpec.describe Dentist, :type => :model do
 
   describe 'empty dentist' do
     let(:visit) { build(:visit, visitor: build(:visitor)) }
-    let(:dentist) { build(:dentist, visits: [visit]) }
+    let(:dentist) { build(:dentist, visits: [visit], work_calendar: WorkCalendar.new) }
 
     it 'should can save a dentist with visits' do
       expect(dentist.save).to be true
