@@ -1,8 +1,10 @@
 class WorkCalendar < ActiveRecord::Base
-  has_many :workable_days, dependent: :destroy
+  has_many :workable_days, autosave: true
 
   def as_json(options = {})
-    workable_days.map { |d| {workable_days: d.as_json} }.first.merge(super(options))
+    json = super(options)
+    json[:workable_days] = workable_days.map { |d| d.as_json }
+    json
   end
 
 end

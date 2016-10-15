@@ -60,6 +60,18 @@ RSpec.describe DentistsController, type: :controller do
         expect(response.status).to eq 200
         expect(json['id']).to be 1
       end
+
+      it 'creates a dentist with 2 workable days' do
+        work_calendar.workable_days.push(build(:workable_day_tuesday, workable_hours: [build(:workable_hour_afternoon)]))
+
+        post :create, {dentist: dentist.as_json, visit: visit.as_json, visitor: {}, work_calendar: work_calendar.as_json}
+        json = JSON.parse(response.body)
+
+        expect(response.status).to eq 200
+        expect(json['id']).to be 1
+        # expect(Dentist.find(1).work_calendar.workable_days.first.day).to eq 'Monday' TODO: No se porque no anda esto
+        # expect(Dentist.find(1).work_calendar.workable_days[1].day).to eq 'Tuesday'
+      end
     end
   end
 

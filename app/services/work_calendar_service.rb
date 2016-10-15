@@ -5,8 +5,12 @@ class WorkCalendarService
   end
 
   def create
-    workable_hours = [WorkableHour.new(workable_hours_params)]
-    workable_days = [WorkableDay.new(workable_days_params.merge(workable_hours: workable_hours))]
+    workable_days = @params.require(:work_calendar).permit('workable_days').map do |days_hash|
+      workable_hours = days_hash['workable_hours'].map do |hours|
+        WorkableHour.new(workable_hours_params(hours))
+      end
+      WorkableDay.new(workable_days_params(days_hash).merge(workable_hours: workable_hours))
+    end
 
     WorkCalendar.new({workable_days: workable_days})
   end
@@ -14,16 +18,12 @@ class WorkCalendarService
 
   private
 
-  def workable_hours_params
-    work_calendar_params[:workable_days].require(:workable_hours).permit(:from, :to)
+  def workable_hours_params(hours_params)
+    hours_params.require(:workable_hours).permit(:from, :to)
   end
 
-  def workable_days_params
-    work_calendar_params.require(:workable_days).permit(:day)
-  end
-
-  def work_calendar_params
-    @params.require(:work_calendar).permit(:workable_days => [:day, :workable_hours => [:from, :to]])
+  def workable_days_params(days_params)
+    days_params.permit(:day)
   end
 
 end
