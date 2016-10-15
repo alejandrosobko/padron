@@ -25,9 +25,8 @@ ActiveRecord::Schema.define(version: 20161015050516) do
     t.integer  "cellphone"
     t.string   "email"
     t.string   "specialty"
-    t.datetime "attention_datetime"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "visitors", force: :cascade do |t|
