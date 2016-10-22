@@ -1,10 +1,10 @@
-angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, Dentist, dentistFactory, $location, growl) ->
+angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visit, Visitor, dentistFactory, $location, growl) ->
   self = @
   @days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
   @editMode = $stateParams.dentistId
   @dentistToEdit = {}
-  @visitor = {'name': ''}
   @newVisit = {}
+  @newVisitor = {}
 
   if self.editMode
     dentistFactory.get($stateParams.dentistId,
@@ -27,40 +27,27 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, Dentist, dent
     )
 
   @save = ->
-    visit = {visit_date: @newVisit.visit_date, observations: @newVisit.observations}
-    visitor = @visitor
     dentist = Dentist.build(@dentistToEdit)
     work_calendar = {workable_days: [{day: 'Lunes', workable_hours: [{from: 9, to: 18}]}]}
-    dentistFactory.save({visit, visitor, dentist, work_calendar},
+    visit = Visit.build(@newVisit)
+    visitor = Visitor.build(@newVisitor)
+
+    dentistFactory.save({dentist, work_calendar, visit, visitor},
       (response) ->
-        self.newVisit = self.visitor = self.dentistToEdit = {}
+        self.dentistToEdit = self.newVisit = self.newVisitor = {}
         growl.success('<b>Perfecto</b><br> Se creó el odontólogo correctamente')
         $location.path('/')
       (error) -> self.handleError(error)
     )
 
   @new_visit = ->
-    visit: {visit_date: @newVisit.visit_date, observations: @newVisit.observations}
-    visitor: @visitor
-    dentist:
-      id: @dentistToEdit.id
-      name: @dentistToEdit.name
-      surname: @dentistToEdit.surname
-      enrollment: @dentistToEdit.enrollment
-      location: @dentistToEdit.location
-      institution: @dentistToEdit.institution
-      enrollment: @dentistToEdit.enrollment
-      street: @dentistToEdit.street
-      number: @dentistToEdit.number
-      telephone: @dentistToEdit.telephone
-      cellphone: @dentistToEdit.cellphone
-      email: @dentistToEdit.email
-      specialty: @dentistToEdit.specialty
+    visit: Visit.build(@newVisit)
+    visitor: Visitor.build(@newVisitor)
+    dentist: Dentist.build(@dentistToEdit)
 
-    dentistFactory.create_visit({visit, visitor, dentist},
+    dentistFactory.create_visit({dentist, visit, visitor},
       (response) ->
-        self.newVisit = {}
-        self.dentistToEdit = {}
+        self.dentistToEdit = self.newVisit = self.newVisitor = {}
         growl.success('<b>Perfecto</b><br> Se creó el odontólogo correctamente')
         $location.path('/')
       (error) -> self.handleError(error)
