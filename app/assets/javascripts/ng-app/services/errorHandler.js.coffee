@@ -3,7 +3,9 @@ angular.module('myApp').factory('errorHandler', ['growl', (growl) ->
 
   o.error = (errorMsg) -> growl.error("<b>Error</b><br>" + errorMsg)
 
-  o.info = (infoMsg) -> growl.error("<b>Perfecto</b><br>" + infoMsg)
+  o.warning = (warningMsg) -> growl.warning("<b>Aviso</b><br>" + warningMsg)
+
+  o.info = (infoMsg) -> growl.info("<b>Perfecto</b><br>" + infoMsg)
 
   o.success = (successMsg) -> growl.success("<b>Perfecto</b><br>" + successMsg)
 
