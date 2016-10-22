@@ -1,7 +1,7 @@
 angular.module('myApp').factory('Visit', ->
   Visit = (id, visit_date, observations, visitor) ->
     @id = id
-    @visit_date = visit_date
+    @visit_date = visit_date || new Date()
     @observations = observations
     @visitor = visitor
 

@@ -32,10 +32,10 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visi
 
   @saveDentist = (canDelete) ->
     return unless canDelete
-    dentist = Dentist.build(self.dentistToEdit)
+    dentist = self.dentistToEdit
     work_calendar = {workable_days: [{day: 'Lunes', workable_hours: [{from: 9, to: 18}]}]}
-    visit = Visit.build(self.newVisit)
-    visitor = Visitor.build(self.newVisitor)
+    visit = self.newVisit
+    visitor = self.newVisitor
 
     dentistFactory.save({dentist, work_calendar, visit, visitor},
       (response) ->
@@ -46,9 +46,9 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visi
     )
 
   @new_visit = ->
-    visit: Visit.build(@newVisit)
-    visitor: Visitor.build(@newVisitor)
-    dentist: Dentist.build(@dentistToEdit)
+    visit: @newVisit
+    visitor: @newVisitor
+    dentist: @dentistToEdit
 
     dentistFactory.create_visit({dentist, visit, visitor},
       (response) ->

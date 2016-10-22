@@ -1,11 +1,11 @@
 angular.module('myApp').controller('ModalCtrl', ($uibModalInstance, dentist, Visit, Visitor, dentistFactory, errorHandler) ->
-  @visitor = {}
-  @newVisit = {}
+  @visitor = new Visitor
+  @newVisit = new Visit
   self = @
 
   @ok = ->
-    visit = Visit.build(@newVisit)
-    visitor = Visitor.build(@visitor)
+    visit = @newVisit
+    visitor = @visitor
 
     dentistFactory.create_visit({visit, visitor, dentist},
       (response) ->
