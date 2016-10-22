@@ -18,7 +18,7 @@ class VisitService
   private
 
   def visit_date_parsed
-    DateTime.parse(@params.fetch(:visit_date, DateTime.now.utc.iso8601)).utc
+    DateTime.parse(@params[:visit].fetch(:visit_date, DateTime.now.utc.iso8601)).utc
   end
 
 end
