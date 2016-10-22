@@ -1,12 +1,8 @@
-angular.module('myApp').controller('ModalCtrl', ($uibModalInstance, dentist, Visit, Visitor, dentistFactory, growl) ->
+angular.module('myApp').controller('ModalCtrl', ($uibModalInstance, dentist, Visit, Visitor, dentistFactory, errorHandler) ->
   @items = ['item1', 'item2', 'item3']
   @visitor = {'name': ''}
   @newVisit = {}
   self = @
-
-  @handleError = (error, errorMessage = null) ->
-    error = errorMessage || "Algo salió mal cargando los datos"
-    growl.error("<b>Error</b><br> #{error}")
 
   @ok = ->
     visit = Visit.build(@newVisit)
@@ -15,9 +11,9 @@ angular.module('myApp').controller('ModalCtrl', ($uibModalInstance, dentist, Vis
     dentistFactory.create_visit({visit, visitor, dentist},
       (response) ->
         self.visit = self.visitor = {}
-        growl.success('<b>Perfecto</b><br> Se registró una nueva visita')
+        errorHandler.success("Se registró la visita correctamente")
         $uibModalInstance.dismiss()
-      (error) -> self.handleError(error)
+      (error) -> errorHandler.error("Ocurrió un error registrando la visita. Por favor intente nuevamente")
     )
 
   @cancel = ->

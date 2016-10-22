@@ -1,4 +1,4 @@
-angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visit, Visitor, dentistFactory, $location, growl) ->
+angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visit, Visitor, dentistFactory, errorHandler, $location) ->
   self = @
   @days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
   @editMode = $stateParams.dentistId
@@ -9,21 +9,18 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visi
   if self.editMode
     dentistFactory.get($stateParams.dentistId,
       (response) -> self.dentistToEdit = response.data
-      (error) -> self.handleError(error, "No se pudo obtener al odontólogo")
+      (error) -> errorHandler.error("Ocurrió un error interno obteniendo al odontólogo. Por favor intente nuevamente")
     )
-
-  @handleError = (error, errorMessage = null) ->
-    error = errorMessage || "Algo salió mal cargando los datos"
-    growl.error("<b>Error</b><br> #{error}")
 
   @update = ->
     return unless @editMode
+    @dentistToEdit.checkErrors(errorHandler.error("completar"))
     dentistFactory.update(@dentistToEdit,
       (response) ->
         self.dentistToEdit = undefined
-        growl.success('<b>Perfecto</b><br> Se actualizó correctamente')
+        errorHandler.success("Se actualizó el odontólogo correctamente")
         $location.path('/')
-      (error) -> self.handleError(error)
+      (error) -> errorHandler.error("Ocurrió un error interno guardando la información. Por favor intente nuevamente")
     )
 
   @save = ->
@@ -35,9 +32,9 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visi
     dentistFactory.save({dentist, work_calendar, visit, visitor},
       (response) ->
         self.dentistToEdit = self.newVisit = self.newVisitor = {}
-        growl.success('<b>Perfecto</b><br> Se creó el odontólogo correctamente')
+        errorHandler.success("Se creó el odontólogo correctamente")
         $location.path('/')
-      (error) -> self.handleError(error)
+      (error) -> errorHandler.error("Ocurrió un error interno creando al odontólogo. Por favor intente nuevamente")
     )
 
   @new_visit = ->
@@ -48,9 +45,9 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visi
     dentistFactory.create_visit({dentist, visit, visitor},
       (response) ->
         self.dentistToEdit = self.newVisit = self.newVisitor = {}
-        growl.success('<b>Perfecto</b><br> Se creó el odontólogo correctamente')
+        errorHandler.success("Se registró la visita correctamente")
         $location.path('/')
-      (error) -> self.handleError(error)
+      (error) -> errorHandler.error("Ocurrió un error interno creando la visita. Por favor intente nuevamente")
     )
 
   @removeToView = ->
@@ -61,9 +58,9 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visi
     dentistFactory.delete(@dentistToEdit.id).then(
       (response) ->
         self.dentistToEdit = undefined
-        growl.info('<b>Perfecto</b><br> Se borró el odontólogo correctamente')
+        errorHandler.info("Se borró el odontólogo correctamente")
         $location.path('/')
-      (error) -> self.handleError(error)
+      (error) -> errorHandler.error("Ocurrió un error interno borrando al odontólogo. Por favor intente nuevamente")
     )
 
 

@@ -1,16 +1,12 @@
-angular.module('myApp').controller('DentistCtrl', (Dentist, dentistFactory, growl, $uibModal) ->
+angular.module('myApp').controller('DentistCtrl', (Dentist, dentistFactory, errorHandler, $uibModal) ->
   self = @
   @dentists = []
   @fieldToOrder = 'surname'
   @reversed = false
 
-  @handleError = (error) ->
-    growl.error("<b>Error</b><br> Algo salió mal cargando los datos")
-    console.log(error.statusText)
-
   dentistFactory.getAll(
     (response) -> self.dentists = response.data.map((d) -> Dentist.build(d))
-    (error) -> self.handleError(error)
+    (error) -> errorHandler.error("Algo salió mal cargando a los dentistas. Intente nuevamente")
   )
 
   @openModal = (dentist) ->
