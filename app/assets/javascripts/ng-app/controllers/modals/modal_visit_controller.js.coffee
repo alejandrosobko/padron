@@ -1,6 +1,5 @@
 angular.module('myApp').controller('ModalCtrl', ($uibModalInstance, dentist, Visit, Visitor, dentistFactory, errorHandler) ->
-  @items = ['item1', 'item2', 'item3']
-  @visitor = {'name': ''}
+  @visitor = {}
   @newVisit = {}
   self = @
 

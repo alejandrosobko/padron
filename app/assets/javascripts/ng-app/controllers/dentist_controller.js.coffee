@@ -11,12 +11,10 @@ angular.module('myApp').controller('DentistCtrl', (Dentist, dentistFactory, erro
 
   @openModal = (dentist) ->
     $uibModal.open(
-      templateUrl: 'extras/modal.html'
+      templateUrl: 'modals/new_visit.html'
       controller: 'ModalCtrl as ModalCtrl'
-      resolve: {
-        dentist: ->
-          dentist
-      }
+      resolve:
+        dentist: -> dentist
     )
 
   @orderBy = (field) ->
