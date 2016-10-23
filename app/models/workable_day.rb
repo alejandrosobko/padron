@@ -1,6 +1,7 @@
 class WorkableDay < ActiveRecord::Base
-  has_many :workable_hours, autosave: true
-  validates_presence_of :day, :workable_hours
+  has_many :workable_hours, autosave: true, dependent: :destroy
+  validates :day, presence: true, uniqueness: true
+  validates_presence_of :workable_hours
 
   def as_json(options = {})
     json = super(options)

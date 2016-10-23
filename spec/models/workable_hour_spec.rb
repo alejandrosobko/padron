@@ -12,5 +12,17 @@ RSpec.describe WorkableHour, type: :model do
 
       expect(workable_hour.save).to eq(true)
     end
+
+    it 'should not can saves if :to is less than :from' do
+      workable_hour = WorkableHour.new({from: 9, to: 8})
+
+      expect(workable_hour.save).to eq(false)
+    end
+
+    it 'should not can saves if :to is equals than :from' do
+      workable_hour = WorkableHour.new({from: 9, to: 9})
+
+      expect(workable_hour.save).to eq(false)
+    end
   end
 end

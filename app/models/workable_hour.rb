@@ -1,5 +1,5 @@
 class WorkableHour < ActiveRecord::Base
-  validates_presence_of :from, :to
+  validates_numericality_of :to, :greater_than => :from, presence: true
 
   def as_json(options = {})
     super(options)

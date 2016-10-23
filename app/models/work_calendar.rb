@@ -1,5 +1,5 @@
 class WorkCalendar < ActiveRecord::Base
-  has_many :workable_days, autosave: true
+  has_many :workable_days, autosave: true, dependent: :destroy
 
   def as_json(options = {})
     json = super(options)
