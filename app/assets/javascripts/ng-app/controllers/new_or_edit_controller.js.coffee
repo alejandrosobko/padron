@@ -27,15 +27,17 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visi
   @save = ->
     if @dentistToEdit.empty()
       errorHandler.warning("Si no ingresa datos luego no podrá filtrar y encontrar al odontólogo")
+    else if !@newVisitor.name || @newVisitor.name.length < 3
+      errorHandler.warning("Complete el nombre del visitador")
     else
       @saveDentist(true)
 
   @saveDentist = (canDelete) ->
     return unless canDelete
-    dentist = self.dentistToEdit
+    dentist = @dentistToEdit
     work_calendar = {workable_days: [{day: 'Lunes', workable_hours: [{from: 9, to: 18}]}]}
-    visit = self.newVisit
-    visitor = self.newVisitor
+    visit = @newVisit
+    visitor = @newVisitor
 
     dentistFactory.save({dentist, work_calendar, visit, visitor},
       (response) ->

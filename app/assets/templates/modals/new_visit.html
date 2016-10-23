@@ -2,22 +2,24 @@
     <div class="modal-header">
         <h4 class="modal-title" id="modal-title">Nueva visita</h4>
     </div>
-    <div class="modal-body" id="modal-body">
-        <form class="form-horizontal">
+    <form novalidate class="form-horizontal" name="newVisit" data-ng-submit="ModalCtrl.ok(newVisit.$valid)">
+        <div class="modal-body" id="modal-body">
             <div class="form-group">
                 <label>Odontólogo:</label> {{ModalCtrl.dentist.name}}
             </div>
             <div class="form-group">
                 <label for="inputNameVisitor" class="control-label col-xs-4">Nombre del visitador</label>
                 <div class="col-xs-7">
-                    <input type="text" class="form-control" id="inputNameVisitor"
-                           data-ng-model="ModalCtrl.visitor.name">
+                    <input type="text" class="form-control" id="inputNameVisitor" name="nameVisitor"
+                           data-ng-model="ModalCtrl.newVisitor.name" data-ng-minlength="3" required>
+                    <span data-ng-show="newVisit.nameVisitor.$invalid && newVisit.nameVisitor.$touched">Este campo es requerido</span>
                 </div>
             </div>
             <div class="form-group" data-ng-controller="NewOrEditCtrl as newOrEditCtrl">
                 <label class="control-label col-xs-4">Fecha de visita </label>
                 <div class="col-xs-7">
-                    <datepicker></datepicker>
+                    <datepicker name="visitDate" required></datepicker>
+                    <span data-ng-show="newVisit.visitDate.$invalid && newVisit.nameVisitor.$touched">Este campo es requerido</span>
                 </div>
             </div>
             <div class="form-group">
@@ -27,10 +29,10 @@
                                       data-ng-model="ModalCtrl.newVisit.observations" cols="20" rows="3"></textarea>
                 </div>
             </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-info" type="button" data-ng-click="ModalCtrl.ok()">Guardar</button>
-        <button class="btn btn-default" type="button" data-ng-click="ModalCtrl.cancel()">Cancelar</button>
-    </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info" type="submit" data-ng-disabled="!newVisit.$valid">Guardar</button>
+            <button class="btn btn-default" type="button" data-ng-click="ModalCtrl.cancel()">Cancelar</button>
+        </div>
+    </form>
 </div>
