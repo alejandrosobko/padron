@@ -1,4 +1,4 @@
-angular.module('myApp').controller('ModalCtrl', ($uibModalInstance, dentist, Visit, Visitor, dentistFactory, errorHandler) ->
+angular.module('padronApp').controller('ModalCtrl', ($uibModalInstance, dentist, Visit, Visitor, dentistFactory, errorHandler) ->
   @newVisitor = new Visitor
   @newVisit = new Visit
   self = @

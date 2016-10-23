@@ -1,4 +1,4 @@
-angular.module('myApp').factory('dentistFactory', ['$http', ($http) ->
+angular.module('padronApp').factory('dentistFactory', ['$http', ($http) ->
   o = {dentists: []}
 
   o.getAll = (callback, errorHandler) ->

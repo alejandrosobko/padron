@@ -1,4 +1,4 @@
-angular.module('myApp')
+angular.module('padronApp')
   .directive('datepicker', ->
     template: '<div class="input-group">
                  <input type="text" class="form-control"

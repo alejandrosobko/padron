@@ -1,4 +1,4 @@
-angular.module('myApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstrap', 'angular-growl'])
+angular.module('padronApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstrap', 'angular-growl'])
   .config(($stateProvider, $urlRouterProvider, growlProvider) ->
     $stateProvider
       .state('dentists', {

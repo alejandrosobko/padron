@@ -1,4 +1,4 @@
-angular.module('myApp').factory('errorHandler', ['growl', (growl) ->
+angular.module('padronApp').factory('errorHandler', ['growl', (growl) ->
   o = {}
 
   o.error = (errorMsg) -> growl.error("<b>Error</b><br>" + errorMsg)

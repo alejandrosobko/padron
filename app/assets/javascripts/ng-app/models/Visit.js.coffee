@@ -1,4 +1,4 @@
-angular.module('myApp').factory('Visit', ->
+angular.module('padronApp').factory('Visit', ->
   Visit = (id, visit_date, observations, visitor) ->
     @id = id
     @visit_date = visit_date || new Date()

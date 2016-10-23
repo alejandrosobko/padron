@@ -1,4 +1,4 @@
-angular.module('myApp').factory('Dentist', ->
+angular.module('padronApp').factory('Dentist', ->
   Dentist = (id, name, surname, enrollment, location, institution, street, number, telephone, cellphone, email, specialty) ->
     @id = id || ""
     @name = name || ""

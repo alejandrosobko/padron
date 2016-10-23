@@ -1,4 +1,4 @@
-angular.module('myApp').factory('Visitor', ->
+angular.module('padronApp').factory('Visitor', ->
   Visitor = (id, name) ->
     @id = id
     @name = name

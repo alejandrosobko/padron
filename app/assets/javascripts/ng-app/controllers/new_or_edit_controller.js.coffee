@@ -1,4 +1,4 @@
-angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visit, Visitor, dentistFactory, errorHandler, $location, $uibModal) ->
+angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visit, Visitor, dentistFactory, errorHandler, $location, $uibModal) ->
   self = @
   @days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
   @editMode = $stateParams.dentistId

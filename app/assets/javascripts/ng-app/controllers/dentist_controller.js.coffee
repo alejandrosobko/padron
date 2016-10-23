@@ -1,4 +1,4 @@
-angular.module('myApp').controller('DentistCtrl', (Dentist, dentistFactory, errorHandler, $uibModal) ->
+angular.module('padronApp').controller('DentistCtrl', (Dentist, dentistFactory, errorHandler, $uibModal) ->
   self = @
   @dentists = []
   @fieldToOrder = 'surname'
