@@ -46,7 +46,9 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visi
         self.dentistToEdit = self.newVisit = self.newVisitor = {}
         errorHandler.success("Se creó el odontólogo correctamente")
         $location.path('/')
-      (error) -> errorHandler.error("Ocurrió un error interno creando al odontólogo. Por favor intente nuevamente")
+      (error) ->
+        for key_error in Object.keys(error.data)
+          errorHandler.error(error.data[key_error][0])
     )
 
   @new_visit = ->

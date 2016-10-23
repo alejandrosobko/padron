@@ -9,21 +9,22 @@ class DentistsController < ApplicationController
   end
 
   def create
-    dentist = DentistService.new(params).create
-    begin
-      dentist.save!
-      to_render = dentist
+    dentist = Dentist.new(dentist_params)
+    dentist.work_calendar = WorkCalendarService.new(params).create
+    dentist.visits = [VisitService.new(params).find_or_new]
+    begin dentist.save!
+      render json: dentist
     rescue => e
-      to_render = e.message
+      render json: dentist.errors.messages, status: :unprocessable_entity
     end
-    render json: to_render
   end
 
   def update
     dentist = Dentist.find(params[:dentist][:id])
-    if dentist.update(dentist_params)
+    begin
+      dentist.update!(dentist_params)
       render json: dentist
-    else
+    rescue => e
       render json: dentist.errors.messages, status: :unprocessable_entity
     end
   end
