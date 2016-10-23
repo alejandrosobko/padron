@@ -20,13 +20,12 @@ class DentistsController < ApplicationController
   end
 
   def update
-    begin
-      dentist = DentistService.new(params).update
-      to_render = dentist
-    rescue => e
-      to_render = e.message
+    dentist = Dentist.find(params[:dentist][:id])
+    if dentist.update(dentist_params)
+      render json: dentist
+    else
+      render json: dentist.errors.messages, status: :unprocessable_entity
     end
-    render json: to_render
   end
 
   def create_visit
@@ -47,5 +46,14 @@ class DentistsController < ApplicationController
     Dentist.find(params[:id]).destroy!
     render json: Dentist.all
   end
+
+
+  private
+
+  def dentist_params
+    params.require(:dentist).permit(:name, :surname, :enrollment, :location, :institution, :street, :number, :telephone,
+                                    :cellphone, :email, :specialty, :attention_datetime)
+  end
+
 
 end

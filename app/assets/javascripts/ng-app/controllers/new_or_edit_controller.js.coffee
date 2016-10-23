@@ -21,7 +21,9 @@ angular.module('myApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visi
           self.dentistToEdit = undefined
           errorHandler.success("Se actualizó el odontólogo correctamente")
           $location.path('/')
-        (error) -> errorHandler.error("Ocurrió un error interno guardando la información. Por favor intente nuevamente")
+        (error) ->
+          for key_error in Object.keys(error.data)
+            errorHandler.error(error.data[key_error][0])
       )
 
   @save = ->
