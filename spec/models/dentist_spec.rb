@@ -16,6 +16,13 @@ RSpec.describe Dentist, :type => :model do
     it 'should can save a dentist with visits' do
       expect(dentist.save).to be true
     end
+
+    it 'should not can save two dentists with equals enrollments' do
+      dentist2 = build(:dentist, visits: [visit], work_calendar: WorkCalendar.new, enrollment: dentist.enrollment)
+
+      expect(dentist.save).to be true
+      expect(dentist2.save).to be false
+    end
   end
 
   describe 'with work calendar' do

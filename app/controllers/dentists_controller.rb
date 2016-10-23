@@ -14,14 +14,19 @@ class DentistsController < ApplicationController
       dentist.save!
       to_render = dentist
     rescue => e
-      to_render = "Error creating new dentist: #{e.message}"
+      to_render = e.message
     end
     render json: to_render
   end
 
   def update
-    dentist = DentistService.new(params).update
-    render json: dentist
+    begin
+      dentist = DentistService.new(params).update
+      to_render = dentist
+    rescue => e
+      to_render = e.message
+    end
+    render json: to_render
   end
 
   def create_visit
@@ -33,7 +38,7 @@ class DentistsController < ApplicationController
       dentist.save!
       to_render = visit
     rescue => e
-      to_render = "Error creating new dentist: #{e.message}"
+      to_render = e.message
     end
     render json: to_render
   end
