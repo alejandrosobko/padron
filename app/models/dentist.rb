@@ -5,7 +5,10 @@ class Dentist < ActiveRecord::Base
   validates :enrollment, uniqueness: {message: 'Ya existe un odontólogo con esa matrícula'}
 
   def as_json(options = {})
-    super(options)
+    json = super(options)
+    json[:visits] = visits.map { |v| v.as_json }
+    json[:work_calendar] = work_calendar.as_json
+    json
   end
 
 end

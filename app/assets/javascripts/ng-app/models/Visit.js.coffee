@@ -4,6 +4,7 @@ angular.module('padronApp').factory('Visit', ->
     @visit_date = visit_date || new Date()
     @observations = observations
     @visitor = visitor
+    @
 
   Visit.build = (data) ->
     new Visit(data.id, data.visit_date, data.observations, data.visitor)

@@ -1,5 +1,5 @@
-angular.module('padronApp').factory('Dentist', ->
-  Dentist = (id, name, surname, enrollment, location, institution, street, number, telephone, cellphone, email, specialty) ->
+angular.module('padronApp').factory('Dentist', ['WorkCalendar', (WorkCalendar) ->
+  Dentist = (id, name, surname, enrollment, location, institution, street, number, telephone, cellphone, email, specialty, workCalendar) ->
     @id = id || ""
     @name = name || ""
     @surname = surname || ""
@@ -12,14 +12,16 @@ angular.module('padronApp').factory('Dentist', ->
     @cellphone = cellphone || ""
     @email = email || ""
     @specialty = specialty || ""
+    @workCalendar = workCalendar
+    @
 
   Dentist.prototype.empty = ->
-    (@name + @surname + @enrollment + @location + @institution + @street + @number + @telephone +
+    !@workCalendar && (@name + @surname + @enrollment + @location + @institution + @street + @number + @telephone +
       @cellphone + @email + @specialty).replace(/[^\w\s]/gi, '') == ""
 
   Dentist.build = (data) ->
     new Dentist(data.id, data.name, data.surname, data.enrollment, data.location, data.institution, data.street,
-      data.number, data.telephone, data.cellphone, data.email, data.specialty)
+      data.number, data.telephone, data.cellphone, data.email, data.specialty, WorkCalendar.build(data.work_calendar))
 
   Dentist
-)
+])
