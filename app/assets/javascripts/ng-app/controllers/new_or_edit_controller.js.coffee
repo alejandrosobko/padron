@@ -90,6 +90,7 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
   @viewAttentionTime = ->
     $uibModal.open(
       templateUrl: 'modals/attention_time.html'
+      size: 'lg'
       controller: 'AttentionTimeCtrl as AttentionTimeCtrl'
       resolve:
         dentist: -> self.dentistToEdit

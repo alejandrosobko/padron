@@ -1,3 +1,25 @@
+<style>
+    .attention-time .day {
+        display: inline-block;
+        width: 13%;
+    }
+
+    .attention-time .day span {
+        font-size: 20px;
+    }
+
+    .time {
+        display: inline-block;
+        width: 13%;
+    }
+
+    .time input {
+        margin-left: 20px;
+        margin-bottom: 5px;
+        width: 70px;
+    }
+</style>
+
 <div class="container-fluid">
     <div class="modal-header">
         <h4 class="modal-title" id="modal-title">Horarios de atención</h4>
@@ -6,38 +28,62 @@
         <div class="form-group">
             <label>Odontólogo:</label> {{AttentionTimeCtrl.dentist.name}} {{AttentionTimeCtrl.dentist.surname}}
         </div>
+        <div class="row text-center attention-time">
+            <div class="day"><span>Lunes</span></div>
+            <div class="day"><span>Martes</span></div>
+            <div class="day"><span>Miércoles</span></div>
+            <div class="day"><span>Jueves</span></div>
+            <div class="day"><span>Viernes</span></div>
+            <div class="day"><span>Sábado</span></div>
+            <div class="day"><span>Domingo</span></div>
+        </div>
         <div class="row text-center">
-            <div class="col-xs-6"><h4>Días de atención</h4></div>
-            <div class="col-xs-6"><h4>Horarios</h4></div>
-            <div class="row">
-                <div class="col-xs-6">
-                    <h5>Lunes</h5>
-                </div>
-                <div class="col-xs-6">
-                    <h5>9 a 12</h5>
-                    <h5>15 a 18</h5>
-                </div>
+            <div class="time">
+                <h5>9 a 12</h5>
+                <h5>15 a 18</h5>
+                <input type="text" class="form-control text-center" placeholder="Desde">
+                <input type="text" class="form-control text-center" placeholder="Hasta">
             </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    <h5>Miércoles</h5>
-                </div>
-                <div class="col-xs-6">
-                    <h5>9 a 12</h5>
-                </div>
+            <div class="time"> <!-- martes no trabaja -->
+                <h5></h5>
+                <input type="text" class="form-control text-center" placeholder="Desde">
+                <input type="text" class="form-control text-center" placeholder="Hasta">
             </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    <h5>Viernes</h5>
-                </div>
-                <div class="col-xs-6">
-                    <h5>10 a 17</h5>
-                </div>
+            <div class="time">
+                <h5>9 a 12</h5>
+                <input type="text" class="form-control text-center" placeholder="Desde">
+                <input type="text" class="form-control text-center" placeholder="Hasta">
+            </div>
+            <div class="time">
+                <h5></h5>
+                <input type="text" class="form-control text-center" placeholder="Desde">
+                <input type="text" class="form-control text-center" placeholder="Hasta">
+            </div>
+            <div class="time">
+                <h5>9 a 12</h5>
+                <h5>15 a 18</h5>
+                <h5>20 a 23</h5>
+                <input type="text" class="form-control text-center" placeholder="Desde">
+                <input type="text" class="form-control text-center" placeholder="Hasta">
+            </div>
+            <div class="time">
+                <h5>9 a 12</h5>
+                <h5>15 a 18</h5>
+                <h5>20 a 23</h5>
+                <input type="text" class="form-control text-center" placeholder="Desde">
+                <input type="text" class="form-control text-center" placeholder="Hasta">
+            </div>
+            <div class="time">
+                <h5>9 a 12</h5>
+                <h5>15 a 18</h5>
+                <h5>20 a 23</h5>
+                <input type="text" class="form-control text-center" placeholder="Desde">
+                <input type="text" class="form-control text-center" placeholder="Hasta">
             </div>
         </div>
     </div>
-    <div class="modal-footer">
-        <button class="btn btn-info" type="button" data-ng-click="AttentionTimeCtrl.save()">Guardar</button>
-        <button class="btn btn-default" type="button" data-ng-click="AttentionTimeCtrl.cancel()">Cancelar</button>
-    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" type="button" data-ng-click="AttentionTimeCtrl.save()">Guardar</button>
+    <button class="btn btn-default" type="button" data-ng-click="AttentionTimeCtrl.cancel()">Cancelar</button>
 </div>
