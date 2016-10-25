@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Horarios de atención</h4>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <div class="form-group">
+            <label>Odontólogo:</label> {{AttentionTimeCtrl.dentist.name}} {{AttentionTimeCtrl.dentist.surname}}
+        </div>
+        <div class="row text-center">
+            <div class="col-xs-6"><h4>Días de atención</h4></div>
+            <div class="col-xs-6"><h4>Horarios</h4></div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <h5>Lunes</h5>
+                </div>
+                <div class="col-xs-6">
+                    <h5>9 a 12</h5>
+                    <h5>15 a 18</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <h5>Miércoles</h5>
+                </div>
+                <div class="col-xs-6">
+                    <h5>9 a 12</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <h5>Viernes</h5>
+                </div>
+                <div class="col-xs-6">
+                    <h5>10 a 17</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-info" type="button" data-ng-click="AttentionTimeCtrl.save()">Guardar</button>
+        <button class="btn btn-default" type="button" data-ng-click="AttentionTimeCtrl.cancel()">Cancelar</button>
+    </div>
+</div>

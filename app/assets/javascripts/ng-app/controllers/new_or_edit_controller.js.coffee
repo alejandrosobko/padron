@@ -1,4 +1,5 @@
-angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visit, Visitor, dentistFactory, errorHandler, $location, $uibModal) ->
+angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visit, Visitor, dentistFactory,
+                                                         errorHandler, $location, $uibModal, WorkableDay) ->
   self = @
   @days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
   @editMode = $stateParams.dentistId
@@ -16,7 +17,7 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
     if @dentistToEdit.empty()
       errorHandler.warning("Si no ingresa datos luego no podrá filtrar y encontrar al odontólogo")
     else
-      dentistFactory.update(@dentistToEdit,
+      dentistFactory.update({dentist: @dentistToEdit},
         (response) ->
           self.dentistToEdit = undefined
           errorHandler.success("Se actualizó el odontólogo correctamente")
@@ -84,6 +85,14 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
         errorHandler.info("Se borró el odontólogo correctamente")
         $location.path('/')
       (error) -> errorHandler.error("Ocurrió un error interno borrando al odontólogo. Por favor intente nuevamente")
+    )
+
+  @viewAttentionTime = ->
+    $uibModal.open(
+      templateUrl: 'modals/attention_time.html'
+      controller: 'AttentionTimeCtrl as AttentionTimeCtrl'
+      resolve:
+        dentist: -> self.dentistToEdit
     )
 
 

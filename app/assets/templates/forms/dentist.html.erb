@@ -23,12 +23,12 @@
     <label for="inputStreet">Calle</label>
     <input type="text" class="form-control" id="inputStreet" data-ng-model="newOrEditCtrl.dentistToEdit.street">
   </div>
+</div>
+<div class="col-xs-4 col-xs-offset-2">
   <div class="form-group">
     <label for="inputNumber">Número</label>
     <input type="number" class="form-control" id="inputNumber" data-ng-model="newOrEditCtrl.dentistToEdit.number">
   </div>
-</div>
-<div class="col-xs-4 col-xs-offset-2">
   <div class="form-group">
     <label for="inputTelephone">Teléfono</label>
     <input type="text" class="form-control" id="inputTelephone" data-ng-model="newOrEditCtrl.dentistToEdit.telephone">
@@ -46,23 +46,7 @@
     <input type="text" class="form-control" id="inputSpeciality" data-ng-model="newOrEditCtrl.dentistToEdit.specialty">
   </div>
   <div class="form-group">
-    <label for="inputDaysAttention">Días de atención</label>
-    <br>
-    <input type="checkbox" id="inputDaysAttention">Lunes
-    <input type="checkbox" id="inputDaysAttention">Martes
-    <input type="checkbox" id="inputDaysAttention">Miercoles
-    <input type="checkbox" id="inputDaysAttention">Jueves
-    <br>
-    <input type="checkbox" id="inputDaysAttention">Viernes
-    <input type="checkbox" id="inputDaysAttention">Sabado
-    <input type="checkbox" id="inputDaysAttention">Domingo
-  </div>
-  <div class="form-group col-xs-4">
-    <label for="desde">Desde</label>
-    <input type="number" class="form-control" id="desde">
-  </div>
-  <div class="form-group col-xs-4">
-    <label for="hasta">Hasta</label>
-    <input class="form-control" type="number" id="hasta">
+    <label for="attentionTime">Horarios de atención</label><br>
+    <button type="button" class="btn btn-sm btn-success" data-ng-click="newOrEditCtrl.viewAttentionTime()">Abrir</button>
   </div>
 </div>
