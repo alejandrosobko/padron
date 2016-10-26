@@ -94,7 +94,11 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
       controller: 'AttentionTimeCtrl as AttentionTimeCtrl'
       resolve:
         dentist: -> self.dentistToEdit
+        updateFunction: -> self.updateFunction
     )
+
+  @updateFunction = ->
+    console.log(self.dentistToEdit)
 
 
   @
