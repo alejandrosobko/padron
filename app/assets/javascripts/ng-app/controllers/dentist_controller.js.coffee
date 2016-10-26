@@ -5,7 +5,7 @@ angular.module('padronApp').controller('DentistCtrl', (Dentist, dentistFactory, 
   @reversed = false
 
   dentistFactory.getAll(
-    (response) -> self.dentists = response.data.map((d) -> Dentist.build(d))
+    (response) -> self.dentists = Dentist.apiResponseTransformer(response.data)
     (error) -> errorHandler.error("Algo salió mal cargando a los dentistas. Intente nuevamente")
   )
 

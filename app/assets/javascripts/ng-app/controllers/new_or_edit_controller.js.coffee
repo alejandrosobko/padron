@@ -1,7 +1,6 @@
 angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visit, Visitor, dentistFactory,
                                                          errorHandler, $location, $uibModal, WorkableDay) ->
   self = @
-  @days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
   @editMode = $stateParams.dentistId
   @dentistToEdit = new Dentist
   @newVisit = new Visit
@@ -9,7 +8,7 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
 
   if self.editMode
     dentistFactory.get($stateParams.dentistId,
-      (response) -> self.dentistToEdit = Dentist.build(response.data)
+      (response) -> self.dentistToEdit = Dentist.apiResponseTransformer(response.data)
       (error) -> errorHandler.error("Ocurrió un error interno obteniendo al odontólogo. Por favor intente nuevamente")
     )
 

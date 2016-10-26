@@ -1,12 +1,18 @@
 angular.module('padronApp').factory('WorkableHour', ->
-  WorkableHour = (id=undefined, from, to) ->
-    @id = id
+  WorkableHour = (from, to, id) ->
     @from = from
     @to = to
+    @id = id
     @
 
   WorkableHour.build = (data) ->
-    new WorkableHour(data.id, data.from, data.to)
+    new WorkableHour(data.from, data.to, data.id)
+
+  WorkableHour.apiResponseTransformer = (data) ->
+    if angular.isArray(data)
+      data.map(WorkableHour.build)
+    else
+      WorkableHour.build(data)
 
   WorkableHour
 )
