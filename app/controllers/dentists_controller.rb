@@ -12,7 +12,8 @@ class DentistsController < ApplicationController
     dentist = Dentist.new(dentist_params)
     dentist.work_calendar = WorkCalendarService.new(params).create
     dentist.visits = [VisitService.new(params).find_or_new]
-    begin dentist.save!
+    begin
+      dentist.save!
       render json: dentist
     rescue => e
       render json: dentist.errors.messages, status: :unprocessable_entity
@@ -53,7 +54,8 @@ class DentistsController < ApplicationController
 
   def dentist_params
     params.require(:dentist).permit(:name, :surname, :enrollment, :location, :institution, :street, :number, :telephone,
-                                    :cellphone, :email, :specialty, :attention_datetime)
+                                    :cellphone, :email, :specialty, :attention_datetime,
+                                    work_calendar_attributes: {workable_days_attributes: [:day, workable_hours_attributes: [:from, :to]]})
   end
 
 

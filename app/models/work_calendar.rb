@@ -1,5 +1,6 @@
 class WorkCalendar < ActiveRecord::Base
   has_many :workable_days, autosave: true, dependent: :destroy
+  accepts_nested_attributes_for :workable_days
 
   before_save :check_existing_days
 
