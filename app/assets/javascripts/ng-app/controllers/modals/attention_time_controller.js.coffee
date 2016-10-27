@@ -1,19 +1,21 @@
-angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, dentist, updateFunction) ->
+angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, dentist, WorkCalendar, updateFunction) ->
   @dentist = dentist
-  @new_workable_hours = {}
+  @newWorkableHours = {}
 
   @cancel = ->
     $uibModalInstance.dismiss()
 
   @save = ->
-    for day of @new_workable_hours
-      @dentist.work_calendar_attributes.update_day(day, @new_workable_hours[day])
+    workCalendar = WorkCalendar.build(@dentist.workCalendar)
+    for day of @newWorkableHours
+      workCalendar.updateDay(day, @newWorkableHours[day])
+    @dentist.workCalendar = workCalendar
     updateFunction()
     $uibModalInstance.dismiss()
 
-  @workable_hours_for = (day) ->
-    dayWanted = @dentist.work_calendar_attributes.workable_days_attributes.find((workable_day) -> workable_day.day == day)
-    if dayWanted then dayWanted.workable_hours_attributes else []
+  @workableHoursFor = (day) ->
+    dayWanted = @dentist.workCalendar.workableDays.find((workableDay) -> workableDay.day == day)
+    if dayWanted then dayWanted.workableHours else []
 
   @
 )

@@ -6,7 +6,7 @@ class WorkCalendar < ActiveRecord::Base
 
   def as_json(options = {})
     json = super(options)
-    json[:workable_days] = workable_days.map { |d| d.as_json }
+    json[:workable_days] = workable_days.map { |d| d.as_json } || []
     json
   end
 

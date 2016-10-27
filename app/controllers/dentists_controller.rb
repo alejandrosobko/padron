@@ -10,8 +10,7 @@ class DentistsController < ApplicationController
 
   def create
     dentist = Dentist.new(dentist_params)
-    dentist.work_calendar = WorkCalendarService.new(params).create
-    dentist.visits = [VisitService.new(params).find_or_new]
+    dentist.work_calendar ||= WorkCalendar.new
     begin
       dentist.save!
       render json: dentist
@@ -30,7 +29,7 @@ class DentistsController < ApplicationController
     end
   end
 
-  def create_visit
+  def create_visit # TODO: Borrar
     dentist = Dentist.find(params[:id])
     visit = VisitService.new(params).find_or_new
     visit.save!
@@ -55,7 +54,8 @@ class DentistsController < ApplicationController
   def dentist_params
     params.require(:dentist).permit(:name, :surname, :enrollment, :location, :institution, :street, :number, :telephone,
                                     :cellphone, :email, :specialty, :attention_datetime,
-                                    work_calendar_attributes: {workable_days_attributes: [:day, workable_hours_attributes: [:from, :to]]})
+                                    visits_attributes: [:id, :visit_date, :observations, visitor_attributes: [:id, :name]],
+                                    work_calendar_attributes: [:id, workable_days_attributes: [:day, workable_hours_attributes: [:from, :to]]])
   end
 
 

@@ -8,7 +8,7 @@ angular.module('padronApp')
                         data-datepicker-options="datePickerCtrl.dateOptions"
                         data-current-text="Hoy"
                         data-close-text="Salir"
-                        data-ng-model="ModalCtrl.newVisit.visit_date"
+                        data-ng-model="ModalCtrl.newVisit.visitDate"
                         data-clear-text="Limpiar"
                         data-ng-click="datePickerCtrl.open()"/>
                  <span class="input-group-btn">
@@ -35,7 +35,7 @@ angular.module('padronApp')
       ''
 
     @clear = ->
-      @newVisit.visit_date = null
+      @newVisit.visitDate = null
 
     @inlineOptions =
       customClass: getDayClass

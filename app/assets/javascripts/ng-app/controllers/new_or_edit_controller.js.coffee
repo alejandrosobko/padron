@@ -1,24 +1,22 @@
-angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, Visit, Visitor, dentistFactory,
-                                                         errorHandler, $location, $uibModal, WorkableDay) ->
+angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, errorHandler, $location, $uibModal) ->
   self = @
   @editMode = $stateParams.dentistId
   @dentistToEdit = new Dentist
-  @newVisit = new Visit
-  @newVisitor = new Visitor
+  @newVisit = {visitDate: new Date}
+  @newVisitor = {}
 
   if self.editMode
-    dentistFactory.get($stateParams.dentistId,
-      (response) -> self.dentistToEdit = Dentist.apiResponseTransformer(response.data)
+    Dentist.get($stateParams.dentistId).then(
+      (response) -> self.dentistToEdit = response
       (error) -> errorHandler.error("Ocurrió un error interno obteniendo al odontólogo. Por favor intente nuevamente")
     )
 
   @update = ->
-    if @dentistToEdit.empty()
+    if self.dentistToEdit.empty()
       errorHandler.warning("Si no ingresa datos luego no podrá filtrar y encontrar al odontólogo")
     else
-      dentistFactory.update({dentist: @dentistToEdit},
+      self.dentistToEdit.update().then(
         (response) ->
-          self.dentistToEdit = undefined
           errorHandler.success("Se actualizó el odontólogo correctamente")
           $location.path('/')
         (error) ->
@@ -27,23 +25,18 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
       )
 
   @save = ->
-    if @dentistToEdit.empty()
+    if self.dentistToEdit.empty()
       errorHandler.warning("Si no ingresa datos luego no podrá filtrar y encontrar al odontólogo")
     else if !@newVisitor.name || @newVisitor.name.length < 3
       errorHandler.warning("Complete el nombre del visitador")
     else
-      @saveDentist(true)
+      @saveDentist()
 
-  @saveDentist = (canDelete) ->
-    return unless canDelete
-    dentist = @dentistToEdit
-    work_calendar = {workable_days: [{day: 'Lunes', workable_hours: [{from: 9, to: 18}]}]}
-    visit = @newVisit
-    visitor = @newVisitor
-
-    dentistFactory.save({dentist, work_calendar, visit, visitor},
+  @saveDentist = ->
+    @newVisit['visitor'] = @newVisitor
+    @dentistToEdit.visits = [@newVisit]
+    @dentistToEdit.create().then(
       (response) ->
-        self.dentistToEdit = self.newVisit = self.newVisitor = {}
         errorHandler.success("Se creó el odontólogo correctamente")
         $location.path('/')
       (error) ->
@@ -52,21 +45,16 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
     )
 
   @new_visit = ->
-    visit: @newVisit
-    visitor: @newVisitor
-    dentist: @dentistToEdit
-
-    dentistFactory.create_visit({dentist, visit, visitor},
+    @newVisit.visitor = @newVisitor
+    @dentistToEdit.visits.push(@newVisit)
+    @dentistToEdit.update().then(
       (response) ->
-        self.dentistToEdit = self.newVisit = self.newVisitor = {}
         errorHandler.success("Se registró la visita correctamente")
         $location.path('/')
       (error) -> errorHandler.error("Ocurrió un error interno creando la visita. Por favor intente nuevamente")
     )
 
-  @removeToView = ->
-    $location.path('/')
-    self.dentistToEdit = undefined
+  @removeToView = -> $location.path('/')
 
   @delete = ->
     $uibModal.open(
@@ -78,9 +66,9 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
     )
 
   @deleteFunction = ->
-    dentistFactory.delete(self.dentistToEdit.id).then(
+    self.dentistToEdit.delete({id: self.dentistToEdit.id}).then(
       (response) ->
-        self.dentistToEdit = undefined
+        self.dentistToEdit = new Dentist
         errorHandler.info("Se borró el odontólogo correctamente")
         $location.path('/')
       (error) -> errorHandler.error("Ocurrió un error interno borrando al odontólogo. Por favor intente nuevamente")
@@ -93,11 +81,8 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
       controller: 'AttentionTimeCtrl as AttentionTimeCtrl'
       resolve:
         dentist: -> self.dentistToEdit
-        updateFunction: -> self.updateFunction
+        updateFunction: -> self.update
     )
-
-  @updateFunction = ->
-    console.log(self.dentistToEdit)
 
 
   @

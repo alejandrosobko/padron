@@ -1,11 +1,11 @@
-angular.module('padronApp').controller('DentistCtrl', (Dentist, dentistFactory, errorHandler, $uibModal) ->
+angular.module('padronApp').controller('DentistCtrl', (Dentist, errorHandler, $uibModal) ->
   self = @
   @dentists = []
   @fieldToOrder = 'surname'
   @reversed = false
 
-  dentistFactory.getAll(
-    (response) -> self.dentists = Dentist.apiResponseTransformer(response.data)
+  Dentist.query().then(
+    (response) -> self.dentists = response
     (error) -> errorHandler.error("Algo salió mal cargando a los dentistas. Intente nuevamente")
   )
 
