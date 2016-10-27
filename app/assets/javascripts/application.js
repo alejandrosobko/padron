@@ -18,6 +18,7 @@
 //= require angular-rails-templates
 //= require angular-bootstrap
 //= require bootstrap-sprockets
+//= require angularjs/rails/resource
 //= require turbolinks
 //= require angular-growl-v2
 //= require_tree .
