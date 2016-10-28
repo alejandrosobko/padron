@@ -12,7 +12,7 @@ angular.module('padronApp').controller('DentistCtrl', (Dentist, errorHandler, $u
   @openModal = (dentist) ->
     $uibModal.open(
       templateUrl: 'modals/new_visit.html'
-      controller: 'ModalCtrl as ModalCtrl'
+      controller: 'ModalCtrl as modalCtrl'
       resolve:
         dentist: -> dentist
     )

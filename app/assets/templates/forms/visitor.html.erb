@@ -5,7 +5,24 @@
   </div>
   <div class="form-group">
     <label for="inputVisitDate">Fecha de visita</label>
-    <datepicker></datepicker>
+    <div class="input-group" data-ng-controller="DatePickerCtrl as datePickerCtrl">
+      <input type="text" class="form-control" style="display: inline-block;"
+             data-ng-required="true"
+             data-uib-datepicker-popup="dd-MM-yyyy"
+             data-is-open="datePickerCtrl.popup.opened"
+             data-datepicker-options="datePickerCtrl.dateOptions"
+             data-current-text="Hoy"
+             data-close-text="Salir"
+             data-ng-model="newOrEditCtrl.newVisit.visitDate"
+             data-clear-text="Limpiar"
+             data-ng-click="datePickerCtrl.open()"/>
+      <span class="input-group-btn">
+        <button type="button" class="form-control btn btn-default"
+                data-ng-click="datePickerCtrl.open()">
+          <i class="glyphicon glyphicon-calendar"></i>
+        </button>
+      </span>
+    </div>
   </div>
 </div>
 <div class="col-xs-4 col-xs-offset-2">

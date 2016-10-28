@@ -1,23 +1,5 @@
 angular.module('padronApp')
   .directive('datepicker', ->
-    template: '<div class="input-group">
-                 <input type="text" class="form-control"
-                        data-ng-required="true"
-                        data-uib-datepicker-popup="dd-MM-yyyy"
-                        data-is-open="datePickerCtrl.popup.opened"
-                        data-datepicker-options="datePickerCtrl.dateOptions"
-                        data-current-text="Hoy"
-                        data-close-text="Salir"
-                        data-ng-model="ModalCtrl.newVisit.visitDate"
-                        data-clear-text="Limpiar"
-                        data-ng-click="datePickerCtrl.open()"/>
-                 <span class="input-group-btn">
-                   <button type="button" class="form-control btn btn-default"
-                           data-ng-click="datePickerCtrl.open()">
-                     <i class="glyphicon glyphicon-calendar"></i>
-                   </button>
-                 </span>
-               </div>'
     controller: 'DatePickerCtrl as datePickerCtrl'
   )
   .controller('DatePickerCtrl', ->

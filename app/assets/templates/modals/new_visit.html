@@ -2,23 +2,40 @@
     <div class="modal-header">
         <h4 class="modal-title" id="modal-title">Nueva visita</h4>
     </div>
-    <form novalidate class="form-horizontal" name="newVisit" data-ng-submit="ModalCtrl.ok(newVisit.$valid)">
+    <form novalidate class="form-horizontal" name="newVisit" data-ng-submit="modalCtrl.ok(newVisit.$valid)">
         <div class="modal-body" id="modal-body">
             <div class="form-group">
-                <label>Odontólogo:</label> {{ModalCtrl.dentist.name}}
+                <label>Odontólogo:</label> {{modalCtrl.dentist.name}}
             </div>
             <div class="form-group">
                 <label for="inputNameVisitor" class="control-label col-xs-4">Nombre del visitador</label>
                 <div class="col-xs-7">
                     <input type="text" class="form-control" id="inputNameVisitor" name="nameVisitor"
-                           data-ng-model="ModalCtrl.newVisitor.name" data-ng-minlength="3" required>
+                           data-ng-model="modalCtrl.newVisitor.name" data-ng-minlength="3" required>
                     <span data-ng-show="newVisit.nameVisitor.$invalid && newVisit.nameVisitor.$touched">Este campo es requerido</span>
                 </div>
             </div>
-            <div class="form-group" data-ng-controller="NewOrEditCtrl as newOrEditCtrl">
+            <div class="form-group">
                 <label class="control-label col-xs-4">Fecha de visita </label>
                 <div class="col-xs-7">
-                    <datepicker name="visitDate" required></datepicker>
+                    <div class="input-group" data-ng-controller="DatePickerCtrl as datePickerCtrl">
+                        <input type="text" class="form-control"
+                               data-ng-required="true"
+                               data-uib-datepicker-popup="dd-MM-yyyy"
+                               data-is-open="datePickerCtrl.popup.opened"
+                               data-datepicker-options="datePickerCtrl.dateOptions"
+                               data-current-text="Hoy"
+                               data-close-text="Salir"
+                               data-ng-model="modalCtrl.newVisit.visitDate"
+                               data-clear-text="Limpiar"
+                               data-ng-click="datePickerCtrl.open()"/>
+                        <span class="input-group-btn">
+                          <button type="button" class="form-control btn btn-default"
+                                  data-ng-click="datePickerCtrl.open()">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                          </button>
+                        </span>
+                    </div>
                     <span data-ng-show="newVisit.visitDate.$invalid && newVisit.nameVisitor.$touched">Este campo es requerido</span>
                 </div>
             </div>
@@ -26,13 +43,13 @@
                 <label for="inputVisitObservations" class="control-label col-xs-4">Observaciones </label>
                 <div class="col-xs-7">
                             <textarea class="form-control" id="inputVisitObservations"
-                                      data-ng-model="ModalCtrl.newVisit.observations" cols="20" rows="3"></textarea>
+                                      data-ng-model="modalCtrl.newVisit.observations" cols="20" rows="3"></textarea>
                 </div>
             </div>
         </div>
         <div class="modal-footer">
             <button class="btn btn-info" type="submit" data-ng-disabled="!newVisit.$valid">Guardar</button>
-            <button class="btn btn-default" type="button" data-ng-click="ModalCtrl.cancel()">Cancelar</button>
+            <button class="btn btn-default" type="button" data-ng-click="modalCtrl.cancel()">Cancelar</button>
         </div>
     </form>
 </div>
