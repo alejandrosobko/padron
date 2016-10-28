@@ -9,7 +9,7 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
     for day of @newWorkableHours
       @workCalendar.updateDay(day, @newWorkableHours[day])
     dentist.workCalendar = @workCalendar
-    updateFunction()
+    updateFunction() if dentist.id
     $uibModalInstance.dismiss()
 
   @workableHoursFor = (day) ->
