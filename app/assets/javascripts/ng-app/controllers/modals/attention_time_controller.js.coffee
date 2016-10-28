@@ -1,4 +1,5 @@
 angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, dentist, WorkCalendar, updateFunction) ->
+  @dentist = dentist
   @workCalendar = dentist.getWorkCalendar()
   @newWorkableHours = {}
 
