@@ -13,7 +13,8 @@ RSpec.describe Visit, :type => :model do
     let(:visit) {build(:visit, visitor: build(:visitor))}
 
     it 'should can save a new visit with visit and visit date' do
-      expect(visit.observations).to be nil
+      expect(visit.observations).to eq 'Some observation for this visit'
+      expect(visit.visitor).to_not be nil
       expect(visit.save).to be true
     end
   end
