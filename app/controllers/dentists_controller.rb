@@ -55,7 +55,7 @@ class DentistsController < ApplicationController
     params.require(:dentist).permit(:name, :surname, :enrollment, :location, :institution, :street, :number, :telephone,
                                     :cellphone, :email, :specialty, :attention_datetime,
                                     visits_attributes: [:id, :visit_date, :observations, visitor_attributes: [:id, :name]],
-                                    work_calendar_attributes: [:id, workable_days_attributes: [:day, workable_hours_attributes: [:from, :to]]])
+                                    work_calendar_attributes: [:id, workable_days_attributes: [:id, :day, workable_hours_attributes: [:id, :from, :to]]])
   end
 
 
