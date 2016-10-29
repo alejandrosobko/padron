@@ -10,7 +10,7 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
       (error) => errorHandler.error("Ocurrió un error interno obteniendo al odontólogo. Por favor intente nuevamente")
     )
 
-  @update = ->
+  @update = =>
     if @dentistToEdit.empty()
       errorHandler.warning("Si no ingresa datos luego no podrá filtrar y encontrar al odontólogo")
     else
@@ -64,7 +64,7 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
         dentist: => @dentistToEdit
     )
 
-  @deleteFunction = ->
+  @deleteFunction = =>
     @dentistToEdit.delete({id: @dentistToEdit.id}).then(
       (response) =>
         @dentistToEdit = new Dentist
@@ -73,7 +73,7 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
       (error) => errorHandler.error("Ocurrió un error interno borrando al odontólogo. Por favor intente nuevamente")
     )
 
-  @viewAttentionTime = ->
+  @viewAttentionTime = =>
     $uibModal.open(
       templateUrl: 'modals/attention_time.html'
       size: 'lg'
