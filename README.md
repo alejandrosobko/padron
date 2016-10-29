@@ -18,6 +18,8 @@ Architecture documentation [Architecture Doc](https://github.com/alejandrosobko/
 
 Responsibility of the components [Components Doc](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Responsabilidades)
 
+Documentación entrega 1: [Doc 1](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Doc-Entrega-1)
+
 ### Installation
 
 * Clone this repo
