@@ -5,7 +5,7 @@ angular.module('padronApp').factory('Dentist', ['railsResourceFactory', 'railsSe
       url: '/dentists'
       name: 'dentist'
       serializer: railsSerializer(->
-        this.nestedAttribute('visits', 'visitor', 'workCalendar', 'workableDays', 'workableHours')
+        @nestedAttribute('visits', 'visitor', 'workCalendar', 'workableDays', 'workableHours')
       )
     )
 
@@ -14,16 +14,16 @@ angular.module('padronApp').factory('Dentist', ['railsResourceFactory', 'railsSe
 
     resource.prototype.empty = ->
       (@name == undefined || @name == "") &&
-        (@surname == undefined || @surname == "") &&
-        (@enrollment == undefined || @enrollment == "") &&
-        (@location == undefined || @location == "") &&
-        (@institution == undefined || @institution == "") &&
-        (@street == undefined || @street == "") &&
-        (@number == undefined || @number == "") &&
-        (@telephone == undefined || @telephone == "") &&
-        (@cellphone == undefined || @cellphone == "") &&
-        (@email == undefined || @email == "") &&
-        (@specialty == undefined || @specialty == "")
+      (@surname == undefined || @surname == "") &&
+      (@enrollment == undefined || @enrollment == "") &&
+      (@location == undefined || @location == "") &&
+      (@institution == undefined || @institution == "") &&
+      (@street == undefined || @street == "") &&
+      (@number == undefined || @number == "") &&
+      (@telephone == undefined || @telephone == "") &&
+      (@cellphone == undefined || @cellphone == "") &&
+      (@email == undefined || @email == "") &&
+      (@specialty == undefined || @specialty == "")
 
 
     resource
