@@ -11,6 +11,7 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
     )
 
   @update = =>
+    @dentistToEdit.removeEmptyValues()
     if @dentistToEdit.empty()
       errorHandler.warning("Si no ingresa datos luego no podrá filtrar y encontrar al odontólogo")
     else
