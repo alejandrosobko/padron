@@ -17,53 +17,88 @@
         </div>
         <div class="row text-center">
             <div class="time">
-                <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Lunes')">
+                <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Lunes') track by $index">
                     {{time.from}} a {{time.to}}
+                    <span title="Borrar horario" class="remove-time glyphicon glyphicon-minus"
+                          data-ng-click="AttentionTimeCtrl.removeHourFrom('Lunes', $index)"></span>
                 </h5>
-                <input type="text" class="form-control text-center" placeholder="Desde" data-ng-model="AttentionTimeCtrl.newWorkableHours['Lunes']['from']">
-                <input type="text" class="form-control text-center" placeholder="Hasta" data-ng-model="AttentionTimeCtrl.newWorkableHours['Lunes']['to']">
+                <input type="text" class="form-control text-center" placeholder="Desde"
+                       data-ng-model="AttentionTimeCtrl.newWorkableHours['Lunes']['from']">
+
+                <input type="text" class="form-control text-center" placeholder="Hasta"
+                       data-ng-model="AttentionTimeCtrl.newWorkableHours['Lunes']['to']">
             </div>
             <div class="time">
-                <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Martes')">
+                <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Martes') track by $index">
                     {{time.from}} a {{time.to}}
+                    <span title="Borrar horario" class="remove-time glyphicon glyphicon-minus"
+                          data-ng-click="AttentionTimeCtrl.removeHourFrom('Martes', $index)"></span>
                 </h5>
-                <input type="text" class="form-control text-center" placeholder="Desde" data-ng-model="AttentionTimeCtrl.newWorkableHours['Martes']['from']">
-                <input type="text" class="form-control text-center" placeholder="Hasta" data-ng-model="AttentionTimeCtrl.newWorkableHours['Martes']['to']">
+                <input type="text" class="form-control text-center" placeholder="Desde"
+                       data-ng-model="AttentionTimeCtrl.newWorkableHours['Martes']['from']">
+
+                <input type="text" class="form-control text-center" placeholder="Hasta"
+                       data-ng-model="AttentionTimeCtrl.newWorkableHours['Martes']['to']">
             </div>
             <div class="time">
-                <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Miércoles')">
+                <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Miércoles') track by $index">
                     {{time.from}} a {{time.to}}
+                    <span title="Borrar horario" class="remove-time glyphicon glyphicon-minus"
+                          data-ng-click="AttentionTimeCtrl.removeHourFrom('Miércoles', $index)"></span>
                 </h5>
-                <input type="text" class="form-control text-center" placeholder="Desde" data-ng-model="AttentionTimeCtrl.newWorkableHours['Miércoles']['from']">
-                <input type="text" class="form-control text-center" placeholder="Hasta" data-ng-model="AttentionTimeCtrl.newWorkableHours['Miércoles']['to']">
+                <input type="text" class="form-control text-center" placeholder="Desde"
+                       data-ng-model="AttentionTimeCtrl.newWorkableHours['Miércoles']['from']">
+
+                <input type="text" class="form-control text-center" placeholder="Hasta"
+                       data-ng-model="AttentionTimeCtrl.newWorkableHours['Miércoles']['to']">
             </div>
             <div class="time">
-                <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Jueves')">
+                <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Jueves') track by $index">
                     {{time.from}} a {{time.to}}
+                    <span title="Borrar horario" class="remove-time glyphicon glyphicon-minus"
+                          data-ng-click="AttentionTimeCtrl.removeHourFrom('Jueves', $index)"></span>
                 </h5>
-                <input type="text" class="form-control text-center" placeholder="Desde" data-ng-model="AttentionTimeCtrl.newWorkableHours['Jueves']['from']">
-                <input type="text" class="form-control text-center" placeholder="Hasta" data-ng-model="AttentionTimeCtrl.newWorkableHours['Jueves']['to']">
+                <input type="text" class="form-control text-center" placeholder="Desde"
+                       data-ng-model="AttentionTimeCtrl.newWorkableHours['Jueves']['from']">
+
+                <input type="text" class="form-control text-center" placeholder="Hasta"
+                       data-ng-model="AttentionTimeCtrl.newWorkableHours['Jueves']['to']">
             </div>
             <div class="time">
-                <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Viernes')">
+                <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Viernes') track by $index">
                     {{time.from}} a {{time.to}}
+                    <span title="Borrar horario" class="remove-time glyphicon glyphicon-minus"
+                          data-ng-click="AttentionTimeCtrl.removeHourFrom('Viernes', $index)"></span>
                 </h5>
-                <input type="text" class="form-control text-center" placeholder="Desde" data-ng-model="AttentionTimeCtrl.newWorkableHours['Viernes']['from']">
-                <input type="text" class="form-control text-center" placeholder="Hasta" data-ng-model="AttentionTimeCtrl.newWorkableHours['Viernes']['to']">
+                <input type="text" class="form-control text-center" placeholder="Desde"
+                       data-ng-model="AttentionTimeCtrl.newWorkableHours['Viernes']['from']">
+
+                <input type="text" class="form-control text-center" placeholder="Hasta"
+                       data-ng-model="AttentionTimeCtrl.newWorkableHours['Viernes']['to']">
             </div>
             <div class="time">
-                <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Sábado')">
+                <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Sábado') track by $index">
                     {{time.from}} a {{time.to}}
+                    <span title="Borrar horario" class="remove-time glyphicon glyphicon-minus"
+                          data-ng-click="AttentionTimeCtrl.removeHourFrom('Sábado', $index)"></span>
                 </h5>
-                <input type="text" class="form-control text-center" placeholder="Desde" data-ng-model="AttentionTimeCtrl.newWorkableHours['Sábado']['from']">
-                <input type="text" class="form-control text-center" placeholder="Hasta" data-ng-model="AttentionTimeCtrl.newWorkableHours['Sábado']['to']">
+                <input type="text" class="form-control text-center" placeholder="Desde"
+                       data-ng-model="AttentionTimeCtrl.newWorkableHours['Sábado']['from']">
+
+                <input type="text" class="form-control text-center" placeholder="Hasta"
+                       data-ng-model="AttentionTimeCtrl.newWorkableHours['Sábado']['to']">
             </div>
             <div class="time">
-                <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Domingo')">
+                <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Domingo') track by $index">
                     {{time.from}} a {{time.to}}
+                    <span title="Borrar horario" class="remove-time glyphicon glyphicon-minus"
+                          data-ng-click="AttentionTimeCtrl.removeHourFrom('Domingo', $index)"></span>
                 </h5>
-                <input type="text" class="form-control text-center" placeholder="Desde" data-ng-model="AttentionTimeCtrl.newWorkableHours['Domingo']['from']">
-                <input type="text" class="form-control text-center" placeholder="Hasta" data-ng-model="AttentionTimeCtrl.newWorkableHours['Domingo']['to']">
+                <input type="text" class="form-control text-center" placeholder="Desde"
+                       data-ng-model="AttentionTimeCtrl.newWorkableHours['Domingo']['from']">
+
+                <input type="text" class="form-control text-center" placeholder="Hasta"
+                       data-ng-model="AttentionTimeCtrl.newWorkableHours['Domingo']['to']">
             </div>
         </div>
     </div>

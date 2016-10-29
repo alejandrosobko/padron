@@ -17,5 +17,11 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
     dayWanted = @workCalendar.workableDays.find((workableDay) -> workableDay.day == day)
     if dayWanted then dayWanted.workableHours else []
 
+  @removeHourFrom = (day, hoursIndex) ->
+    dayWanted = @workCalendar.workableDays.find((workableDay) -> workableDay.day == day)
+    if (hoursIndex > -1)
+      dayWanted.workableHours.splice(hoursIndex, 1)
+
+
   @
 )
