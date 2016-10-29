@@ -17,16 +17,16 @@ ActiveRecord::Schema.define(version: 20161015050516) do
     t.string   "name"
     t.string   "surname"
     t.integer  "enrollment"
-    t.string   "location"
-    t.string   "institution"
-    t.string   "street"
-    t.integer  "number"
-    t.integer  "telephone"
-    t.integer  "cellphone"
-    t.string   "email"
+    t.text     "locations",    default: "--- []\n"
+    t.text     "institutions", default: "--- []\n"
+    t.text     "streets",      default: "--- []\n"
+    t.text     "numbers",      default: "--- []\n"
+    t.text     "telephones",   default: "--- []\n"
+    t.text     "cellphones",   default: "--- []\n"
+    t.text     "emails",       default: "--- []\n"
     t.string   "specialty"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "visitors", force: :cascade do |t|
