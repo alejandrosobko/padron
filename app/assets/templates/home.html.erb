@@ -53,17 +53,17 @@
           <tr class="row-pointer">
             <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.name}} {{dentist.surname}}</td>
             <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.enrollment}}</td>
-            <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.institution}}</td>
+            <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.institutions[0]}}</td>
             <td data-ui-sref="form.edit({dentistId: dentist.id})">
-              <span data-ng-show="dentist.street">{{dentist.street}}, </span>
-              <span data-ng-show="dentist.number">{{dentist.number}} </span>
-              <span data-ng-show="dentist.location">({{dentist.location}})</span>
+              <span data-ng-hide="dentist.emptyValue(dentist.streets[0])">{{dentist.streets[0]}}, </span>
+              <span data-ng-hide="dentist.emptyValue(dentist.numbers[0])">{{dentist.numbers[0]}} </span>
+              <span data-ng-hide="dentist.emptyValue(dentist.locations[0])">({{dentist.locations[0]}})</span>
             </td>
             <td data-ui-sref="form.edit({dentistId: dentist.id})">{{dentist.specialty}}</td>
             <td data-ui-sref="form.edit({dentistId: dentist.id})">
-              <span data-ng-show="dentist.telephone">{{dentist.telephone}} <br></span>
-              <span data-ng-show="dentist.cellphone">{{dentist.cellphone}} <br></span>
-              <span data-ng-show="dentist.email">{{dentist.email}}</span>
+              <span data-ng-hide="dentist.emptyValue(dentist.telephones[0])">{{dentist.telephones[0]}} <br></span>
+              <span data-ng-hide="dentist.emptyValue(dentist.cellphones[0])">{{dentist.cellphones[0]}} <br></span>
+              <span data-ng-hide="dentist.emptyValue(dentist.emails[0])">{{dentist.emails[0]}}</span>
             </td>
             <td class="text-center">
               <button class="btn btn-xs btn-success" data-ng-click="dentistCtrl.openModal(dentist)"
