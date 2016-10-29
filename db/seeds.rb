@@ -7,21 +7,25 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-dentists = [{name: 'Alejandro', surname: 'Sobko', enrollment: 1234, location: 'Quilmes',
-             institution: 'TIP Inc', street: 'Mitre', number: 123, telephone: 42789999,
-             cellphone: 1534498431, email: 'alejandro@gmail.com', specialty: 'Ortodoncia'},
-            {name: 'Juan', surname: 'Perez', enrollment: 56789, location: 'Berazategui',
-             institution: 'Dentist SA', street: 'Calle 14', number: 1145, telephone: 47287332,
-             cellphone: 1524464552, email: 'juancho.12@gmail.com', specialty: 'Caries'},
-            {name: 'Nadia', surname: 'Gonzalez', enrollment: 2234, location: 'Quilmes',
-             institution: 'NaGon', street: 'General Paz', number: 5466, telephone: 42568823,
-             cellphone: 1590089973, email: 'na.gonzalez@gmail.com', specialty: 'Ortodoncia'},
-            {name: 'Pedro', surname: 'Diente', enrollment: 1899, location: 'Bernal',
-             institution: 'Dientes exceptions', street: 'Siempreviva', number: 900,
-             cellphone: 1588923444, email: 'dientes@gmail.com', specialty: 'Radiografías'},
-            {name: 'Agustin', surname: 'Rodriguez', enrollment: 6723, location: 'Ezpeleta',
-             institution: 'Diente Limpio', street: 'Rio Gallegos', number: 8989, telephone: 42897223,
-             cellphone: 1578823712, email: 'agustin.r@gmail.com', specialty: 'Caries'}]
+dentists = [{name: 'Alejandro', surname: 'Sobko', enrollment: 1234, locations: %w(Quilmes Bernal),
+             institutions: ['TIP Inc'], streets: %w(Mitre Lavalle), numbers: [123, 3444], telephones: [42789999],
+             cellphones: [1534498431], emails: ['alejandro@gmail.com'], specialty: 'Ortodoncia'},
+
+            {name: 'Juan', surname: 'Perez', enrollment: 56789, locations: ['Berazategui'],
+             institutions: ['Dentist SA'], streets: ['Calle 14'], numbers: [1145], telephones: [47287332],
+             cellphones: [1524464552, 159349392], emails: ['juancho.12@gmail.com'], specialty: 'Caries'},
+
+            {name: 'Nadia', surname: 'Gonzalez', enrollment: 2234, locations: ['Quilmes'],
+             institutions: ['NaGon'], streets: ['General Paz'], numbers: [5466], telephones: [42568823],
+             cellphones: [1590089973], emails: %w(na.gonzalez@gmail.com alguienmas@hotmail.com), specialty: 'Ortodoncia'},
+
+            {name: 'Pedro', surname: 'Diente', enrollment: 1899, locations: %w(Bernal Ezpeleta),
+             institutions: ['Dientes exceptions'], streets: %w(Siempreviva AlgunaRara), numbers: [900, 9090],
+             cellphones: [1588923444], emails: ['dientes@gmail.com'], specialty: 'Radiografías'},
+
+            {name: 'Agustin', surname: 'Rodriguez', enrollment: 6723, locations: ['Ezpeleta'],
+             institutions: ['Diente Limpio'], streets: ['Rio Gallegos'], numbers: [8989], telephones: [42897223],
+             cellphones: [1578823712], emails: ['agustin.r@gmail.com'], specialty: 'Caries'}]
 
 visitors = [{name: 'Juan'}, {name: 'Carlos'}, {name: 'Eduardo'}, {name: 'Gaston'}, {name: 'Fernando'}]
 visit_dates = [DateTime.new(2016, 02, 23), DateTime.new(2016, 03, 13), DateTime.new(2016, 03, 19), DateTime.new(2016, 05, 03), DateTime.new(2016, 06, 04)]
