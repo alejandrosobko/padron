@@ -11,35 +11,35 @@
     <label for="inputEnrollment">Matrícula</label>
     <input type="number" class="form-control" id="inputEnrollment" data-ng-model="newOrEditCtrl.dentistToEdit.enrollment">
   </div>
-  <div class="form-group">
-    <label for="inputLocation">Localidad</label>
-    <input type="text" class="form-control" id="inputLocation" data-ng-model="newOrEditCtrl.dentistToEdit.location">
+  <div class="form-group" data-ng-repeat="location in newOrEditCtrl.dentistToEdit.locations track by $index">
+    <label for="inputLocation">Localidad <span data-ng-show="$index > 0">{{$index + 1}}</span></label>
+    <input type="text" class="form-control" id="inputLocation" data-ng-model="newOrEditCtrl.dentistToEdit.locations[$index]">
   </div>
-  <div class="form-group">
-    <label for="inputInstitute">Institución</label>
-    <input type="text" class="form-control" id="inputInstitute" data-ng-model="newOrEditCtrl.dentistToEdit.institution">
+  <div class="form-group" data-ng-repeat="institution in newOrEditCtrl.dentistToEdit.institutions track by $index">
+    <label for="inputInstitute">Institución <span data-ng-show="$index > 0">{{$index + 1}}</span></label>
+    <input type="text" class="form-control" id="inputInstitute" data-ng-model="newOrEditCtrl.dentistToEdit.institutions[$index]">
   </div>
-  <div class="form-group">
-    <label for="inputStreet">Calle</label>
-    <input type="text" class="form-control" id="inputStreet" data-ng-model="newOrEditCtrl.dentistToEdit.street">
+  <div class="form-group" data-ng-repeat="street in newOrEditCtrl.dentistToEdit.streets track by $index">
+    <label for="inputStreet">Calle <span data-ng-show="$index > 0">{{$index + 1}}</span></label>
+    <input type="text" class="form-control" id="inputStreet" data-ng-model="newOrEditCtrl.dentistToEdit.streets[$index]">
   </div>
 </div>
 <div class="col-xs-4 col-xs-offset-2">
-  <div class="form-group">
-    <label for="inputNumber">Número</label>
-    <input type="number" class="form-control" id="inputNumber" data-ng-model="newOrEditCtrl.dentistToEdit.number">
+  <div class="form-group" data-ng-repeat="number in newOrEditCtrl.dentistToEdit.numbers track by $index">
+    <label for="inputNumber">Número <span data-ng-show="$index > 0">{{$index + 1}}</span></label>
+    <input type="number" class="form-control" id="inputNumber" data-ng-model="newOrEditCtrl.dentistToEdit.numbers[$index]">
   </div>
-  <div class="form-group">
-    <label for="inputTelephone">Teléfono</label>
-    <input type="text" class="form-control" id="inputTelephone" data-ng-model="newOrEditCtrl.dentistToEdit.telephone">
+  <div class="form-group" data-ng-repeat="telephone in newOrEditCtrl.dentistToEdit.telephones track by $index">
+    <label for="inputTelephone">Teléfono <span data-ng-show="$index > 0">{{$index + 1}}</span></label>
+    <input type="text" class="form-control" id="inputTelephone" data-ng-model="newOrEditCtrl.dentistToEdit.telephones[$index]">
   </div>
-  <div class="form-group">
-    <label for="inputCellphone">Celular</label>
-    <input type="text" class="form-control" id="inputCellphone" data-ng-model="newOrEditCtrl.dentistToEdit.cellphone">
+  <div class="form-group" data-ng-repeat="cellphone in newOrEditCtrl.dentistToEdit.cellphones track by $index">
+    <label for="inputCellphone">Celular <span data-ng-show="$index > 0">{{$index + 1}}</span></label>
+    <input type="text" class="form-control" id="inputCellphone" data-ng-model="newOrEditCtrl.dentistToEdit.cellphones[$index]">
   </div>
-  <div class="form-group">
-    <label for="inputEmail">E-mail</label>
-    <input type="email" class="form-control" id="inputEmail" data-ng-model="newOrEditCtrl.dentistToEdit.email">
+  <div class="form-group" data-ng-repeat="email in newOrEditCtrl.dentistToEdit.emails track by $index">
+    <label for="inputEmail">E-mail <span data-ng-show="$index > 0">{{$index + 1}}</span></label>
+    <input type="email" class="form-control" id="inputEmail" data-ng-model="newOrEditCtrl.dentistToEdit.emails[$index]">
   </div>
   <div class="form-group">
     <label for="inputSpeciality">Especialidad</label>
