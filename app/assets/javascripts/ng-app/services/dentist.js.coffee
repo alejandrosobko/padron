@@ -9,6 +9,16 @@ angular.module('padronApp').factory('Dentist', ['railsResourceFactory', 'railsSe
       )
     )
 
+    resource.prototype.completeData = ->
+      @locations ||= [""]
+      @institutions ||= [""]
+      @streets ||= [""]
+      @numbers ||= [""]
+      @telephones ||= [""]
+      @cellphones ||= [""]
+      @emails ||= [""]
+      @
+
     resource.prototype.getWorkCalendar = ->
       if @workCalendar then WorkCalendar.build(@workCalendar) else new WorkCalendar
 
@@ -18,7 +28,7 @@ angular.module('padronApp').factory('Dentist', ['railsResourceFactory', 'railsSe
       @emptyValue(@cellphones) && @emptyValue(@emails) && @emptyValue(@specialtys)
 
     resource.prototype.emptyValue = (value) ->
-      value == undefined || value == null || value == "" || value.length == 0 || value == [""]
+      value == undefined || value == null || value == "" || value.length == 0 || (value.length == 1 && value[0] == "")
 
     resource.prototype.removeEmptyValues = -> # TODO: No puedo ponerlos en una lista y recorrer la lista aplicando compact
       @locations    = _.compact(@locations)    if @locations.length > 1

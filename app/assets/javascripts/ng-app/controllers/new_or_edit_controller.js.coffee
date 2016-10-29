@@ -1,6 +1,6 @@
 angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, errorHandler, $location, $uibModal) ->
   @editMode = $stateParams.dentistId
-  @dentistToEdit = new Dentist
+  @dentistToEdit = new Dentist().completeData()
   @newVisit = {visitDate: new Date}
   @newVisitor = {}
 
