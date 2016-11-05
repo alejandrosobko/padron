@@ -1,8 +1,10 @@
-span.plus-value {
+.btn.plus-value {
   margin-left: 5px !important;
   color: #4da4da;
+  background-color: #fff;
+  border-color: #fff;
 }
 
-span.plus-value:hover {
+.btn.plus-value:hover {
   color: #337ab7;
 }

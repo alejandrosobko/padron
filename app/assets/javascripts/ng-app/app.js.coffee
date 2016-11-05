@@ -19,6 +19,11 @@ angular.module('padronApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstra
         url: '/editar/:dentistId',
         controller: 'NewOrEditCtrl as newOrEdit'
       })
+      .state('show', {
+        url: '/:dentistId',
+        templateUrl: 'dentist.html',
+        controller: 'ShowCtrl as showCtrl'
+      })
       .state('other', {
         url: '/other',
         templateUrl: 'other.html'

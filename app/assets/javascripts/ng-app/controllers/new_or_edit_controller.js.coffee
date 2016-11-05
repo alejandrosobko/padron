@@ -56,24 +56,6 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
 
   @removeToView = -> $location.path('/')
 
-  @delete = ->
-    $uibModal.open(
-      templateUrl: 'modals/dentist_warning.html'
-      controller: 'ModalDentistCtrl as ModalDentistCtrl'
-      resolve:
-        deleteFunction: => @deleteFunction
-        dentist: => @dentistToEdit
-    )
-
-  @deleteFunction = =>
-    @dentistToEdit.delete({id: @dentistToEdit.id}).then(
-      (response) =>
-        @dentistToEdit = new Dentist
-        errorHandler.info("Se borró el odontólogo correctamente")
-        $location.path('/')
-      (error) => errorHandler.error("Ocurrió un error interno borrando al odontólogo. Por favor intente nuevamente")
-    )
-
   @viewAttentionTime = =>
     $uibModal.open(
       templateUrl: 'modals/attention_time.html'
