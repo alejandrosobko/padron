@@ -1,14 +1,38 @@
 .show-dentist .buttons {
   display: inline-block;
   float: right;
+  margin-right: 5px;
+  font-size: 20px;
 }
 
-.show-dentist div.title {
+.show-dentist .edit-dentist {
+  color: #3FB8EC;
+  margin-right: 10px;
+}
+
+.show-dentist .edit-dentist:hover {
+  color: #3e95ec;
+}
+
+.show-dentist .delete-dentist {
+  color: #ff4e56;
+}
+
+.show-dentist .delete-dentist:hover {
+  color: #f00000;
+}
+
+.show-dentist .width-115 {
   display: inline-block;
   width: 115px;
 }
 
-.show-dentist .title span {
+.show-dentist .width-135 {
+  display: inline-block;
+  width: 135px;
+}
+
+.show-dentist span.title {
   font-size: 17px;
   line-height: 1.8;
   color: #0B465D;

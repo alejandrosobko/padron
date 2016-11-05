@@ -3,51 +3,70 @@
     <div class="col-xs-12 light-title padding-top-20">
       <span>{{showCtrl.dentist.name}} {{showCtrl.dentist.surname}}</span>
       <div class="buttons">
-        <button class="btn btn-info" data-ui-sref="form.edit({dentistId: showCtrl.dentist.id})">Editar</button>
-        <button class="btn btn-danger" type="button" data-ng-click="showCtrl.delete()" title="Eliminar">
-          <span class="glyphicon glyphicon-trash"></span>
-        </button>
+        <span class="edit-dentist glyphicon glyphicon-pencil" data-ui-sref="form.edit({dentistId: showCtrl.dentist.id})" title="Editar"></span>
+        <span class="delete-dentist glyphicon glyphicon-trash" data-ng-click="showCtrl.delete()" title="Eliminar"></span>
       </div>
       <hr>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-6">
       <div>
-        <div class="title"><span>Matrícula: </span></div>
+        <div class="width-115"><span class="title">Matrícula: </span></div>
         <span>{{showCtrl.dentist.enrollment}}</span>
       </div>
       <div data-ng-repeat="location in showCtrl.dentist.locations track by $index">
-        <div class="title"><span>Localidad {{$index + 1}}: </span></div>
+        <div class="width-115"><span class="title">Localidad {{$index + 1}}: </span></div>
         <span>{{location}}</span>
       </div>
       <div data-ng-repeat="institution in showCtrl.dentist.institutions track by $index">
-        <div class="title"><span>Institución {{$index + 1}}: </span></div>
+        <div class="width-115"><span class="title">Institución {{$index + 1}}: </span></div>
         <span>{{institution}}</span>
       </div>
       <div data-ng-repeat="street in showCtrl.dentist.streets track by $index">
-        <div class="title"><span>Calle {{$index + 1}}: </span></div>
+        <div class="width-115"><span class="title">Calle {{$index + 1}}: </span></div>
         <span>{{street}}</span>
       </div>
       <div data-ng-repeat="number in showCtrl.dentist.numbers track by $index">
-        <div class="title"><span>Número {{$index + 1}}: </span></div>
+        <div class="width-115"><span class="title">Número {{$index + 1}}: </span></div>
         <span>{{number}}</span>
       </div>
       <div data-ng-repeat="telephone in showCtrl.dentist.telephones track by $index">
-        <div class="title"><span>Teléfono {{$index + 1}}: </span></div>
+        <div class="width-115"><span class="title">Teléfono {{$index + 1}}: </span></div>
         <span>{{telephone}}</span>
       </div>
       <div data-ng-repeat="cellphone in showCtrl.dentist.cellphones track by $index">
-        <div class="title"><span>Celular {{$index + 1}}: </span></div>
+        <div class="width-115"><span class="title">Celular {{$index + 1}}: </span></div>
         <span>{{cellphone}}</span>
       </div>
       <div data-ng-repeat="email in showCtrl.dentist.emails track by $index">
-        <div class="title"><span>E-mail {{$index + 1}}: </span></div>
+        <div class="width-115"><span class="title">E-mail {{$index + 1}}: </span></div>
         <span>{{email}}</span>
       </div>
       <div>
-        <div class="title"><span>Especialidad: </span></div>
+        <div class="width-115"><span class="title">Especialidad: </span></div>
         <span>{{showCtrl.dentist.specialty}}</span>
+      </div>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="well" data-ng-repeat="visit in showCtrl.dentist.visits track by $index">
+        <div>
+          <div class="width-135">
+            <span class="title">Fecha: </span>
+          </div>
+          <span>{{visit.visitDate}}</span>
+        </div>
+
+        <div>
+          <div class="width-135"><span class="title">Visitador: </span></div>
+          <span>{{visit.visitor.name}}</span>
+        </div>
+
+        <div>
+          <div class="width-135"><span class="title">Observaciones: </span></div>
+          <span>{{visit.observations}}</span>
+        </div>
       </div>
     </div>
   </div>
