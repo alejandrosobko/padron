@@ -17,8 +17,8 @@
   <div class="form-group" data-ng-repeat="location in newOrEditCtrl.dentistToEdit.locations track by $index">
     <label for="inputLocation">Localidad
       <span data-ng-show="$index > 0">{{$index + 1}}</span>
-      <span title="Agregar otro campo" class="plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
-            data-ng-click="newOrEditCtrl.dentistToEdit.locations.push('')"></span>
+      <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
+            data-ng-click="newOrEditCtrl.dentistToEdit.locations.push('')"></button>
     </label>
     <input type="text" class="form-control" id="inputLocation" data-ng-model="newOrEditCtrl.dentistToEdit.locations[$index]">
   </div>
@@ -26,8 +26,8 @@
   <div class="form-group" data-ng-repeat="institution in newOrEditCtrl.dentistToEdit.institutions track by $index">
     <label for="inputInstitute">Institución
       <span data-ng-show="$index > 0">{{$index + 1}}</span>
-      <span title="Agregar otro campo" class="plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
-            data-ng-click="newOrEditCtrl.dentistToEdit.institutions.push('')"></span>
+      <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
+            data-ng-click="newOrEditCtrl.dentistToEdit.institutions.push('')"></button>
     </label>
     <input type="text" class="form-control" id="inputInstitute" data-ng-model="newOrEditCtrl.dentistToEdit.institutions[$index]">
   </div>
@@ -35,8 +35,8 @@
   <div class="form-group" data-ng-repeat="street in newOrEditCtrl.dentistToEdit.streets track by $index">
     <label for="inputStreet">Calle
       <span data-ng-show="$index > 0">{{$index + 1}}</span>
-      <span title="Agregar otro campo" class="plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
-            data-ng-click="newOrEditCtrl.dentistToEdit.streets.push('')"></span>
+      <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
+            data-ng-click="newOrEditCtrl.dentistToEdit.streets.push('')"></button>
     </label>
     <input type="text" class="form-control" id="inputStreet" data-ng-model="newOrEditCtrl.dentistToEdit.streets[$index]">
   </div>
@@ -47,8 +47,8 @@
   <div class="form-group" data-ng-repeat="number in newOrEditCtrl.dentistToEdit.numbers track by $index">
     <label for="inputNumber">Número
       <span data-ng-show="$index > 0">{{$index + 1}}</span>
-      <span title="Agregar otro campo" class="plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
-            data-ng-click="newOrEditCtrl.dentistToEdit.numbers.push('')"></span>
+      <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
+            data-ng-click="newOrEditCtrl.dentistToEdit.numbers.push('')"></button>
     </label>
     <input type="number" class="form-control" id="inputNumber" data-ng-model="newOrEditCtrl.dentistToEdit.numbers[$index]">
   </div>
@@ -56,8 +56,8 @@
   <div class="form-group" data-ng-repeat="telephone in newOrEditCtrl.dentistToEdit.telephones track by $index">
     <label for="inputTelephone">Teléfono
       <span data-ng-show="$index > 0">{{$index + 1}}</span>
-      <span title="Agregar otro campo" class="plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
-            data-ng-click="newOrEditCtrl.dentistToEdit.telephones.push('')"></span>
+      <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
+            data-ng-click="newOrEditCtrl.dentistToEdit.telephones.push('')"></button>
     </label>
     <input type="text" class="form-control" id="inputTelephone" data-ng-model="newOrEditCtrl.dentistToEdit.telephones[$index]">
   </div>
@@ -65,8 +65,8 @@
   <div class="form-group" data-ng-repeat="cellphone in newOrEditCtrl.dentistToEdit.cellphones track by $index">
     <label for="inputCellphone">Celular
       <span data-ng-show="$index > 0">{{$index + 1}}</span>
-      <span title="Agregar otro campo" class="plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
-            data-ng-click="newOrEditCtrl.dentistToEdit.cellphones.push('')"></span>
+      <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
+            data-ng-click="newOrEditCtrl.dentistToEdit.cellphones.push('')"></button>
     </label>
     <input type="text" class="form-control" id="inputCellphone" data-ng-model="newOrEditCtrl.dentistToEdit.cellphones[$index]">
   </div>
@@ -74,8 +74,8 @@
   <div class="form-group" data-ng-repeat="email in newOrEditCtrl.dentistToEdit.emails track by $index">
     <label for="inputEmail">E-mail
       <span data-ng-show="$index > 0">{{$index + 1}}</span>
-      <span title="Agregar otro campo" class="plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
-            data-ng-click="newOrEditCtrl.dentistToEdit.emails.push('')"></span>
+      <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
+            data-ng-click="newOrEditCtrl.dentistToEdit.emails.push('')"></button>
     </label>
     <input type="email" class="form-control" id="inputEmail" data-ng-model="newOrEditCtrl.dentistToEdit.emails[$index]">
   </div>
