@@ -22,25 +22,12 @@ class DentistsController < ApplicationController
   def update
     dentist = Dentist.find(params[:dentist][:id])
     begin
+      destroy_hours(params[:dentist][:hours_to_remove])
       dentist.update!(dentist_params)
       render json: dentist
     rescue => e
       render json: dentist.errors.messages, status: :unprocessable_entity
     end
-  end
-
-  def create_visit # TODO: Borrar
-    dentist = Dentist.find(params[:id])
-    visit = VisitService.new(params).find_or_new
-    visit.save!
-    dentist.visits.push(visit)
-    begin
-      dentist.save!
-      to_render = visit
-    rescue => e
-      to_render = e.message
-    end
-    render json: to_render
   end
 
   def destroy
@@ -50,6 +37,10 @@ class DentistsController < ApplicationController
 
 
   private
+
+  def destroy_hours(hours)
+    WorkableHour.where(id: hours).destroy_all
+  end
 
   def dentist_params
     params.require(:dentist).permit(
