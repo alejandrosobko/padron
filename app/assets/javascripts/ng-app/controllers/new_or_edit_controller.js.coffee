@@ -65,6 +65,10 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
         dentist: => @dentistToEdit
     )
 
+  @removeFieldFrom = (list, field) ->
+    if (field > -1)
+      list.splice(field, 1)
+
 
   @
 )
