@@ -12,21 +12,19 @@ angular.module('padronApp', ['ngAnimate', 'ui.router', 'templates', 'ui.bootstra
         templateUrl: 'forms/new_or_edit.html'
       })
       .state('form.new', {
-        url: '/nuevo',
-        controller: 'NewOrEditCtrl as newOrEdit'
+        url: '/nuevo'
        })
       .state('form.edit', {
-        url: '/editar/:dentistId',
-        controller: 'NewOrEditCtrl as newOrEdit'
+        url: '/:dentistId/editar'
+      })
+      .state('other', {
+        url: '/other',
+        templateUrl: 'other.html'
       })
       .state('show', {
         url: '/:dentistId',
         templateUrl: 'dentist.html',
         controller: 'ShowCtrl as showCtrl'
-      })
-      .state('other', {
-        url: '/other',
-        templateUrl: 'other.html'
       })
 
     $urlRouterProvider.otherwise('/')

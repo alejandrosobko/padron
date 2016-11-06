@@ -6,6 +6,9 @@ angular.module('padronApp').controller('ShowCtrl', ($stateParams, Dentist, $uibM
     (error) => alert('failed')
   )
 
+  @getDateFor = (visit) ->
+    new Date(visit.visitDate)
+
   @delete = ->
     $uibModal.open(
       templateUrl: 'modals/dentist_warning.html'
