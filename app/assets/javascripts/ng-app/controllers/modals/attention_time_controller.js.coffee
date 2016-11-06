@@ -1,4 +1,4 @@
-angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, dentist, WorkCalendar) ->
+angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, dentist, WorkCalendar, errorHandler) ->
   @dentist = dentist
   @workCalendar = dentist.getWorkCalendar()
   @newWorkableHours = {}
@@ -7,22 +7,32 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
   @cancel = ->
     $uibModalInstance.dismiss()
 
+  @addHoursFor = (day) ->
+    @workCalendar.updateDay(day, @newWorkableHours[day]) if @_validHours(day)
+    @newWorkableHours[day] = {}
+
+  @_validHours = (day) ->
+    @newWorkableHours[day] &&
+    @newWorkableHours[day]['from'] > 0 && @newWorkableHours[day]['from'] <= 24 &&
+    @newWorkableHours[day]['to'] > 0 && @newWorkableHours[day]['to'] <= 24 &&
+    @newWorkableHours[day]['from'] < @newWorkableHours[day]['to']
+
   @save = ->
-    for day of @newWorkableHours
-      @workCalendar.updateDay(day, @newWorkableHours[day])
-    @dentist.workCalendar = @workCalendar
     if dentist.id
-      @_do_update()
+      @_update()
     else
       $uibModalInstance.dismiss()
 
-  @_do_update = ->
-    @dentist.hours_to_remove = @hoursToRemove
-    @dentist.update().then(
+  @_update = ->
+    dentist.hours_to_remove = @hoursToRemove
+    dentist.update().then(
       (success) ->
-        alert('updated!')
+        errorHandler.success("Se guardaron los horarios correctamente")
         $uibModalInstance.dismiss()
-      (error) -> alert('failed!')
+      (error) =>
+        @workCalendar = {}
+        for key_error in Object.keys(error.data)
+          errorHandler.error(error.data[key_error][0])
     )
 
   @workableHoursFor = (day) ->
