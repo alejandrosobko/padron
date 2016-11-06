@@ -12,12 +12,12 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
     @newWorkableHours[day] = {}
 
   @_validHours = (day) ->
-    @newWorkableHours[day] &&
-    @newWorkableHours[day]['from'] > 0 && @newWorkableHours[day]['from'] <= 24 &&
-    @newWorkableHours[day]['to'] > 0 && @newWorkableHours[day]['to'] <= 24 &&
-    @newWorkableHours[day]['from'] < @newWorkableHours[day]['to']
+    from = parseInt(@newWorkableHours[day]['from'])
+    to = parseInt(@newWorkableHours[day]['to'])
+    @newWorkableHours[day] && from > 0 && from <= 24 && to > 0 && to <= 24 && from < to
 
   @save = ->
+    dentist.workCalendar = @workCalendar
     if dentist.id
       @_update()
     else
@@ -30,7 +30,6 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
         errorHandler.success("Se guardaron los horarios correctamente")
         $uibModalInstance.dismiss()
       (error) =>
-        @workCalendar = {}
         for key_error in Object.keys(error.data)
           errorHandler.error(error.data[key_error][0])
     )
