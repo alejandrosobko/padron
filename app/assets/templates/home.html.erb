@@ -13,7 +13,7 @@
                 <input type="text" class="form-control" id="inputSearch" placeholder="Ingrese cualquier campo" data-ng-model="dentistCtrl.searched">
               </div>
             </div>
-            <div class="form-group col-xs-6 text-right">
+            <div class="form-group col-xs-6 text-right btn-create">
               <div data-ng-show="dentistCtrl.searched.length > 4">
                 <label for="buttonCreate" class="col-xs-10 control-label">¿No encontrás al que buscas?</label>
                 <div class="col-xs-2">
@@ -31,7 +31,7 @@
         <table class="table table-hover">
           <thead>
           <tr>
-            <th data-ng-click="dentistCtrl.orderBy('surname')" class="row-pointer">
+            <th data-ng-click="dentistCtrl.orderBy('surname')" class="row-pointer col-xs-2">
               <span data-uib-tooltip="Ordenar por apellido"
                     data-tooltip-placement="top"
                     data-tooltip-trigger="'mouseenter'"
@@ -40,12 +40,12 @@
                 <span class="glyphicon glyphicon-triangle-bottom" data-ng-show="dentistCtrl.reversed"></span>
               </span>
             </th>
-            <th>Matrícula</th>
-            <th>Institución</th>
-            <th>Ubicación</th>
-            <th>Especialidad</th>
-            <th>Contacto</th>
-            <th>Nueva visita</th>
+            <th class="col-xs-1">Matrícula</th>
+            <th class="col-xs-2">Institución</th>
+            <th class="col-xs-2">Ubicación</th>
+            <th class="col-xs-2">Especialidad</th>
+            <th class="col-xs-2">Contacto</th>
+            <th class="col-xs-1">Nueva visita</th>
           </tr>
           </thead>
           <tbody data-ng-repeat="dentist in dentistCtrl.dentists | orderBy:dentistCtrl.fieldToOrder:dentistCtrl.reversed
