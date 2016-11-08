@@ -3,13 +3,20 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
   @workCalendar = dentist.getWorkCalendar()
   @newWorkableHours = {}
   @hoursToRemove = []
+  @canSave = true
 
   @cancel = ->
     $uibModalInstance.dismiss()
 
   @addHoursFor = (day) ->
-    @workCalendar.updateDay(day, @newWorkableHours[day]) if @_validHours(day)
-    @newWorkableHours[day] = {}
+    return unless @newWorkableHours[day]
+    if @_validHours(day)
+      @workCalendar.updateDay(day, @newWorkableHours[day])
+      @newWorkableHours[day] = {}
+      @canSave = true
+    else
+      errorHandler.error("El horario es incorrecto")
+      @canSave = false
 
   @_validHours = (day) ->
     from = parseInt(@newWorkableHours[day]['from'])
@@ -17,11 +24,12 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
     @newWorkableHours[day] && from > 0 && from <= 24 && to > 0 && to <= 24 && from < to
 
   @save = ->
+    @_addHoursNotPushed()
     dentist.workCalendar = @workCalendar
-    if dentist.id
-      @_update()
-    else
-      $uibModalInstance.dismiss()
+    @_update() if dentist.id && @canSave
+
+  @_addHoursNotPushed = ->
+    _.each(['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'], (day) => @addHoursFor(day))
 
   @_update = ->
     dentist.hours_to_remove = @hoursToRemove
