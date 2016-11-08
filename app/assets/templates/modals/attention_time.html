@@ -7,41 +7,13 @@
             <label>Odontólogo:</label> {{AttentionTimeCtrl.dentist.name}} {{AttentionTimeCtrl.dentist.surname}}
         </div>
         <div class="row text-center attention-time">
-            <div class="day">
-                <span>Lunes</span>
-                <span title="Agregar otro campo" class="time plus-value glyphicon glyphicon-plus"
-                data-ng-click="AttentionTimeCtrl.addHoursFor('Lunes')"></span>
-            </div>
-            <div class="day">
-                <span>Martes</span>
-                <span title="Agregar otro campo" class="time plus-value glyphicon glyphicon-plus"
-                data-ng-click="AttentionTimeCtrl.addHoursFor('Martes')"></span>
-            </div>
-            <div class="day">
-                <span>Miércoles</span>
-                <span title="Agregar otro campo" class="time plus-value glyphicon glyphicon-plus"
-                data-ng-click="AttentionTimeCtrl.addHoursFor('Miércoles')"></span>
-            </div>
-            <div class="day">
-                <span>Jueves</span>
-                <span title="Agregar otro campo" class="time plus-value glyphicon glyphicon-plus"
-                data-ng-click="AttentionTimeCtrl.addHoursFor('Jueves')"></span>
-            </div>
-            <div class="day">
-                <span>Viernes</span>
-                <span title="Agregar otro campo" class="time plus-value glyphicon glyphicon-plus"
-                data-ng-click="AttentionTimeCtrl.addHoursFor('Viernes')"></span>
-            </div>
-            <div class="day">
-                <span>Sábado</span>
-                <span title="Agregar otro campo" class="time plus-value glyphicon glyphicon-plus"
-                data-ng-click="AttentionTimeCtrl.addHoursFor('Sábado')"></span>
-            </div>
-            <div class="day">
-                <span>Domingo</span>
-                <span title="Agregar otro campo" class="time plus-value glyphicon glyphicon-plus"
-                data-ng-click="AttentionTimeCtrl.addHoursFor('Domingo')"></span>
-            </div>
+            <div class="day"><span>Lunes</span></div>
+            <div class="day"><span>Martes</span></div>
+            <div class="day"><span>Miércoles</span></div>
+            <div class="day"><span>Jueves</span></div>
+            <div class="day"><span>Viernes</span></div>
+            <div class="day"><span>Sábado</span></div>
+            <div class="day"><span>Domingo</span></div>
         </div>
         <div class="row text-center">
             <div class="time">
@@ -53,8 +25,10 @@
                 <input type="text" class="form-control text-center" placeholder="Desde"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Lunes']['from']">
 
-                <input type="text" class="form-control text-center" placeholder="Hasta"
+                <input type="text" class="form-control text-center to" placeholder="Hasta"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Lunes']['to']">
+                <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus"
+                        data-ng-click="AttentionTimeCtrl.addHoursFor('Lunes')"></button>
             </div>
             <div class="time">
                 <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Martes') track by $index">
@@ -65,8 +39,10 @@
                 <input type="text" class="form-control text-center" placeholder="Desde"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Martes']['from']">
 
-                <input type="text" class="form-control text-center" placeholder="Hasta"
+                <input type="text" class="form-control text-center to" placeholder="Hasta"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Martes']['to']">
+                <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus"
+                        data-ng-click="AttentionTimeCtrl.addHoursFor('Martes')"></button>
             </div>
             <div class="time">
                 <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Miércoles') track by $index">
@@ -77,8 +53,10 @@
                 <input type="text" class="form-control text-center" placeholder="Desde"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Miércoles']['from']">
 
-                <input type="text" class="form-control text-center" placeholder="Hasta"
+                <input type="text" class="form-control text-center to" placeholder="Hasta"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Miércoles']['to']">
+                <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus"
+                        data-ng-click="AttentionTimeCtrl.addHoursFor('Miércoles')"></button>
             </div>
             <div class="time">
                 <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Jueves') track by $index">
@@ -89,8 +67,10 @@
                 <input type="text" class="form-control text-center" placeholder="Desde"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Jueves']['from']">
 
-                <input type="text" class="form-control text-center" placeholder="Hasta"
+                <input type="text" class="form-control text-center to" placeholder="Hasta"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Jueves']['to']">
+                <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus"
+                        data-ng-click="AttentionTimeCtrl.addHoursFor('Jueves')"></button>
             </div>
             <div class="time">
                 <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Viernes') track by $index">
@@ -101,8 +81,10 @@
                 <input type="text" class="form-control text-center" placeholder="Desde"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Viernes']['from']">
 
-                <input type="text" class="form-control text-center" placeholder="Hasta"
+                <input type="text" class="form-control text-center to" placeholder="Hasta"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Viernes']['to']">
+                <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus"
+                        data-ng-click="AttentionTimeCtrl.addHoursFor('Viernes')"></button>
             </div>
             <div class="time">
                 <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Sábado') track by $index">
@@ -113,8 +95,10 @@
                 <input type="text" class="form-control text-center" placeholder="Desde"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Sábado']['from']">
 
-                <input type="text" class="form-control text-center" placeholder="Hasta"
+                <input type="text" class="form-control text-center to" placeholder="Hasta"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Sábado']['to']">
+                <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus"
+                        data-ng-click="AttentionTimeCtrl.addHoursFor('Sábado')"></button>
             </div>
             <div class="time">
                 <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Domingo') track by $index">
@@ -125,8 +109,10 @@
                 <input type="text" class="form-control text-center" placeholder="Desde"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Domingo']['from']">
 
-                <input type="text" class="form-control text-center" placeholder="Hasta"
+                <input type="text" class="form-control text-center to" placeholder="Hasta"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Domingo']['to']">
+                <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus"
+                        data-ng-click="AttentionTimeCtrl.addHoursFor('Domingo')"></button>
             </div>
         </div>
     </div>
