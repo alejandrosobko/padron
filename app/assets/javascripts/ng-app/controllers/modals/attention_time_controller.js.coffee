@@ -8,35 +8,45 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
   @cancel = ->
     $uibModalInstance.dismiss()
 
+  # plus button
   @addHoursFor = (day) ->
     return unless @newWorkableHours[day]
-    if @_validHours(day)
+    @_checkHours()
+    if @canSave
       @workCalendar.updateDay(day, @newWorkableHours[day])
-      @newWorkableHours[day] = {}
-      @canSave = true
+      @newWorkableHours[day] = undefined
     else
-      errorHandler.error("El horario es incorrecto")
-      @canSave = false
+      errorHandler.error("Hay horarios incorrectos")
 
-  @_validHours = (day) ->
-    from = parseInt(@newWorkableHours[day]['from'])
-    to = parseInt(@newWorkableHours[day]['to'])
-    @newWorkableHours[day] && from > 0 && from <= 24 && to > 0 && to <= 24 && from < to
-
+  # save button
   @save = ->
-    @_addHoursNotPushed()
-    dentist.workCalendar = @workCalendar
-    @_update() if dentist.id && @canSave
+    @_checkHours()
+    if @canSave
+      @_addHoursNotPushed()
+      dentist.workCalendar = @workCalendar
+      if dentist.id
+        @_update()
+      else
+        @_notifyOk
+    else
+      errorHandler.error("Hay horarios incorrectos")
 
-  @_addHoursNotPushed = ->
+  @_checkHours = ->
+    @canSave = _.every(['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'], (day) =>
+      return true unless @newWorkableHours[day] # For new dentists case
+      from = parseInt(@newWorkableHours[day]['from'])
+      to = parseInt(@newWorkableHours[day]['to'])
+      from > 0 && from <= 24 && to > 0 && to <= 24 && from < to
+    )
+
+  @_addHoursNotPushed = -> # TODO: Recorrer solo las keys de @newWorkableHours
     _.each(['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'], (day) => @addHoursFor(day))
 
   @_update = ->
     dentist.hours_to_remove = @hoursToRemove
     dentist.update().then(
-      (success) ->
-        errorHandler.success("Se guardaron los horarios correctamente")
-        $uibModalInstance.dismiss()
+      (success) =>
+        @_notifyOk()
       (error) =>
         for key_error in Object.keys(error.data)
           errorHandler.error(error.data[key_error][0])
@@ -51,6 +61,10 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
     if (hoursIndex > -1)
       @hoursToRemove.push(dayWanted.workableHours[hoursIndex].id)
       dayWanted.workableHours.splice(hoursIndex, 1)
+
+  @_notifyOk = ->
+    errorHandler.success("Se guardaron los horarios correctamente")
+    $uibModalInstance.dismiss()
 
 
   @
