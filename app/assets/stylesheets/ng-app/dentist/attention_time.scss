@@ -1,27 +1,19 @@
-.attention-time .day {
-  display: inline-block;
-  width: 13%;
-  margin-left: 3px;
+.attention-time th {
+  font-size: 15px;
 }
 
-.attention-time .day span {
-  font-size: 20px;
-}
-
-.time {
-  display: inline-block;
-  width: 13%;
+.attention-time td {
+  border: none !important;
 }
 
 .time input {
-  margin-left: 15px;
   margin-bottom: 5px;
+  margin-left: -5px;
   width: 65px;
 }
 
 .time input.to {
   display: inline-block;
-  margin-left: 10px;
 }
 
 .time.plus-value {
