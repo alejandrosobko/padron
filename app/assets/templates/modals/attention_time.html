@@ -19,8 +19,8 @@
             <div class="time">
                 <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Lunes') track by $index">
                     {{time.from}} a {{time.to}}
-                    <span title="Borrar horario" class="remove-time glyphicon glyphicon-minus"
-                          data-ng-click="AttentionTimeCtrl.removeHourFrom('Lunes', $index)"></span>
+                    <button type="button" title="Borrar campo" class="btn btn-xs minus-value glyphicon glyphicon-minus"
+                            data-ng-click="AttentionTimeCtrl.removeHourFrom('Lunes', $index)"></button>
                 </h5>
                 <input type="text" class="form-control text-center" placeholder="Desde"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Lunes']['from']">
@@ -33,8 +33,8 @@
             <div class="time">
                 <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Martes') track by $index">
                     {{time.from}} a {{time.to}}
-                    <span title="Borrar horario" class="remove-time glyphicon glyphicon-minus"
-                          data-ng-click="AttentionTimeCtrl.removeHourFrom('Martes', $index)"></span>
+                    <button type="button" title="Borrar campo" class="btn btn-xs minus-value glyphicon glyphicon-minus"
+                            data-ng-click="AttentionTimeCtrl.removeHourFrom('Martes', $index)"></button>
                 </h5>
                 <input type="text" class="form-control text-center" placeholder="Desde"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Martes']['from']">
@@ -47,8 +47,8 @@
             <div class="time">
                 <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Miércoles') track by $index">
                     {{time.from}} a {{time.to}}
-                    <span title="Borrar horario" class="remove-time glyphicon glyphicon-minus"
-                          data-ng-click="AttentionTimeCtrl.removeHourFrom('Miércoles', $index)"></span>
+                    <button type="button" title="Borrar campo" class="btn btn-xs minus-value glyphicon glyphicon-minus"
+                            data-ng-click="AttentionTimeCtrl.removeHourFrom('Miércoles', $index)"></button>
                 </h5>
                 <input type="text" class="form-control text-center" placeholder="Desde"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Miércoles']['from']">
@@ -61,8 +61,8 @@
             <div class="time">
                 <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Jueves') track by $index">
                     {{time.from}} a {{time.to}}
-                    <span title="Borrar horario" class="remove-time glyphicon glyphicon-minus"
-                          data-ng-click="AttentionTimeCtrl.removeHourFrom('Jueves', $index)"></span>
+                    <button type="button" title="Borrar campo" class="btn btn-xs minus-value glyphicon glyphicon-minus"
+                            data-ng-click="AttentionTimeCtrl.removeHourFrom('Jueves', $index)"></button>
                 </h5>
                 <input type="text" class="form-control text-center" placeholder="Desde"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Jueves']['from']">
@@ -75,8 +75,8 @@
             <div class="time">
                 <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Viernes') track by $index">
                     {{time.from}} a {{time.to}}
-                    <span title="Borrar horario" class="remove-time glyphicon glyphicon-minus"
-                          data-ng-click="AttentionTimeCtrl.removeHourFrom('Viernes', $index)"></span>
+                    <button type="button" title="Borrar campo" class="btn btn-xs minus-value glyphicon glyphicon-minus"
+                            data-ng-click="AttentionTimeCtrl.removeHourFrom('Viernes', $index)"></button>
                 </h5>
                 <input type="text" class="form-control text-center" placeholder="Desde"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Viernes']['from']">
@@ -89,8 +89,8 @@
             <div class="time">
                 <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Sábado') track by $index">
                     {{time.from}} a {{time.to}}
-                    <span title="Borrar horario" class="remove-time glyphicon glyphicon-minus"
-                          data-ng-click="AttentionTimeCtrl.removeHourFrom('Sábado', $index)"></span>
+                    <button type="button" title="Borrar campo" class="btn btn-xs minus-value glyphicon glyphicon-minus"
+                            data-ng-click="AttentionTimeCtrl.removeHourFrom('Sábado', $index)"></button>
                 </h5>
                 <input type="text" class="form-control text-center" placeholder="Desde"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Sábado']['from']">
@@ -103,8 +103,8 @@
             <div class="time">
                 <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Domingo') track by $index">
                     {{time.from}} a {{time.to}}
-                    <span title="Borrar horario" class="remove-time glyphicon glyphicon-minus"
-                          data-ng-click="AttentionTimeCtrl.removeHourFrom('Domingo', $index)"></span>
+                    <button type="button" title="Borrar campo" class="btn btn-xs minus-value glyphicon glyphicon-minus"
+                            data-ng-click="AttentionTimeCtrl.removeHourFrom('Domingo', $index)"></button>
                 </h5>
                 <input type="text" class="form-control text-center" placeholder="Desde"
                        data-ng-model="AttentionTimeCtrl.newWorkableHours['Domingo']['from']">
