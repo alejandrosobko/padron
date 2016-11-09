@@ -23,6 +23,7 @@ class DentistsController < ApplicationController
     dentist = Dentist.find(params[:dentist][:id])
     begin
       destroy_hours(params[:dentist][:hours_to_remove])
+      destroy_days(params[:dentist][:days_to_remove])
       dentist.update!(dentist_params)
       render json: dentist
     rescue => e
@@ -40,6 +41,10 @@ class DentistsController < ApplicationController
 
   def destroy_hours(hours)
     WorkableHour.where(id: hours).destroy_all
+  end
+
+  def destroy_days(days)
+    WorkableDay.where(id: days).destroy_all
   end
 
   def dentist_params

@@ -3,6 +3,7 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
   @workCalendar = dentist.getWorkCalendar()
   @newWorkableHours = {}
   @hoursToRemove = []
+  @daysToRemove = []
   @canSave = true
 
   @cancel = ->
@@ -48,6 +49,7 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
 
   @_update = ->
     dentist.hours_to_remove = @hoursToRemove
+    dentist.days_to_remove = @daysToRemove
     dentist.update().then(
       (success) =>
         @_notifyOk()
@@ -65,6 +67,10 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
     if (hoursIndex > -1)
       @hoursToRemove.push(dayWanted.workableHours[hoursIndex].id)
       dayWanted.workableHours.splice(hoursIndex, 1)
+      if dayWanted.workableHours.length == 0
+        @daysToRemove.push(dayWanted.id)
+        dayIndex = @workCalendar.workableDays.indexOf(dayWanted)
+        @workCalendar.workableDays.splice(dayIndex, 1)
 
   @_notifyOk = ->
     errorHandler.success("Se guardaron los horarios correctamente")

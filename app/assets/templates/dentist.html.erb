@@ -1,7 +1,7 @@
 <div class="container show-dentist">
   <div class="row">
     <div class="col-xs-12 light-title padding-top-20">
-      <span>{{showCtrl.dentist.name}} {{showCtrl.dentist.surname}}</span>
+      <span>{{showCtrl.dentist.name}} {{showCtrl.dentist.surname}} - {{showCtrl.dentist.enrollment}}</span>
       <div class="buttons">
         <span class="edit-dentist glyphicon glyphicon-pencil" data-ui-sref="form.edit({dentistId: showCtrl.dentist.id})" title="Editar"></span>
         <span class="delete-dentist glyphicon glyphicon-trash" data-ng-click="showCtrl.delete()" title="Eliminar"></span>
@@ -11,10 +11,6 @@
   </div>
   <div class="row">
     <div class="col-xs-6">
-      <div>
-        <div class="width-115"><span class="title">Matrícula: </span></div>
-        <span>{{showCtrl.dentist.enrollment}}</span>
-      </div>
       <div data-ng-repeat="location in showCtrl.dentist.locations track by $index">
         <div class="width-115" data-ng-show="$index == 0"><span class="title">Localidad: </span></div>
         <div class="width-115" data-ng-show="$index > 0"><span class="title">Localidad ({{$index + 1}}): </span></div>
@@ -53,6 +49,15 @@
       <div>
         <div class="width-115"><span class="title">Especialidad: </span></div>
         <span>{{showCtrl.dentist.specialty}}</span>
+      </div>
+      <div>
+        <div class="padding-top-20"><span class="title">Horarios de atención</span></div>
+        <div data-ng-repeat="day in showCtrl.dentist.workCalendar.workableDays">
+          <span class="width-115">{{day.day}}: </span>
+          <span data-ng-repeat="hour in showCtrl.dentist.getWorkCalendar().workableHoursFor(day.day)">
+            {{hour.from}} a {{hour.to}}
+          </span>
+        </div>
       </div>
     </div>
 
