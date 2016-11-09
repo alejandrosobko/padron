@@ -6,17 +6,17 @@
   border: none !important;
 }
 
-.time input {
+.attention-time .time input {
   margin-bottom: 5px;
   margin-left: -5px;
   width: 65px;
 }
 
-.time input.to {
+.attention-time .time input.to {
   display: inline-block;
 }
 
-.time.plus-value {
+.attention-time .time.plus-value {
   font-size: 13px !important;
   color: #337ab7;
 }

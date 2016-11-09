@@ -20,161 +20,27 @@
             </thead>
             <tbody>
             <tr>
-                <td>
-                    <div class="time">
-                        <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Lunes') track by $index">
-                            {{time.from}} a {{time.to}}
-                            <button type="button" title="Borrar campo"
-                                    class="btn btn-xs minus-value glyphicon glyphicon-minus"
-                                    data-ng-click="AttentionTimeCtrl.removeHourFrom('Lunes', $index)"></button>
-                        </h5>
-                    </div>
-                </td>
-                <td>
-                    <div class="time">
-                        <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Martes') track by $index">
-                            {{time.from}} a {{time.to}}
-                            <button type="button" title="Borrar campo"
-                                    class="btn btn-xs minus-value glyphicon glyphicon-minus"
-                                    data-ng-click="AttentionTimeCtrl.removeHourFrom('Martes', $index)"></button>
-                        </h5>
-                    </div>
-                </td>
-                <td>
-                    <div class="time">
-                        <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Miércoles') track by $index">
-                            {{time.from}} a {{time.to}}
-                            <button type="button" title="Borrar campo"
-                                    class="btn btn-xs minus-value glyphicon glyphicon-minus"
-                                    data-ng-click="AttentionTimeCtrl.removeHourFrom('Miércoles', $index)"></button>
-                        </h5>
-                    </div>
-                </td>
-                <td>
-                    <div class="time">
-                        <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Jueves') track by $index">
-                            {{time.from}} a {{time.to}}
-                            <button type="button" title="Borrar campo"
-                                    class="btn btn-xs minus-value glyphicon glyphicon-minus"
-                                    data-ng-click="AttentionTimeCtrl.removeHourFrom('Jueves', $index)"></button>
-                        </h5>
-                    </div>
-                </td>
-                <td>
-                    <div class="time">
-                        <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Viernes') track by $index">
-                            {{time.from}} a {{time.to}}
-                            <button type="button" title="Borrar campo"
-                                    class="btn btn-xs minus-value glyphicon glyphicon-minus"
-                                    data-ng-click="AttentionTimeCtrl.removeHourFrom('Viernes', $index)"></button>
-                        </h5>
-                    </div>
-                </td>
-                <td>
-                    <div class="time">
-                        <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Sábado') track by $index">
-                            {{time.from}} a {{time.to}}
-                            <button type="button" title="Borrar campo"
-                                    class="btn btn-xs minus-value glyphicon glyphicon-minus"
-                                    data-ng-click="AttentionTimeCtrl.removeHourFrom('Sábado', $index)"></button>
-                        </h5>
-                    </div>
-                </td>
-                <td>
-                    <div class="time">
-                        <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor('Domingo') track by $index">
-                            {{time.from}} a {{time.to}}
-                            <button type="button" title="Borrar campo"
-                                    class="btn btn-xs minus-value glyphicon glyphicon-minus"
-                                    data-ng-click="AttentionTimeCtrl.removeHourFrom('Domingo', $index)"></button>
-                        </h5>
-                    </div>
+                <td class="time"
+                    data-ng-repeat="day in ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']">
+                    <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor(day) track by $index">
+                        {{time.from}} a {{time.to}}
+                        <button type="button" title="Borrar campo"
+                                class="btn btn-xs minus-value glyphicon glyphicon-minus"
+                                data-ng-click="AttentionTimeCtrl.removeHourFrom(day, $index)"></button>
+                    </h5>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <div class="time">
-                        <input type="text" class="form-control text-center" placeholder="Desde"
-                           data-ng-model="AttentionTimeCtrl.newWorkableHours['Lunes']['from']">
+                <td class="time"
+                    data-ng-repeat="day in ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']">
+                    <input type="text" class="form-control text-center" placeholder="Desde"
+                           data-ng-model="AttentionTimeCtrl.newWorkableHours[day]['from']">
 
                     <input type="text" class="form-control text-center to" placeholder="Hasta"
-                           data-ng-model="AttentionTimeCtrl.newWorkableHours['Lunes']['to']">
+                           data-ng-model="AttentionTimeCtrl.newWorkableHours[day]['to']">
                     <button type="button" title="Agregar otro campo"
                             class="btn btn-xs plus-value glyphicon glyphicon-plus"
-                            data-ng-click="AttentionTimeCtrl.addHoursFor('Lunes')"></button>
-                    </div>
-                </td>
-                <td>
-                    <div class="time">
-                        <input type="text" class="form-control text-center" placeholder="Desde"
-                           data-ng-model="AttentionTimeCtrl.newWorkableHours['Martes']['from']">
-
-                    <input type="text" class="form-control text-center to" placeholder="Hasta"
-                           data-ng-model="AttentionTimeCtrl.newWorkableHours['Martes']['to']">
-                    <button type="button" title="Agregar otro campo"
-                            class="btn btn-xs plus-value glyphicon glyphicon-plus"
-                            data-ng-click="AttentionTimeCtrl.addHoursFor('Martes')"></button>
-                    </div>
-                </td>
-                <td>
-                    <div class="time">
-                        <input type="text" class="form-control text-center" placeholder="Desde"
-                           data-ng-model="AttentionTimeCtrl.newWorkableHours['Miércoles']['from']">
-
-                    <input type="text" class="form-control text-center to" placeholder="Hasta"
-                           data-ng-model="AttentionTimeCtrl.newWorkableHours['Miércoles']['to']">
-                    <button type="button" title="Agregar otro campo"
-                            class="btn btn-xs plus-value glyphicon glyphicon-plus"
-                            data-ng-click="AttentionTimeCtrl.addHoursFor('Miércoles')"></button>
-                    </div>
-                </td>
-                <td>
-                    <div class="time">
-                        <input type="text" class="form-control text-center" placeholder="Desde"
-                           data-ng-model="AttentionTimeCtrl.newWorkableHours['Jueves']['from']">
-
-                    <input type="text" class="form-control text-center to" placeholder="Hasta"
-                           data-ng-model="AttentionTimeCtrl.newWorkableHours['Jueves']['to']">
-                    <button type="button" title="Agregar otro campo"
-                            class="btn btn-xs plus-value glyphicon glyphicon-plus"
-                            data-ng-click="AttentionTimeCtrl.addHoursFor('Jueves')"></button>
-                    </div>
-                </td>
-                <td>
-                    <div class="time">
-                        <input type="text" class="form-control text-center" placeholder="Desde"
-                           data-ng-model="AttentionTimeCtrl.newWorkableHours['Viernes']['from']">
-
-                    <input type="text" class="form-control text-center to" placeholder="Hasta"
-                           data-ng-model="AttentionTimeCtrl.newWorkableHours['Viernes']['to']">
-                    <button type="button" title="Agregar otro campo"
-                            class="btn btn-xs plus-value glyphicon glyphicon-plus"
-                            data-ng-click="AttentionTimeCtrl.addHoursFor('Viernes')"></button>
-                    </div>
-                </td>
-                <td>
-                    <div class="time">
-                        <input type="text" class="form-control text-center" placeholder="Desde"
-                           data-ng-model="AttentionTimeCtrl.newWorkableHours['Sábado']['from']">
-
-                    <input type="text" class="form-control text-center to" placeholder="Hasta"
-                           data-ng-model="AttentionTimeCtrl.newWorkableHours['Sábado']['to']">
-                    <button type="button" title="Agregar otro campo"
-                            class="btn btn-xs plus-value glyphicon glyphicon-plus"
-                            data-ng-click="AttentionTimeCtrl.addHoursFor('Sábado')"></button>
-                    </div>
-                </td>
-                <td>
-                    <div class="time">
-                        <input type="text" class="form-control text-center" placeholder="Desde"
-                           data-ng-model="AttentionTimeCtrl.newWorkableHours['Domingo']['from']">
-
-                    <input type="text" class="form-control text-center to" placeholder="Hasta"
-                           data-ng-model="AttentionTimeCtrl.newWorkableHours['Domingo']['to']">
-                    <button type="button" title="Agregar otro campo"
-                            class="btn btn-xs plus-value glyphicon glyphicon-plus"
-                            data-ng-click="AttentionTimeCtrl.addHoursFor('Domingo')"></button>
-                    </div>
+                            data-ng-click="AttentionTimeCtrl.addHoursFor(day)"></button>
                 </td>
             </tr>
             </tbody>
