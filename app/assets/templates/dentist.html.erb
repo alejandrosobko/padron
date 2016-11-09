@@ -16,31 +16,38 @@
         <span>{{showCtrl.dentist.enrollment}}</span>
       </div>
       <div data-ng-repeat="location in showCtrl.dentist.locations track by $index">
-        <div class="width-115"><span class="title">Localidad {{$index + 1}}: </span></div>
+        <div class="width-115" data-ng-show="$index == 0"><span class="title">Localidad: </span></div>
+        <div class="width-115" data-ng-show="$index > 0"><span class="title">Localidad ({{$index + 1}}): </span></div>
         <span>{{location}}</span>
       </div>
       <div data-ng-repeat="institution in showCtrl.dentist.institutions track by $index">
-        <div class="width-115"><span class="title">Institución {{$index + 1}}: </span></div>
+        <div class="width-115" data-ng-show="$index == 0"><span class="title">Institución: </span></div>
+        <div class="width-115" data-ng-show="$index > 0"><span class="title">Institución ({{$index + 1}}): </span></div>
         <span>{{institution}}</span>
       </div>
       <div data-ng-repeat="street in showCtrl.dentist.streets track by $index">
-        <div class="width-115"><span class="title">Calle {{$index + 1}}: </span></div>
+        <div class="width-115" data-ng-show="$index == 0"><span class="title">Calle: </span></div>
+        <div class="width-115" data-ng-show="$index > 0"><span class="title">Calle ({{$index + 1}}): </span></div>
         <span>{{street}}</span>
       </div>
       <div data-ng-repeat="number in showCtrl.dentist.numbers track by $index">
-        <div class="width-115"><span class="title">Número {{$index + 1}}: </span></div>
+        <div class="width-115" data-ng-show="$index == 0"><span class="title">Número: </span></div>
+        <div class="width-115" data-ng-show="$index > 0"><span class="title">Número ({{$index + 1}}): </span></div>
         <span>{{number}}</span>
       </div>
       <div data-ng-repeat="telephone in showCtrl.dentist.telephones track by $index">
-        <div class="width-115"><span class="title">Teléfono {{$index + 1}}: </span></div>
+        <div class="width-115" data-ng-show="$index == 0"><span class="title">Teléfono: </span></div>
+        <div class="width-115" data-ng-show="$index > 0"><span class="title">Teléfono ({{$index + 1}}): </span></div>
         <span>{{telephone}}</span>
       </div>
       <div data-ng-repeat="cellphone in showCtrl.dentist.cellphones track by $index">
-        <div class="width-115"><span class="title">Celular {{$index + 1}}: </span></div>
+        <div class="width-115" data-ng-show="$index == 0"><span class="title">Celular: </span></div>
+        <div class="width-115" data-ng-show="$index > 0"><span class="title">Celular ({{$index + 1}}): </span></div>
         <span>{{cellphone}}</span>
       </div>
       <div data-ng-repeat="email in showCtrl.dentist.emails track by $index">
-        <div class="width-115"><span class="title">E-mail {{$index + 1}}: </span></div>
+        <div class="width-115" data-ng-show="$index == 0"><span class="title">E-mail: </span></div>
+        <div class="width-115" data-ng-show="$index > 0"><span class="title">E-mail ({{$index + 1}}): </span></div>
         <span>{{email}}</span>
       </div>
       <div>
