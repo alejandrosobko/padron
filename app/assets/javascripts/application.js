@@ -22,5 +22,6 @@
 //= require angularjs/rails/resource
 //= require turbolinks
 //= require angular-growl-v2
+//= require ngmap
 //= require_tree .
 //= require_tree ../templates
