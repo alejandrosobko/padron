@@ -11,21 +11,15 @@
   </div>
   <div class="row">
     <div class="col-xs-6">
-      <div>
-        <button class="btn btn-xs btn-primary" data-ng-click="showCtrl.openMaps()">
-          <span>Ver ubicación en Google Maps</span>
-          <span class="glyphicon glyphicon-map-marker"></span>
-        </button>
+      <div data-ng-repeat="institution in showCtrl.dentist.institutions track by $index">
+        <div class="width-115" data-ng-show="$index == 0"><span class="title">Institución: </span></div>
+        <div class="width-115" data-ng-show="$index > 0"><span class="title">Institución ({{$index + 1}}): </span></div>
+        <span>{{institution}}</span>
       </div>
       <div data-ng-repeat="location in showCtrl.dentist.locations track by $index">
         <div class="width-115" data-ng-show="$index == 0"><span class="title">Localidad: </span></div>
         <div class="width-115" data-ng-show="$index > 0"><span class="title">Localidad ({{$index + 1}}): </span></div>
         <span>{{location}}</span>
-      </div>
-      <div data-ng-repeat="institution in showCtrl.dentist.institutions track by $index">
-        <div class="width-115" data-ng-show="$index == 0"><span class="title">Institución: </span></div>
-        <div class="width-115" data-ng-show="$index > 0"><span class="title">Institución ({{$index + 1}}): </span></div>
-        <span>{{institution}}</span>
       </div>
       <div data-ng-repeat="street in showCtrl.dentist.streets track by $index">
         <div class="width-115" data-ng-show="$index == 0"><span class="title">Calle: </span></div>
@@ -56,12 +50,19 @@
         <div class="width-115"><span class="title">Especialidad: </span></div>
         <span>{{showCtrl.dentist.specialty}}</span>
       </div>
+      <div data-ng-show="showCtrl.dentist.locations.length > 0 && showCtrl.dentist.streets.length > 0 && showCtrl.dentist.numbers.length > 0">
+        <button class="btn btn-xs btn-primary" data-ng-click="showCtrl.openMaps()">
+          <span>Ver ubicación en Google Maps</span>
+          <span class="glyphicon glyphicon-map-marker"></span>
+        </button>
+      </div>
       <div>
         <div class="padding-top-20"><span class="title">Horarios de atención</span></div>
         <div data-ng-repeat="day in showCtrl.dentist.workCalendar.workableDays">
           <span class="width-115">{{day.day}}: </span>
-          <span data-ng-repeat="hour in showCtrl.dentist.getWorkCalendar().workableHoursFor(day.day)">
-            {{hour.from}} a {{hour.to}}
+          <span data-ng-repeat="hour in showCtrl.dentist.getWorkCalendar().workableHoursFor(day.day) track by $index">
+            <span data-ng-show="$index == 0">{{hour.from}} a {{hour.to}}</span>
+            <span data-ng-show="$index > 0"> / {{hour.from}} a {{hour.to}}</span>
           </span>
         </div>
       </div>
