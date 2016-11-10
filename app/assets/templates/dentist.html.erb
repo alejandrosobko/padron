@@ -15,6 +15,11 @@
         <div class="width-115" data-ng-show="$index == 0"><span class="title">Institución: </span></div>
         <div class="width-115" data-ng-show="$index > 0"><span class="title">Institución ({{$index + 1}}): </span></div>
         <span>{{institution}}</span>
+        <button class="btn btn-xs btn-primary" data-ng-click="showCtrl.openMaps($index)" style="margin-left: 10px;"
+                data-ng-show="showCtrl.dentist.locations.length > 0 && showCtrl.dentist.streets.length > 0 && showCtrl.dentist.numbers.length > 0">
+          <span>Ver en mapa</span>
+          <span class="glyphicon glyphicon-map-marker"></span>
+        </button>
       </div>
       <div data-ng-repeat="location in showCtrl.dentist.locations track by $index">
         <div class="width-115" data-ng-show="$index == 0"><span class="title">Localidad: </span></div>
@@ -49,12 +54,6 @@
       <div>
         <div class="width-115"><span class="title">Especialidad: </span></div>
         <span>{{showCtrl.dentist.specialty}}</span>
-      </div>
-      <div data-ng-show="showCtrl.dentist.locations.length > 0 && showCtrl.dentist.streets.length > 0 && showCtrl.dentist.numbers.length > 0">
-        <button class="btn btn-xs btn-primary" data-ng-click="showCtrl.openMaps()">
-          <span>Ver ubicación en Google Maps</span>
-          <span class="glyphicon glyphicon-map-marker"></span>
-        </button>
       </div>
       <div>
         <div class="padding-top-20"><span class="title">Horarios de atención</span></div>

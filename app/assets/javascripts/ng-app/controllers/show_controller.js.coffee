@@ -27,13 +27,14 @@ angular.module('padronApp').controller('ShowCtrl', ($stateParams, Dentist, $uibM
       (error) => errorHandler.error("Ocurrió un error interno borrando al odontólogo. Por favor intente nuevamente")
     )
 
-  @openMaps = ->
+  @openMaps = (index) ->
     $uibModal.open(
       templateUrl: 'modals/google_maps.html'
       controller: 'MapsCtrl as mapsCtrl'
       size: 'lg'
       resolve:
         dentist: => @dentist
+        index: => index
     )
 
 
