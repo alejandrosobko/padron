@@ -4,7 +4,7 @@
     </div>
     <div class="modal-body" id="modal-body">
         <h5>{{mapsCtrl.dentist.institutions[0]}} - {{mapsCtrl.dentist.streets[0]}}, {{mapsCtrl.dentist.numbers[0]}} ({{mapsCtrl.dentist.locations[0]}})</h5>
-        <div map-lazy-load="https://maps.google.com/maps/api/js">
+        <div map-lazy-load="https://maps.google.com/maps/api/js" style="height: 100%;">
             <ng-map center="{{mapsCtrl.dentist.streets[0]}} {{mapsCtrl.dentist.numbers[0]}} {{mapsCtrl.dentist.locations[0]}}" zoom="15">
                 <marker position="{{mapsCtrl.dentist.streets[0]}} {{mapsCtrl.dentist.numbers[0]}} {{mapsCtrl.dentist.locations[0]}}"></marker>
             </ng-map>
