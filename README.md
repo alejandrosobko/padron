@@ -18,11 +18,11 @@ Architecture documentation [Architecture Doc](https://github.com/alejandrosobko/
 
 Responsibility of the components [Components Doc](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Responsabilidades)
 
-1st release doc: (https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Doc-Entrega-1)
+1st release doc: (https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Entrega-1)
 
-2nd release doc: (https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Doc-Entrega-2)
+2nd release doc: (https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Entrega-2)
 
-3rd release doc: (https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Doc-Entrega-3)
+3rd release doc: (https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Entrega-3)
 
 ### Installation
 
