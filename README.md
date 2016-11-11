@@ -16,13 +16,15 @@ Workflow:  [workflow](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Work
 
 Architecture documentation [Architecture Doc](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Arquitectura)
 
+Architecture documentation (2nd release) [Architecture Doc - 2nd release](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Arquitectura-2)
+
 Responsibility of the components [Components Doc](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Responsabilidades)
 
-1st release doc: (https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Entrega-1)
+1st release doc: [1 Doc] (https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Entrega-1)
 
-2nd release doc: (https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Entrega-2)
+2nd release doc: [2 Doc](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Entrega-2)
 
-3rd release doc: (https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Entrega-3)
+3rd release doc: [3 Doc](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Entrega-3)
 
 ### Installation
 
