@@ -14,6 +14,7 @@ angular.module('padronApp').factory('Dentist', ['railsResourceFactory', 'railsSe
     #-----------------------
 
     resource.prototype.completeData = ->
+      @institutes ||= [{name: '', street: '', number: '', location: ''}]
       @telephones ||= [""]
       @cellphones ||= [""]
       @emails     ||= [""]

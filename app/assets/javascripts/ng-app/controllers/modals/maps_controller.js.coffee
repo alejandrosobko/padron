@@ -8,13 +8,13 @@ angular.module('padronApp').controller('MapsCtrl', ($rootScope, $uibModalInstanc
 
   @close = -> $uibModalInstance.dismiss()
 
-  @institution = -> @dentist.institutions[@index]
+  @institute = -> @dentist.institutes[@index].name
 
-  @street = -> @dentist.streets[@index]
+  @street = -> @dentist.institutes[@index].street
 
-  @number = -> @dentist.numbers[@index]
+  @number = -> @dentist.institutes[@index].number
 
-  @location = -> @dentist.locations[@index]
+  @location = -> @dentist.institutes[@index].location
 
 
   @
