@@ -3,73 +3,14 @@
     <label for="inputName">Nombre </label>
     <input type="text" class="form-control input-plus" id="inputName" data-ng-model="newOrEditCtrl.dentistToEdit.name">
   </div>
-
   <div class="form-group">
     <label for="inputSurname">Apellido</label>
     <input type="text" class="form-control input-plus" id="inputSurname" data-ng-model="newOrEditCtrl.dentistToEdit.surname">
   </div>
-
   <div class="form-group">
     <label for="inputEnrollment">Matrícula</label>
     <input type="number" class="form-control input-plus" id="inputEnrollment" data-ng-model="newOrEditCtrl.dentistToEdit.enrollment">
   </div>
-
-  <div class="form-group" data-ng-repeat="street in newOrEditCtrl.dentistToEdit.streets track by $index">
-    <label for="inputStreet">Calle
-      <span data-ng-show="$index > 0">{{$index + 1}}</span>
-    </label>
-    <div>
-      <input type="text" class="form-control input-plus" id="inputStreet" data-ng-model="newOrEditCtrl.dentistToEdit.streets[$index]">
-      <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
-              data-ng-click="newOrEditCtrl.dentistToEdit.streets.push('')"></button>
-      <button type="button" title="Borrar campo" class="btn btn-xs minus-value glyphicon glyphicon-minus" data-ng-show="$index != 0"
-              data-ng-click="newOrEditCtrl.removeFieldFrom(newOrEditCtrl.dentistToEdit.streets, $index)"></button>
-    </div>
-  </div>
-
-  <div class="form-group" data-ng-repeat="number in newOrEditCtrl.dentistToEdit.numbers track by $index">
-    <label for="inputNumber">Número
-      <span data-ng-show="$index > 0">{{$index + 1}}</span>
-    </label>
-    <div>
-      <input type="number" class="form-control input-plus" id="inputNumber" data-ng-model="newOrEditCtrl.dentistToEdit.numbers[$index]">
-      <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
-              data-ng-click="newOrEditCtrl.dentistToEdit.numbers.push('')"></button>
-      <button type="button" title="Borrar campo" class="btn btn-xs minus-value glyphicon glyphicon-minus" data-ng-show="$index != 0"
-              data-ng-click="newOrEditCtrl.removeFieldFrom(newOrEditCtrl.dentistToEdit.numbers, $index)"></button>
-    </div>
-  </div>
-
-  <div class="form-group" data-ng-repeat="location in newOrEditCtrl.dentistToEdit.locations track by $index">
-    <label for="inputLocation">Localidad
-      <span data-ng-show="$index > 0">{{$index + 1}}</span>
-    </label>
-    <div>
-      <input type="text" class="form-control input-plus" id="inputLocation" data-ng-model="newOrEditCtrl.dentistToEdit.locations[$index]">
-      <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
-              data-ng-click="newOrEditCtrl.dentistToEdit.locations.push('')"></button>
-      <button type="button" title="Borrar campo" class="btn btn-xs minus-value glyphicon glyphicon-minus" data-ng-show="$index != 0"
-              data-ng-click="newOrEditCtrl.removeFieldFrom(newOrEditCtrl.dentistToEdit.locations, $index)"></button>
-    </div>
-  </div>
-
-</div>
-
-<div class="col-xs-5 col-xs-offset-1">
-
-  <div class="form-group" data-ng-repeat="institution in newOrEditCtrl.dentistToEdit.institutions track by $index">
-    <label for="inputInstitute">Institución
-      <span data-ng-show="$index > 0">{{$index + 1}}</span>
-    </label>
-    <div>
-      <input type="text" class="form-control input-plus" id="inputInstitute" data-ng-model="newOrEditCtrl.dentistToEdit.institutions[$index]">
-      <button type="button" title="Agregar otro campo" class="btn btn-xs plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
-              data-ng-click="newOrEditCtrl.dentistToEdit.institutions.push('')"></button>
-      <button type="button" title="Borrar campo" class="btn btn-xs minus-value glyphicon glyphicon-minus" data-ng-show="$index != 0"
-              data-ng-click="newOrEditCtrl.removeFieldFrom(newOrEditCtrl.dentistToEdit.institutions, $index)"></button>
-    </div>
-  </div>
-
   <div class="form-group" data-ng-repeat="telephone in newOrEditCtrl.dentistToEdit.telephones track by $index">
     <label for="inputTelephone">Teléfono
       <span data-ng-show="$index > 0">{{$index + 1}}</span>
@@ -82,7 +23,6 @@
               data-ng-click="newOrEditCtrl.removeFieldFrom(newOrEditCtrl.dentistToEdit.telephones, $index)"></button>
     </div>
   </div>
-
   <div class="form-group" data-ng-repeat="cellphone in newOrEditCtrl.dentistToEdit.cellphones track by $index">
     <label for="inputCellphone">Celular
       <span data-ng-show="$index > 0">{{$index + 1}}</span>
@@ -95,7 +35,6 @@
               data-ng-click="newOrEditCtrl.removeFieldFrom(newOrEditCtrl.dentistToEdit.cellphones, $index)"></button>
     </div>
   </div>
-
   <div class="form-group" data-ng-repeat="email in newOrEditCtrl.dentistToEdit.emails track by $index">
     <label for="inputEmail">E-mail
       <span data-ng-show="$index > 0">{{$index + 1}}</span>
@@ -108,12 +47,43 @@
               data-ng-click="newOrEditCtrl.removeFieldFrom(newOrEditCtrl.dentistToEdit.emails, $index)"></button>
     </div>
   </div>
+</div>
 
+<div class="col-xs-5 col-xs-offset-1">
+  <div data-ng-repeat="institute in newOrEditCtrl.dentistToEdit.institutes track by $index">
+    <div class="form-group">
+      <label for="inputInstitute">Instituto <span data-ng-show="$index > 0">{{$index + 1}}</span></label>
+      <div>
+        <input type="text" class="form-control input-plus" id="inputInstitute" data-ng-model="newOrEditCtrl.dentistToEdit.institutes[$index].name">
+        <button type="button" title="Agregar otro instituto" class="btn btn-xs plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
+                data-ng-click="newOrEditCtrl.dentistToEdit.newInstitute()"></button>
+        <button type="button" title="Borrar instituto" class="btn btn-xs minus-value glyphicon glyphicon-minus" data-ng-show="$index != 0"
+                data-ng-click="newOrEditCtrl.removeInstitute($index)"></button>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputStreet">Calle <span data-ng-show="$index > 0">{{$index + 1}}</span></label>
+      <div>
+        <input type="text" class="form-control input-plus" id="inputStreet" data-ng-model="newOrEditCtrl.dentistToEdit.institutes[$index].street">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputNumber">Número <span data-ng-show="$index > 0">{{$index + 1}}</span></label>
+      <div>
+        <input type="number" class="form-control input-plus" id="inputNumber" data-ng-model="newOrEditCtrl.dentistToEdit.institutes[$index].number">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputLocation">Localidad <span data-ng-show="$index > 0">{{$index + 1}}</span></label>
+      <div>
+        <input type="text" class="form-control input-plus" id="inputLocation" data-ng-model="newOrEditCtrl.dentistToEdit.institutes[$index].location">
+      </div>
+    </div>
+  </div>
   <div class="form-group">
     <label for="inputSpeciality">Especialidad</label>
     <input type="text" class="form-control input-plus" id="inputSpeciality" data-ng-model="newOrEditCtrl.dentistToEdit.specialty">
   </div>
-
   <div class="form-group">
     <label for="attentionTime">Horarios de atención</label><br>
     <button type="button" class="btn btn-sm btn-success" data-ng-click="newOrEditCtrl.viewAttentionTime()">Abrir</button>

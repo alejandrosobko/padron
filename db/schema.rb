@@ -11,23 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161015050516) do
+ActiveRecord::Schema.define(version: 20161112233909) do
 
   create_table "dentists", force: :cascade do |t|
     t.string   "name"
     t.string   "surname"
     t.integer  "enrollment"
-    t.text     "locations",    default: "--- []\n"
-    t.text     "institutions", default: "--- []\n"
-    t.text     "streets",      default: "--- []\n"
-    t.text     "numbers",      default: "--- []\n"
-    t.text     "telephones",   default: "--- []\n"
-    t.text     "cellphones",   default: "--- []\n"
-    t.text     "emails",       default: "--- []\n"
+    t.text     "institutes", default: "--- []\n"
+    t.text     "telephones", default: "--- []\n"
+    t.text     "cellphones", default: "--- []\n"
+    t.text     "emails",     default: "--- []\n"
     t.string   "specialty"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
+
+  create_table "institutes", force: :cascade do |t|
+    t.string  "name"
+    t.string  "location"
+    t.string  "street"
+    t.integer "number"
+    t.integer "dentist_id"
+  end
+
+  add_index "institutes", ["dentist_id"], name: "index_institutes_on_dentist_id"
 
   create_table "visitors", force: :cascade do |t|
     t.string   "name"

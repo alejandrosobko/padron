@@ -9,7 +9,7 @@ RSpec.describe Dentist, :type => :model do
     end
   end
 
-  describe 'empty dentist' do
+  describe 'with data' do
     let(:visit) { build(:visit, visitor: build(:visitor)) }
     let(:dentist) { build(:dentist, visits: [visit], work_calendar: WorkCalendar.new) }
 
@@ -23,11 +23,6 @@ RSpec.describe Dentist, :type => :model do
       expect(dentist.save).to be true
       expect(dentist2.save).to be false
     end
-  end
-
-  describe 'with work calendar' do
-    let(:visit) { build(:visit, visitor: build(:visitor)) }
-    let(:dentist) { build(:dentist, visits: [visit], work_calendar: WorkCalendar.new) }
 
     it 'should can save a dentist with a lot of workable days' do
       hours = [build(:workable_hour_morning), build(:workable_hour_afternoon)]
@@ -37,6 +32,15 @@ RSpec.describe Dentist, :type => :model do
       expect(dentist.save).to be true
       expect(dentist.work_calendar.workable_days.first.day).to eq 'Monday'
       expect(dentist.work_calendar.workable_days[1].day).to eq 'Tuesday'
+    end
+
+    it 'with institutes' do
+      dentist.institutes = [build(:institute)]
+      expect(dentist.save).to be true
+      expect(dentist.institutes.first.name).to eq 'Super dientes'
+      expect(dentist.institutes.first.location).to eq 'Quilmes'
+      expect(dentist.institutes.first.street).to eq 'Lavalle'
+      expect(dentist.institutes.first.number).to eq 3000
     end
   end
 

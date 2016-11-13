@@ -11,29 +11,30 @@
   </div>
   <div class="row">
     <div class="col-xs-6">
-      <div data-ng-repeat="institution in showCtrl.dentist.institutions track by $index">
-        <div class="width-115" data-ng-show="$index == 0"><span class="title">Institución: </span></div>
-        <div class="width-115" data-ng-show="$index > 0"><span class="title">Institución ({{$index + 1}}): </span></div>
-        <span>{{institution}}</span>
-        <button class="btn btn-xs btn-link" data-ng-click="showCtrl.openMaps($index)" style="margin-left: 10px;" title="Ver en Google Maps"
-                data-ng-show="showCtrl.dentist.locations.length > 0 && showCtrl.dentist.streets.length > 0 && showCtrl.dentist.numbers.length > 0">
-          <span class="glyphicon glyphicon-map-marker"></span>
-        </button>
-      </div>
-      <div data-ng-repeat="location in showCtrl.dentist.locations track by $index">
-        <div class="width-115" data-ng-show="$index == 0"><span class="title">Localidad: </span></div>
-        <div class="width-115" data-ng-show="$index > 0"><span class="title">Localidad ({{$index + 1}}): </span></div>
-        <span>{{location}}</span>
-      </div>
-      <div data-ng-repeat="street in showCtrl.dentist.streets track by $index">
-        <div class="width-115" data-ng-show="$index == 0"><span class="title">Calle: </span></div>
-        <div class="width-115" data-ng-show="$index > 0"><span class="title">Calle ({{$index + 1}}): </span></div>
-        <span>{{street}}</span>
-      </div>
-      <div data-ng-repeat="number in showCtrl.dentist.numbers track by $index">
-        <div class="width-115" data-ng-show="$index == 0"><span class="title">Número: </span></div>
-        <div class="width-115" data-ng-show="$index > 0"><span class="title">Número ({{$index + 1}}): </span></div>
-        <span>{{number}}</span>
+      <div data-ng-repeat="institute in showCtrl.dentist.institutes track by $index">
+        <div>
+          <div class="width-115" data-ng-show="$index == 0"><span class="title">Institución: </span></div>
+          <div class="width-115" data-ng-show="$index > 0"><span class="title">Institución ({{$index + 1}}): </span></div>
+          <span>{{institute.name}}</span>
+          <button class="btn btn-xs btn-link" data-ng-click="showCtrl.openMaps($index)" style="margin-left: 10px;" title="Ver en Google Maps"
+            <span class="glyphicon glyphicon-map-marker"></span>
+          </button>
+        </div>
+        <div>
+          <div class="width-115" data-ng-show="$index == 0"><span class="title">Localidad: </span></div>
+          <div class="width-115" data-ng-show="$index > 0"><span class="title">Localidad ({{$index + 1}}): </span></div>
+          <span>{{institute.location}}</span>
+        </div>
+        <div>
+          <div class="width-115" data-ng-show="$index == 0"><span class="title">Calle: </span></div>
+          <div class="width-115" data-ng-show="$index > 0"><span class="title">Calle ({{$index + 1}}): </span></div>
+          <span>{{institute.street}}</span>
+        </div>
+        <div>
+          <div class="width-115" data-ng-show="$index == 0"><span class="title">Número: </span></div>
+          <div class="width-115" data-ng-show="$index > 0"><span class="title">Número ({{$index + 1}}): </span></div>
+          <span>{{institute.number}}</span>
+        </div>
       </div>
       <div data-ng-repeat="telephone in showCtrl.dentist.telephones track by $index">
         <div class="width-115" data-ng-show="$index == 0"><span class="title">Teléfono: </span></div>

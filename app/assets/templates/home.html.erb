@@ -41,7 +41,7 @@
               </span>
             </th>
             <th class="col-xs-1">Matrícula</th>
-            <th class="col-xs-2">Institución</th>
+            <th class="col-xs-2">Instituto</th>
             <th class="col-xs-2">Ubicación</th>
             <th class="col-xs-2">Especialidad</th>
             <th class="col-xs-2">Contacto</th>
@@ -53,11 +53,11 @@
           <tr class="row-pointer">
             <td data-ui-sref="show({dentistId: dentist.id})">{{dentist.name}} {{dentist.surname}}</td>
             <td data-ui-sref="show({dentistId: dentist.id})">{{dentist.enrollment}}</td>
-            <td data-ui-sref="show({dentistId: dentist.id})">{{dentist.institutions[0]}}</td>
+            <td data-ui-sref="show({dentistId: dentist.id})">{{dentist.institutes[0].name}}</td>
             <td data-ui-sref="show({dentistId: dentist.id})">
-              <span data-ng-hide="dentist.emptyValue(dentist.streets[0])">{{dentist.streets[0]}}, </span>
-              <span data-ng-hide="dentist.emptyValue(dentist.numbers[0])">{{dentist.numbers[0]}} </span>
-              <span data-ng-hide="dentist.emptyValue(dentist.locations[0])">({{dentist.locations[0]}})</span>
+              <span data-ng-hide="dentist.emptyValue(dentist.institutes[0].street)">{{dentist.institutes[0].street}}, </span>
+              <span data-ng-hide="dentist.emptyValue(dentist.institutes[0].number)">{{dentist.institutes[0].number}} </span>
+              <span data-ng-hide="dentist.emptyValue(dentist.institutes[0].location)">({{dentist.institutes[0].location}})</span>
             </td>
             <td data-ui-sref="show({dentistId: dentist.id})">{{dentist.specialty}}</td>
             <td data-ui-sref="show({dentistId: dentist.id})">
