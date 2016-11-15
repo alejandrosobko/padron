@@ -22,12 +22,12 @@
             <tr>
                 <td class="time"
                     data-ng-repeat="day in ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']">
-                    <h5 data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor(day) track by $index">
-                        {{time.from}} a {{time.to}}
+                    <div data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor(day) track by $index">
+                        <div class="printed">{{time.from}} a {{time.to}}</div>
                         <button type="button" title="Borrar campo"
                                 class="btn btn-xs minus-value glyphicon glyphicon-minus"
                                 data-ng-click="AttentionTimeCtrl.removeHourFrom(day, $index)"></button>
-                    </h5>
+                    </div>
                 </td>
             </tr>
             <tr>
