@@ -1,8 +1,10 @@
-angular.module('padronApp').controller('ShowCtrl', ($stateParams, Dentist, $uibModal, errorHandler, $location) ->
+angular.module('padronApp').controller('ShowCtrl', ($stateParams, Dentist, $uibModal, errorHandler, $location, moment) ->
   @dentist = undefined
 
   Dentist.get(id: $stateParams.dentistId).then(
-    (dentist) => @dentist = dentist
+    (dentist) =>
+      @dentist = dentist
+      @years = _.uniq(_.map(dentist.visits, (visit) -> moment(visit.visitDate).year()))
     (error) => alert('failed')
   )
 
@@ -36,6 +38,10 @@ angular.module('padronApp').controller('ShowCtrl', ($stateParams, Dentist, $uibM
         dentist: => @dentist
         index: => index
     )
+
+  @visitsInYear = (year) ->
+    visits = _.select(@dentist.visits, (visit) -> moment(visit.visitDate).year() == year)
+    _.sortBy(visits, (visit) -> -moment(visit.visitDate))
 
 
   @

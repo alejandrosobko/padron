@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-7">
       <div data-ng-repeat="institute in showCtrl.dentist.institutes track by $index">
         <div>
           <div class="width-115" data-ng-show="$index == 0"><span class="title">Instituto: </span></div>
@@ -67,27 +67,29 @@
       </div>
     </div>
 
-    <div class="col-xs-6">
-      <div data-ng-repeat="visit in showCtrl.dentist.visits track by $index">
-        <uib-accordion>
-          <div uib-accordion-group class="panel-default" heading="{{showCtrl.getDateFor(visit) | date:'yyyy'}}">
-            <div>
-              <div class="width-135">
+    <div class="col-xs-5">
+      <div><span class="title">Visitas</span></div>
+      <uib-accordion data-ng-repeat="year in showCtrl.years">
+        <div uib-accordion-group class="panel-default" heading="{{year}}">
+          <div data-ng-repeat="visit in showCtrl.visitsInYear(year) track by $index">
+            <div class="row">
+              <div class="col-xs-4">
                 <span class="title">Fecha: </span>
               </div>
               <span>{{showCtrl.getDateFor(visit) | date:'dd-MM-yyyy'}}</span>
             </div>
-            <div>
-              <div class="width-135"><span class="title">Visitador: </span></div>
+            <div class="row">
+              <div class="col-xs-4"><span class="title">Visitador: </span></div>
               <span>{{visit.visitor.name}}</span>
             </div>
-            <div>
-              <div class="width-135"><span class="title">Observaciones: </span></div>
+            <div class="row">
+              <div class="col-xs-4"><span class="title">Observaciones: </span></div>
               <span>{{visit.observations}}</span>
             </div>
+            <hr>
           </div>
-        </uib-accordion>
-      </div>
+        </div>
+      </uib-accordion>
     </div>
   </div>
 </div>

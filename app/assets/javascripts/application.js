@@ -23,5 +23,7 @@
 //= require turbolinks
 //= require angular-growl-v2
 //= require ngmap
+//= require moment
+//= require angular-moment
 //= require_tree .
 //= require_tree ../templates
