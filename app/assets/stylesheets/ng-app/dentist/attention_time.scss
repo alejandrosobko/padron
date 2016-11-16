@@ -1,28 +1,27 @@
-.attention-time th {
-  font-size: 15px;
-}
-
-.attention-time td {
-  border: none !important;
-}
-
-.attention-time .time .printed {
-  font-size: 14px;
-  width: 57px;
-  display: inline-block;
-}
-
-.attention-time .time input {
-  margin-bottom: 5px;
-  margin-left: -5px;
-  width: 65px;
-}
-
-.attention-time .time input.to {
-  display: inline-block;
-}
-
-.attention-time .time.plus-value {
-  font-size: 13px !important;
-  color: #337ab7;
+.attention-time {
+  th {
+    font-size: 15px;
+  }
+  td {
+    border: none !important;
+  }
+  .time {
+    .printed {
+      font-size: 14px;
+      width: 57px;
+      display: inline-block;
+    }
+    input {
+      margin-bottom: 5px;
+      margin-left: -5px;
+      width: 65px;
+      &.to {
+        display: inline-block;
+      }
+    }
+    &.plus-value {
+      font-size: 13px !important;
+      color: #337ab7;
+    }
+  }
 }

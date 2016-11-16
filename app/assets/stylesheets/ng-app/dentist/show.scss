@@ -1,47 +1,43 @@
-.show-dentist .buttons {
-  display: inline-block;
-  float: right;
-  margin-right: 5px;
-  font-size: 20px;
-}
-
-.show-dentist .edit-dentist {
-  color: #3FB8EC;
-  margin-right: 10px;
-}
-
-.show-dentist .edit-dentist:hover {
-  color: #3e95ec;
-}
-
-.show-dentist .delete-dentist {
-  color: #ff4e56;
-}
-
-.show-dentist .delete-dentist:hover {
-  color: #f00000;
-}
-
-.show-dentist .width-115 {
-  display: inline-block;
-  width: 115px;
-}
-
-.show-dentist .width-135 {
-  display: inline-block;
-  width: 135px;
-}
-
-.show-dentist span.title {
-  font-size: 17px;
-  line-height: 1.8;
-  color: #0B465D;
-}
-
-.show-dentist .body-visit {
-  line-height: 1.8;
-}
-
-.show-dentist .panel-body {
-  margin-bottom: -36px !important; // To hide the last hr tag
+.show-dentist {
+  .buttons {
+    display: inline-block;
+    float: right;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  .edit-dentist {
+    font-size: 20px !important;
+    color: #3FB8EC;
+    margin-right: 10px;
+    background: none;
+    &:hover {
+      color: #3e95ec;
+      outline: none;
+    }
+  }
+  .delete-dentist {
+    font-size: 20px !important;
+    color: #ff4e56;
+    background: none;
+    &:hover {
+      color: #f00000;
+      outline: none;
+    }
+  }
+  .width-115 {
+    display: inline-block;
+    width: 115px;
+  }
+  .width-135 {
+    display: inline-block;
+    width: 135px;
+  }
+  span.title {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #0B465D;
+  }
+  .body-visit {
+    line-height: 1.8;
+  }
 }

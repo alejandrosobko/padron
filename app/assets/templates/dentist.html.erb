@@ -3,8 +3,8 @@
     <div class="col-xs-12 light-title padding-top-20">
       <span>{{showCtrl.dentist.name}} {{showCtrl.dentist.surname}} - {{showCtrl.dentist.enrollment}}</span>
       <div class="buttons">
-        <span class="edit-dentist glyphicon glyphicon-pencil" data-ui-sref="form.edit({dentistId: showCtrl.dentist.id})" title="Editar"></span>
-        <span class="delete-dentist glyphicon glyphicon-trash" data-ng-click="showCtrl.delete()" title="Eliminar"></span>
+        <button type="button" class="btn edit-dentist glyphicon glyphicon-pencil" data-ui-sref="form.edit({dentistId: showCtrl.dentist.id})" title="Editar"></button>
+        <button type="button" class="btn delete-dentist glyphicon glyphicon-trash" data-ng-click="showCtrl.delete()" title="Eliminar"></button>
       </div>
       <hr>
     </div>

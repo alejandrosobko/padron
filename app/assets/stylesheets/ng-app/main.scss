@@ -1,9 +1,20 @@
 /* This file contains the styles for home.html */
 
-.row-pointer { cursor: pointer; }
-.padding-top-30 { padding-top: 30px; }
-.padding-top-20 { padding-top: 20px; }
-input#search { display: inline-block; }
+.row-pointer {
+  cursor: pointer;
+}
+
+.padding-top-30 {
+  padding-top: 30px;
+}
+
+.padding-top-20 {
+  padding-top: 20px;
+}
+
+input#search {
+  display: inline-block;
+}
 
 label.search {
   font-size: 18px;

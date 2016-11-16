@@ -7,30 +7,26 @@
   color: #4da4da;
   background-color: #fff;
   border-color: #fff;
-}
-
-.btn.plus-value:focus {
-  outline: none;
-  color: #151af0;
-  background-color: #eafffd;
-}
-
-.btn.plus-value:hover {
-  color: #337ab7;
+  &:focus {
+    outline: none;
+    color: #151af0;
+    background-color: #eafffd;
+  }
+  &:hover {
+    color: #337ab7;
+  }
 }
 
 .btn.minus-value {
   color: #da5d65;
   background-color: #fff;
   border-color: #fff;
-}
-
-.btn.minus-value:focus {
-  outline: none;
-  color: #f00000;
-  background-color: #eafffd;
-}
-
-.btn.minus-value:hover {
-  color: #a00000;
+  &:focus {
+    outline: none;
+    color: #f00000;
+    background-color: #eafffd;
+  }
+  &:hover {
+    color: #a00000;
+  }
 }
