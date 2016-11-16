@@ -73,18 +73,16 @@
         <div uib-accordion-group class="panel-default" heading="{{year}}">
           <div data-ng-repeat="visit in showCtrl.visitsInYear(year) track by $index">
             <div class="row">
-              <div class="col-xs-4">
-                <span class="title">Fecha: </span>
-              </div>
-              <span>{{showCtrl.getDateFor(visit) | date:'dd-MM-yyyy'}}</span>
+              <div class="col-xs-4"><span class="title">Fecha: </span></div>
+              <div class="col-xs-8"><span class="body-visit">{{showCtrl.getDateFor(visit) | date:'dd-MM-yyyy'}}</span></div>
             </div>
             <div class="row">
               <div class="col-xs-4"><span class="title">Visitador: </span></div>
-              <span>{{visit.visitor.name}}</span>
+              <div class="col-xs-8"><span class="body-visit">{{visit.visitor.name}}</span></div>
             </div>
             <div class="row">
               <div class="col-xs-4"><span class="title">Observaciones: </span></div>
-              <span>{{visit.observations}}</span>
+              <div class="col-xs-8"><span class="body-visit">{{visit.observations}}</span></div>
             </div>
             <hr>
           </div>

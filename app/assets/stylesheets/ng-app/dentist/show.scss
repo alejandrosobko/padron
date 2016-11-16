@@ -37,3 +37,11 @@
   line-height: 1.8;
   color: #0B465D;
 }
+
+.show-dentist .body-visit {
+  line-height: 1.8;
+}
+
+.show-dentist .panel-body {
+  margin-bottom: -36px !important; // To hide the last hr tag
+}
