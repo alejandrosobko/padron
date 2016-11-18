@@ -9,20 +9,14 @@
         <table class="table attention-time">
             <thead>
             <tr>
-                <th>Lunes</th>
-                <th>Martes</th>
-                <th>Miércoles</th>
-                <th>Jueves</th>
-                <th>Viernes</th>
-                <th>Sábado</th>
-                <th>Domingo</th>
+                <th data-ng-repeat="day in AttentionTimeCtrl.days">{{day}}</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td class="time"
-                    data-ng-repeat="day in ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']">
-                    <div data-ng-repeat="time in AttentionTimeCtrl.workableHoursFor(day) track by $index">
+                    data-ng-repeat="day in AttentionTimeCtrl.days">
+                    <div data-ng-repeat="time in AttentionTimeCtrl.workCalendar.workableHoursFor(day) track by $index">
                         <div class="printed">{{time.from}} a {{time.to}}</div>
                         <button type="button" title="Borrar campo"
                                 class="btn btn-xs minus-value glyphicon glyphicon-minus"
@@ -32,7 +26,7 @@
             </tr>
             <tr>
                 <td class="time"
-                    data-ng-repeat="day in ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']">
+                    data-ng-repeat="day in AttentionTimeCtrl.days">
                     <input type="text" class="form-control text-center" placeholder="Desde"
                            data-ng-model="AttentionTimeCtrl.newWorkableHours[day]['from']">
 

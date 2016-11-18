@@ -25,7 +25,7 @@ angular.module('padronApp').factory('Dentist', ['railsResourceFactory', 'railsSe
 
     resource.prototype.empty = ->
       @emptyValue(@name) && @emptyValue(@surname) && @emptyValue(@enrollment) && @emptyValue(@telephones) &&
-      @emptyValue(@cellphones) && @emptyValue(@emails) && @emptyValue(@specialtys)
+      @emptyValue(@cellphones) && @emptyValue(@emails) && @emptyValue(@specialty)
 
     resource.prototype.emptyValue = (value) ->
       value == undefined || value == null || value == "" || value.length == 0 || (value.length == 1 && value[0] == "")
