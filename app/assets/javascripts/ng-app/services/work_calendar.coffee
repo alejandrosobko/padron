@@ -9,18 +9,21 @@ angular.module('padronApp').factory('WorkCalendar', ->
     workCalendar.workableDays = response.workableDays || []
     workCalendar
 
+  WorkCalendar.prototype.getWorkableDayFor = (dayString) ->
+    @workableDays.find((workableDay) -> workableDay.day == dayString)
+
   WorkCalendar.prototype.updateDay = (day, hours) ->
-    dayWanted = @workableDays.find((workableDay) -> workableDay.day == day)
+    dayWanted = @getWorkableDayFor(day)
     if dayWanted
       @addHours(dayWanted.day, hours)
     else
       @workableDays.push({day: day, workableHours: [hours]})
 
   WorkCalendar.prototype.addHours = (day, hours) ->
-    @workableDays.find((workableDay) -> workableDay.day == day).workableHours.push(hours)
+    @getWorkableDayFor(day).workableHours.push(hours)
 
   WorkCalendar.prototype.workableHoursFor = (day) -> # Repeated code with controller
-    dayWanted = @workableDays.find((workableDay) -> workableDay.day == day)
+    dayWanted = @getWorkableDayFor(day)
     if dayWanted then dayWanted.workableHours else []
 
   WorkCalendar

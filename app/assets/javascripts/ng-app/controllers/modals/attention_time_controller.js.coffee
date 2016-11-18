@@ -35,14 +35,24 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
 
   @_checkHours = ->
     @canSave = _.every(['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'], (day) =>
-      return true unless @newWorkableHours[day] # For empty values
-      if @newWorkableHours[day]['from'] == "" || @newWorkableHours[day]['to'] == ""
+      if !@newWorkableHours[day] || @newWorkableHours[day]['from'] == "" || @newWorkableHours[day]['to'] == ""
         @newWorkableHours[day] = undefined
         return true
       from = parseInt(@newWorkableHours[day]['from'])
       to = parseInt(@newWorkableHours[day]['to'])
-      from > 0 && from <= 24 && to > 0 && to <= 24 && from < to
+      result = true
+      for hour in @workCalendar.workableHoursFor(day)
+        fromTo = {from: parseInt(hour.from), to: parseInt(hour.to)}
+        result = result && (from > 0 && from <= 24) && (to > 0 && to <= 24) && !@_hoursInRange(from, to, fromTo)
+
+      result
     )
+
+  @_hoursInRange = (from, to, hours) ->
+    (from <= hours['from'] && to >= hours['from'] && to <= hours['to']) || # rodeo al from
+    (from >= hours['from'] && from <= hours['to'] && to >= hours['to']) || # rodeo al to
+    (from <= hours['from'] && to >= hours['to']) ||                        # rodeo tod0
+    (from > hours['from'] && to < hours['to'])                             # estoy en el medio
 
   @_addHoursNotPushed = -> # TODO: Recorrer solo las keys de @newWorkableHours
     _.each(['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'], (day) => @addHoursFor(day))
