@@ -16,11 +16,11 @@
             <tr>
                 <td class="time"
                     data-ng-repeat="day in AttentionTimeCtrl.days">
-                    <div data-ng-repeat="time in AttentionTimeCtrl.workCalendar.workableHoursFor(day) track by $index">
+                    <div data-ng-repeat="time in AttentionTimeCtrl.workCalendar.workableHoursFor(day) | orderBy:'from'">
                         <div class="printed">{{time.from}} a {{time.to}}</div>
                         <button type="button" title="Borrar campo"
                                 class="btn btn-xs minus-value glyphicon glyphicon-minus"
-                                data-ng-click="AttentionTimeCtrl.removeHourFrom(day, $index)"></button>
+                                data-ng-click="AttentionTimeCtrl.removeHourFrom(day, time)"></button>
                     </div>
                 </td>
             </tr>
