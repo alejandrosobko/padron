@@ -76,7 +76,6 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
     (newFrom > hourFrom  && newTo < hourTo)                          # estoy en el medio
 
   @_update = ->
-    debugger
     dentist.hours_to_remove = @hoursToRemove
     dentist.days_to_remove = @daysToRemove
     dentist.update().then(
