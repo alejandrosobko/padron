@@ -9,6 +9,7 @@ class CreateDentists < ActiveRecord::Migration
       t.text :cellphones, array: true, default: []
       t.text :emails    , array: true, default: []
       t.string :specialty
+      t.integer :version, default: 1
 
       t.timestamps null: false
     end

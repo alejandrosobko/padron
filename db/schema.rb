@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112233909) do
+ActiveRecord::Schema.define(version: 20161120220036) do
 
   create_table "dentists", force: :cascade do |t|
     t.string   "name"
@@ -22,9 +22,18 @@ ActiveRecord::Schema.define(version: 20161112233909) do
     t.text     "cellphones", default: "--- []\n"
     t.text     "emails",     default: "--- []\n"
     t.string   "specialty"
+    t.integer  "version",    default: 1
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
+
+  create_table "historic_dentists", force: :cascade do |t|
+    t.integer "version"
+    t.time    "modification_time"
+    t.integer "dentist_id"
+  end
+
+  add_index "historic_dentists", ["dentist_id"], name: "index_historic_dentists_on_dentist_id"
 
   create_table "institutes", force: :cascade do |t|
     t.string  "name"
