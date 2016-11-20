@@ -3,7 +3,7 @@ angular.module('padronApp').controller('ShowCtrl', ($stateParams, Dentist, $uibM
 
   Dentist.get(id: $stateParams.dentistId).then(
     (dentist) =>
-      @dentist = dentist
+      @dentist = dentist.build()
       @years = _.uniq(_.map(dentist.visits, (visit) -> moment(visit.visitDate).year()))
     (error) => alert('failed')
   )

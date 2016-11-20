@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(version: 20161112233909) do
   add_index "workable_days", ["work_calendar_id"], name: "index_workable_days_on_work_calendar_id"
 
   create_table "workable_hours", force: :cascade do |t|
-    t.integer  "from"
-    t.integer  "to"
+    t.string   "from"
+    t.string   "to"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "workable_day_id"

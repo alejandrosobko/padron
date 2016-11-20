@@ -13,6 +13,10 @@ angular.module('padronApp').factory('Dentist', ['railsResourceFactory', 'railsSe
     # Model methods
     #-----------------------
 
+    resource.prototype.build = ->
+      @workCalendar = WorkCalendar.build(@workCalendar)
+      @
+
     resource.prototype.completeData = ->
       @institutes ||= [{name: '', street: '', number: '', location: ''}]
       @telephones ||= [""]

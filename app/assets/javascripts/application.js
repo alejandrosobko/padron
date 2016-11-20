@@ -25,5 +25,6 @@
 //= require ngmap
 //= require moment
 //= require angular-moment
+//= require jquery-timepicker-wvega
 //= require_tree .
 //= require_tree ../templates

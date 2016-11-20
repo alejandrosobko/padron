@@ -1,12 +1,11 @@
-angular.module('padronApp').factory('WorkCalendar', ->
+angular.module('padronApp').factory('WorkCalendar', ['WorkableDay', (WorkableDay) ->
   WorkCalendar = () ->
     @workableDays = []
     @
 
   WorkCalendar.build = (response) ->
-    workCalendar = new WorkCalendar
-    angular.copy(response, workCalendar)
-    workCalendar.workableDays = response.workableDays || []
+    workCalendar = angular.extend(new WorkCalendar, response)
+    workCalendar.workableDays = _.map(response.workableDays, (day) -> new WorkableDay.build(day))
     workCalendar
 
   WorkCalendar.prototype.getWorkableDayFor = (dayString) ->
@@ -16,18 +15,14 @@ angular.module('padronApp').factory('WorkCalendar', ->
     return unless hours
     dayWanted = @getWorkableDayFor(day)
     if dayWanted
-      @addHours(dayWanted.day, hours)
+      dayWanted.workableHours.push(hours)
     else
       @workableDays.push({day: day, workableHours: [hours]})
-
-  WorkCalendar.prototype.addHours = (day, hours) ->
-    hours['from'] = parseInt(hours['from'])
-    hours['to'] = parseInt(hours['to'])
-    @getWorkableDayFor(day).workableHours.push(hours)
 
   WorkCalendar.prototype.workableHoursFor = (day) ->
     dayWanted = @getWorkableDayFor(day)
     if dayWanted then dayWanted.workableHours else []
 
+
   WorkCalendar
-)
+])

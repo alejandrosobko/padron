@@ -11,7 +11,7 @@ dentists = [{name: 'Alejandro', surname: 'Sobko', enrollment: 1234, telephones: 
              emails: ['juancho.12@gmail.com'], specialty: 'Caries', institutes: [institutes[1]]},
 
             {name: 'Nadia', surname: 'Gonzalez', enrollment: 2234, telephones: [42568823], cellphones: [1590089973],
-            emails: %w(na.gonzalez@gmail.com alguienmas@hotmail.com), specialty: 'Ortodoncia', institutes: [institutes[2]]},
+             emails: %w(na.gonzalez@gmail.com alguienmas@hotmail.com), specialty: 'Ortodoncia', institutes: [institutes[2]]},
 
             {name: 'Pedro', surname: 'Diente', enrollment: 1899, cellphones: [1588923444],
              emails: ['dientes@gmail.com'], specialty: 'Radiografías', institutes: [institutes[3], institutes[4]]},
@@ -28,6 +28,6 @@ dentists.zip(visitors, [0, 1, 2, 3, 4]).each do |dentist, visitor, index|
                      visit_date: visit_dates[index],
                      observations: observations[index]})
 
-  days = WorkableDay.new({day: 'Lunes', workable_hours: [WorkableHour.new({from: 9, to: 10}), WorkableHour.new({from: 12, to: 15})]})
+  days = WorkableDay.new({day: 'Lunes', workable_hours: [WorkableHour.new({from: '09:30', to: '18:00'})]})
   Dentist.create!(dentist.merge(visits: [visit], work_calendar: WorkCalendar.new({workable_days: [days]})))
 end
