@@ -16,7 +16,8 @@
           <div class="width-115" data-ng-show="$index == 0"><span class="title">Instituto: </span></div>
           <div class="width-115" data-ng-show="$index > 0"><span class="title">Instituto ({{$index + 1}}): </span></div>
           <span>{{institute.name}}</span>
-          <button class="btn btn-xs btn-link" data-ng-click="showCtrl.openMaps($index)" style="margin-left: 10px;" title="Ver en Google Maps">
+          <button class="btn btn-xs btn-link" style="margin-left: 10px;" title="Ver en Google Maps" data-ng-click="showCtrl.openMaps($index)"
+                  data-ng-show="institute.location && institute.street && institute.number">
             <span class="glyphicon glyphicon-map-marker"></span>
           </button>
         </div>
@@ -74,7 +75,9 @@
           <div data-ng-repeat="visit in showCtrl.visitsInYear(year) track by $index">
             <div class="row">
               <div class="col-xs-4"><span class="title">Fecha: </span></div>
-              <div class="col-xs-8"><span class="body-visit">{{showCtrl.getDateFor(visit) | date:'dd-MM-yyyy'}}</span></div>
+              <div class="col-xs-8">
+                <span class="body-visit">{{showCtrl.getDateFor(visit) | date:'dd-MM-yyyy'}}</span>
+              </div>
             </div>
             <div class="row">
               <div class="col-xs-4"><span class="title">Visitador: </span></div>

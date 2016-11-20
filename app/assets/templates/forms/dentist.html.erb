@@ -56,7 +56,7 @@
       <div>
         <input type="text" class="form-control input-plus" id="inputInstitute" data-ng-model="newOrEditCtrl.dentistToEdit.institutes[$index].name">
         <button type="button" title="Agregar otro instituto" class="btn btn-xs plus-value glyphicon glyphicon-plus" data-ng-show="$index == 0"
-                data-ng-click="newOrEditCtrl.dentistToEdit.newInstitute()"></button>
+                data-ng-click="newOrEditCtrl.newInstitute()"></button>
         <button type="button" title="Borrar instituto" class="btn btn-xs minus-value glyphicon glyphicon-minus" data-ng-show="$index != 0"
                 data-ng-click="newOrEditCtrl.removeInstitute($index)"></button>
       </div>

@@ -69,6 +69,9 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
     if (field > -1)
       list.splice(field, 1)
 
+  @newInstitute = ->
+    @dentistToEdit.institutes.push({name: '', location: '', street: '', number: ''})
+
   @removeInstitute = (index) ->
     @dentistToEdit.institutes_to_remove ||= []
     @dentistToEdit.institutes_to_remove.push(@dentistToEdit.institutes[index].id)

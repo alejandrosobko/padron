@@ -39,8 +39,6 @@ angular.module('padronApp').factory('Dentist', ['railsResourceFactory', 'railsSe
       @cellphones   = _.compact(@cellphones) if @cellphones.length > 1
       @emails       = _.compact(@emails)     if @emails.length > 1
 
-    resource.prototype.newInstitute = ->
-      @institutes.push({name: '', location: '', street: '', number: ''})
 
 
     resource
