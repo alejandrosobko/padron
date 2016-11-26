@@ -8,8 +8,9 @@
   .time {
     .printed {
       font-size: 14px;
-      width: 57px;
+      width: 85px;
       display: inline-block;
+      margin-left: -18px;
     }
     input {
       margin-bottom: 5px;
@@ -24,4 +25,9 @@
       color: #337ab7;
     }
   }
+
+}
+
+.modal-lg {
+  width: 1000px !important;
 }
