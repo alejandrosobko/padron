@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 20161120220036) do
   end
 
   create_table "historic_dentists", force: :cascade do |t|
-    t.integer "version"
-    t.time    "modification_time"
-    t.integer "dentist_id"
+    t.integer  "version"
+    t.datetime "modification_time"
+    t.integer  "dentist_id"
   end
 
   add_index "historic_dentists", ["dentist_id"], name: "index_historic_dentists_on_dentist_id"
