@@ -42,7 +42,7 @@
     </div>
 </div>
 <div class="modal-footer">
-    <span title="Borrar horarios de atención no cargados" class="clear-all" data-ng-click="AttentionTimeCtrl.clearAll()">Limpiar
+    <span title="Borrar horarios no cargados" class="clear-all" data-ng-click="AttentionTimeCtrl.clearAll()">Limpiar
         <span class="glyphicon glyphicon-trash"></span>
     </span>
     <button class="btn btn-success" type="button" data-ng-click="AttentionTimeCtrl.save()">Guardar</button>
@@ -53,7 +53,12 @@
     $(document).ready(function () {
         $('input.timepicker').timepicker({
             timeFormat: 'HH:mm',
-            dropdown: false
+            dropdown: false,
+            change: function(time) {
+                var element = $(this);
+                element.text(element.timepicker().format(time));
+                element.trigger('input');
+            }
         });
     });
 </script>

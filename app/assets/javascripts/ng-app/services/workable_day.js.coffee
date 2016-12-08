@@ -1,4 +1,4 @@
-angular.module('padronApp').factory('WorkableDay', ['WorkableHour', (WorkableHour) ->
+angular.module('padronApp').factory('WorkableDay', ->
   WorkableDay = () ->
     @workableHours = []
     @
@@ -10,4 +10,4 @@ angular.module('padronApp').factory('WorkableDay', ['WorkableHour', (WorkableHou
 
 
   WorkableDay
-])
+)

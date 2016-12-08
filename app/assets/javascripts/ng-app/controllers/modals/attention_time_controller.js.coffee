@@ -6,6 +6,7 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
   @hoursToRemove = []
   @daysToRemove = []
   @canSave = true
+  @errors = []
 
   @cancel = ->
     $uibModalInstance.dismiss()
@@ -17,74 +18,17 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
     if @canSave
       @workCalendar.updateDay(day, @newWorkableHours[day])
       @newWorkableHours[day] = undefined
-    else
-      errorHandler.error("Hay horarios incorrectos")
 
   # save button
   @save = ->
     @_checkHours()
     if @canSave
-      _.each(@days, (day) => @addHoursFor(day)) # save hours in inputs
+      _.each(@days, (day) => @addHoursFor(day)) # save hours in the inputs
       dentist.workCalendar = @workCalendar
       if dentist.id
         @_update()
       else
         @_notifyOk()
-    else
-      errorHandler.error("Hay horarios incorrectos")
-
-  @_checkHours = ->
-    @canSave = _.every(@days, (day) =>
-      if @_isEmpty(@newWorkableHours[day]) # to not save empty hours
-        @newWorkableHours[day] = undefined
-        return true
-      @_passSimpleCheck(@newWorkableHours[day]) && @_passAdvanceCheck(@newWorkableHours[day], day)
-    )
-
-  @_isEmpty = (newHours) ->
-    (!newHours) || newHours['from'] == "" || newHours['to'] == ""
-
-  # This completes with leading zeros because it doesn't by the library
-  @_passSimpleCheck = (newHours) ->
-    aux = newHours
-    if aux.from.split(":").length == 1
-      if aux.from.length == 1
-        aux.from = '0' + newHours.from
-      aux.from = newHours.from + ':00'
-
-    if aux.to.split(":").length == 1
-      if aux.to.length == 1
-        aux.to = '0' + newHours.to
-      aux.to = newHours.to + ':00'
-
-    pattern = RegExp(/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/)
-    pattern.test(aux.from) && pattern.test(aux.to) && @_hourToDate(aux.from) < @_hourToDate(aux.to)
-
-  @_passAdvanceCheck = (newHours, day) ->
-    @workCalendar.workableHoursFor(day) == [] ||
-    _.every(@workCalendar.workableHoursFor(day), (hour) => !@_hoursInRange(newHours, hour))
-
-  @_hoursInRange = (newHours, hour) ->
-    newFrom = @_hourToDate(newHours.from)
-    newTo = @_hourToDate(newHours.to)
-    hourFrom = @_hourToDate(hour.from)
-    hourTo = @_hourToDate(hour.to)
-
-    (newFrom <= hourFrom && newTo >= hourFrom && newTo <= hourTo) || # rodeo al from
-    (newFrom >= hourFrom && newFrom <= hourTo && newTo >= hourTo) || # rodeo al to
-    (newFrom <= hourFrom && newTo >= hourTo)                      || # rodeo tod0
-    (newFrom > hourFrom  && newTo < hourTo)                          # estoy en el medio
-
-  @_update = ->
-    dentist.hours_to_remove = @hoursToRemove
-    dentist.days_to_remove = @daysToRemove
-    dentist.update().then(
-      (success) =>
-        @_notifyOk()
-      (error) =>
-        for key_error in Object.keys(error.data)
-          errorHandler.error(error.data[key_error][0])
-    )
 
   @removeHourFrom = (day, hours) ->
     dayWanted = @workCalendar.getWorkableDayFor(day)
@@ -97,15 +41,80 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
         dayIndex = @workCalendar.workableDays.indexOf(dayWanted)
         @workCalendar.workableDays.splice(dayIndex, 1)
 
+  @clearAll = ->
+    @newWorkableHours = {}
+
+
+  #-----------------------
+  # Private functions
+  #-----------------------
+
+  @_checkHours = ->
+    @canSave = _.every(@days, (day) =>
+      if @_isEmpty(@newWorkableHours[day]) # to not save empty hours
+        @newWorkableHours[day] = undefined
+        return true
+      @_passSimpleCheck(day) && @_passAdvanceCheck(@newWorkableHours[day], day)
+    )
+    @_showErrors()
+    @canSave
+
+  @_isEmpty = (newHours) ->
+    (!newHours) || newHours['from'] == '' || newHours['to'] == ''
+
+  # Checks like to > from, and check the time with regex
+  @_passSimpleCheck = (day) ->
+    newHours = @newWorkableHours[day]
+    pattern = RegExp(/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/)
+
+    resultOk = pattern.test(newHours.from) && pattern.test(newHours.to) && @_hourToDate(newHours.from) < @_hourToDate(newHours.to)
+    @errors.push("En el día #{day} hay horarios incorrectos") if !resultOk
+    resultOk
+
+  # Check overlapping
+  @_passAdvanceCheck = (newHours, day) ->
+    @workCalendar.workableHoursFor(day) == [] ||
+    _.every(@workCalendar.workableHoursFor(day), (hour) =>
+      resultOk = !@_hoursOverlapping(newHours, hour)
+      @errors.push("En el día #{day} se superponen los horarios") if !resultOk
+      resultOk
+    )
+
+  # Returns true if newHours is overlapping hour
+  @_hoursOverlapping = (newHours, hour) ->
+    newFrom = @_hourToDate(newHours.from)
+    newTo = @_hourToDate(newHours.to)
+    hourFrom = @_hourToDate(hour.from)
+    hourTo = @_hourToDate(hour.to)
+
+    (newFrom <= hourFrom && newTo >= hourFrom && newTo <= hourTo) || # rodeo al from
+    (newFrom >= hourFrom && newFrom <= hourTo && newTo >= hourTo) || # rodeo al to
+    (newFrom <= hourFrom && newTo >= hourTo)                      || # rodeo todo
+    (newFrom > hourFrom  && newTo < hourTo)                          # estoy en el medio
+
+  @_showErrors = ->
+    for error in @errors
+      errorHandler.error(error)
+    @errors = []
+
+  @_update = ->
+    dentist.hours_to_remove = @hoursToRemove
+    dentist.days_to_remove = @daysToRemove
+    dentist.update().then(
+      (success) =>
+        @_notifyOk()
+      (error) =>
+        for key_error in Object.keys(error.data)
+          errorHandler.error(error.data[key_error][0])
+    )
+
   @_notifyOk = ->
-    errorHandler.success("Se guardaron los horarios correctamente")
+    errorHandler.success('Se guardaron los horarios correctamente')
     $uibModalInstance.dismiss()
 
   @_hourToDate = (stringHour) ->
     new Date('2000, 1, 1 ' + stringHour)
 
-  @clearAll = ->
-    @newWorkableHours = {}
 
   @
 )
