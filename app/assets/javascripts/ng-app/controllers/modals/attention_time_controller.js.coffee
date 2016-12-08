@@ -104,5 +104,8 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
   @_hourToDate = (stringHour) ->
     new Date('2000, 1, 1 ' + stringHour)
 
+  @clearAll = ->
+    @newWorkableHours = {}
+
   @
 )

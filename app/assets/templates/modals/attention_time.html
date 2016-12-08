@@ -42,12 +42,15 @@
     </div>
 </div>
 <div class="modal-footer">
+    <span title="Borrar horarios de atención no cargados" class="clear-all" data-ng-click="AttentionTimeCtrl.clearAll()">Limpiar
+        <span class="glyphicon glyphicon-trash"></span>
+    </span>
     <button class="btn btn-success" type="button" data-ng-click="AttentionTimeCtrl.save()">Guardar</button>
     <button class="btn btn-default" type="button" data-ng-click="AttentionTimeCtrl.cancel()">Cancelar</button>
 </div>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('input.timepicker').timepicker({
             timeFormat: 'HH:mm',
             dropdown: false
