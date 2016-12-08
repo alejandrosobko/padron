@@ -1,12 +1,14 @@
-<div class="col-xs-5 col-xs-offset-1">
+<div class="col-xs-6 form-horizontal">
   <div class="form-group">
-    <label for="inputVisitorName">Nombre del visitador</label>
-    <input type="text" class="form-control" id="inputVisitorName" data-ng-model="newOrEditCtrl.newVisitor.name" style="width: 90%">
+    <label for="inputVisitorName" class="col-sm-3 control-label">Nombre</label>
+    <div class="col-sm-9">
+      <input type="text" class="input-plus form-control" id="inputVisitorName" data-ng-model="newOrEditCtrl.newVisitor.name">
+    </div>
   </div>
   <div class="form-group">
-    <label for="inputVisitDate">Fecha de visita</label>
-    <div class="input-group" data-ng-controller="DatePickerCtrl as datePickerCtrl" style="width: 90%">
-      <input type="text" class="form-control" style="display: inline-block;"
+    <label for="inputVisitDate" class="col-sm-3 control-label">Fecha de visita</label>
+    <div class="input-group col-sm-9" data-ng-controller="DatePickerCtrl as datePickerCtrl" style="display: inline-block; padding-left: 15px;">
+      <input type="text" class="form-control" style="width: 78%;"
              data-ng-required="true"
              data-uib-datepicker-popup="dd-MM-yyyy"
              data-is-open="datePickerCtrl.popup.opened"
@@ -16,7 +18,7 @@
              data-ng-model="newOrEditCtrl.newVisit.visitDate"
              data-clear-text="Limpiar"
              data-ng-click="datePickerCtrl.open()"/>
-      <span class="input-group-btn">
+      <span class="input-group-btn" style="width: 0">
         <button type="button" class="form-control btn btn-default"
                 data-ng-click="datePickerCtrl.open()">
           <i class="glyphicon glyphicon-calendar"></i>
@@ -25,11 +27,13 @@
     </div>
   </div>
 </div>
-<div class="col-xs-5 col-xs-offset-1">
+<div class="col-xs-6 form-horizontal">
   <div class="form-group">
-    <label for="areaObservations">Observaciones</label>
-    <textarea name="observations" id="areaObservations" class="form-control" cols="35" rows="5"
-              data-ng-model="newOrEditCtrl.newVisit.observations">
+    <label for="areaObservations" class="col-sm-3 control-label">Observaciones</label>
+    <div class="col-sm-9">
+      <textarea name="observations" id="areaObservations" class="form-control" cols="35" rows="5"
+                data-ng-model="newOrEditCtrl.newVisit.observations">
       </textarea>
+    </div>
   </div>
 </div>

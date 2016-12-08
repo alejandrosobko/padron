@@ -23,8 +23,8 @@ class Dentist < ActiveRecord::Base
   private
 
   def save_historic
-    self.version += 1
     historic_dentists << HistoricDentist.create!({version: self.version, modification_time: Time.zone.now, dentist_id: id})
+    self.version += 1
   end
 
 end

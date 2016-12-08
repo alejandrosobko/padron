@@ -31,6 +31,16 @@
   }
 }
 
+.section-title {
+  margin-bottom: 10px;
+  span {
+    color: black;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+}
+
 // TODO: Habilitar cuando pueda setear la clase de css pero que no se aplique el efecto a los campos existentes
 //@keyframes highlight {
 //  0% {
