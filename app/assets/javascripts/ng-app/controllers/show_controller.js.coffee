@@ -5,7 +5,9 @@ angular.module('padronApp').controller('ShowCtrl', ($stateParams, Dentist, $uibM
     (dentist) =>
       @dentist = dentist.build()
       @years = _.uniq(_.map(dentist.visits, (visit) -> moment(visit.visitDate).year()))
-    (error) => alert('failed')
+    (error) =>
+      $location.path('/')
+      errorHandler.error("No existe un odontólogo con id: #{$stateParams.dentistId}")
   )
 
   @getDateFor = (visit) ->

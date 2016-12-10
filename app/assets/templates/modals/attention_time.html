@@ -18,7 +18,7 @@
                     data-ng-repeat="day in AttentionTimeCtrl.days">
                     <div data-ng-repeat="time in AttentionTimeCtrl.workCalendar.workableHoursFor(day) | orderBy:'from'">
                         <div class="printed">{{time.from}} a {{time.to}}</div>
-                        <button type="button" title="Borrar campo"
+                        <button type="button" title="Borrar horario"
                                 class="btn btn-xs minus-value glyphicon glyphicon-minus"
                                 data-ng-click="AttentionTimeCtrl.removeHourFrom(day, time)"></button>
                     </div>
@@ -32,7 +32,7 @@
 
                     <input type="text" class="form-control text-center to timepicker" placeholder="Hasta"
                            data-ng-model="AttentionTimeCtrl.newWorkableHours[day]['to']">
-                    <button type="button" title="Agregar otro campo"
+                    <button type="button" title="Cargar horario"
                             class="btn btn-xs plus-value glyphicon glyphicon-plus"
                             data-ng-click="AttentionTimeCtrl.addHoursFor(day)"></button>
                 </td>

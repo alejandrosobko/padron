@@ -32,10 +32,7 @@
           <thead>
           <tr>
             <th data-ng-click="dentistCtrl.orderBy('surname')" class="row-pointer col-xs-2">
-              <span data-uib-tooltip="Ordenar por apellido"
-                    data-tooltip-placement="top"
-                    data-tooltip-trigger="'mouseenter'"
-                    data-tooltip-popup-delay="300">Odontólogo
+              <span data-uib-tooltip="Ordenar por apellido" data-tooltip-popup-delay="300">Odontólogo
                 <span class="glyphicon glyphicon-triangle-top" data-ng-show="!dentistCtrl.reversed"></span>
                 <span class="glyphicon glyphicon-triangle-bottom" data-ng-show="dentistCtrl.reversed"></span>
               </span>
@@ -50,27 +47,34 @@
           </thead>
           <tbody data-ng-repeat="dentist in dentistCtrl.dentists | orderBy:dentistCtrl.fieldToOrder:dentistCtrl.reversed
                                                                  | filter:dentistCtrl.searched">
-          <tr class="row-pointer">
-            <td data-ui-sref="show({dentistId: dentist.id})">{{dentist.name}} {{dentist.surname}}</td>
-            <td data-ui-sref="show({dentistId: dentist.id})">{{dentist.enrollment}}</td>
-            <td data-ui-sref="show({dentistId: dentist.id})">{{dentist.institutes[0].name}}</td>
-            <td data-ui-sref="show({dentistId: dentist.id})">
-              <span data-ng-hide="dentist.emptyValue(dentist.institutes[0].street)">{{dentist.institutes[0].street}}, </span>
-              <span data-ng-hide="dentist.emptyValue(dentist.institutes[0].number)">{{dentist.institutes[0].number}} </span>
-              <span data-ng-hide="dentist.emptyValue(dentist.institutes[0].location)">({{dentist.institutes[0].location}})</span>
+          <tr>
+            <td class="row-pointer" data-ui-sref="show({dentistId: dentist.id})">{{dentist.name}} {{dentist.surname}}</td>
+            <td>{{dentist.enrollment}}</td>
+            <td>
+              <div data-ng-repeat="institute in dentist.institutes">{{institute.name}}</div>
             </td>
-            <td data-ui-sref="show({dentistId: dentist.id})">{{dentist.specialty}}</td>
-            <td data-ui-sref="show({dentistId: dentist.id})">
-              <span data-ng-hide="dentist.emptyValue(dentist.telephones[0])">{{dentist.telephones[0]}} <br></span>
-              <span data-ng-hide="dentist.emptyValue(dentist.cellphones[0])">{{dentist.cellphones[0]}} <br></span>
-              <span data-ng-hide="dentist.emptyValue(dentist.emails[0])">{{dentist.emails[0]}}</span>
+            <td>
+              <div data-ng-repeat="institute in dentist.institutes">
+                <span data-ng-hide="dentist.emptyValue(institute.street)">{{institute.street}}, </span>
+                <span data-ng-hide="dentist.emptyValue(institute.number)">{{institute.number}} </span>
+                <span data-ng-hide="dentist.emptyValue(institute.location)">({{institute.location}})</span>
+              </div>
+            </td>
+            <td>{{dentist.specialty}}</td>
+            <td>
+              <div data-ng-repeat="telephone in dentist.telephones">
+                <span data-ng-hide="dentist.emptyValue(telephone)">{{telephone}} <br></span>
+              </div>
+              <div data-ng-repeat="cellphone in dentist.cellphones">
+                <span data-ng-hide="dentist.emptyValue(cellphone)">{{cellphone}} <br></span>
+              </div>
+              <div data-ng-repeat="email in dentist.emails">
+                <span data-ng-hide="dentist.emptyValue(email)">{{email}} <br></span>
+              </div>
             </td>
             <td class="text-center">
               <button class="btn btn-xs btn-success" data-ng-click="dentistCtrl.openModal(dentist)"
-                      data-uib-tooltip="Registrar nueva visita"
-                      data-tooltip-placement="right"
-                      data-tooltip-trigger="'mouseenter'"
-                      data-tooltip-popup-delay="300">+
+                      data-uib-tooltip="Registrar nueva visita" data-tooltip-placement="right" data-tooltip-popup-delay="300">+
               </button>
             </td>
           </tr>

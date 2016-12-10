@@ -1,7 +1,5 @@
 angular.module('padronApp')
-  .directive('datepicker', ->
-    controller: 'DatePickerCtrl as datePickerCtrl'
-  )
+  .directive('datepicker', -> controller: 'DatePickerCtrl as datePickerCtrl' )
   .controller('DatePickerCtrl', ->
     getDayClass = (data) ->
       date = data.date
