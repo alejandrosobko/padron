@@ -64,12 +64,12 @@ ActiveRecord::Schema.define(version: 20161120220036) do
   add_index "visits", ["visitor_id"], name: "index_visits_on_visitor_id"
 
   create_table "work_calendars", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "dentist_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "institute_id"
   end
 
-  add_index "work_calendars", ["dentist_id"], name: "index_work_calendars_on_dentist_id"
+  add_index "work_calendars", ["institute_id"], name: "index_work_calendars_on_institute_id"
 
   create_table "workable_days", force: :cascade do |t|
     t.string   "day"

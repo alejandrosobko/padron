@@ -15,7 +15,7 @@ RSpec.describe DentistsController, type: :controller do
 
     describe 'with dentists' do
       let!(:visit) { create(:visit, visitor: create(:visitor)) }
-      let!(:dentist) { create(:dentist, visits: [visit], work_calendar: WorkCalendar.new) }
+      let!(:dentist) { create(:dentist, visits: [visit]) }
 
       it 'returns an array with one dentist' do
         get :index
@@ -29,7 +29,7 @@ RSpec.describe DentistsController, type: :controller do
 
   describe 'GET with id' do
     let!(:visit) { create(:visit, visitor: create(:visitor)) }
-    let!(:dentist) { create(:dentist, name: 'Ale', visits: [visit], work_calendar: WorkCalendar.new) }
+    let!(:dentist) { create(:dentist, name: 'Ale', visits: [visit]) }
 
     it 'returns a dentist with id = 1' do
       get :show, id: 1
@@ -50,60 +50,44 @@ RSpec.describe DentistsController, type: :controller do
 
     describe 'with data' do
       let!(:visit) { build(:visit, visitor: build(:visitor)) }
-      let!(:work_calendar) {WorkCalendar.new({workable_days: [build(:workable_day_monday, workable_hours: [build(:workable_hour_afternoon)])]})}
-      let!(:dentist) { build(:dentist, visits: [visit], work_calendar: WorkCalendar.new) }
+      let!(:dentist) { build(:dentist, visits: [visit]) }
 
       it 'creates a dentist' do
-        post :create, {dentist: dentist.as_json, visit: visit.as_json, visitor: {}, work_calendar: work_calendar.as_json}
+        request = {dentist: dentist.as_json}
+        request[:dentist][:visits_attributes] = visit.as_json
+        request[:dentist][:visits_attributes][:visitor_attributes] = {}
+
+        post :create, request
         json = JSON.parse(response.body)
 
-        # expect(response.status).to eq 200
-        # expect(json['id']).to be 1
+        expect(response.status).to eq 200
+        expect(json['id']).to be 1
       end
 
-      it 'creates a dentist with 2 workable days' do
-        work_calendar.workable_days.push(build(:workable_day_tuesday, workable_hours: [build(:workable_hour_afternoon)]))
-
-        post :create, {dentist: dentist.as_json, visit: visit.as_json, visitor: {}, work_calendar: work_calendar.as_json}
-        json = JSON.parse(response.body)
-
-        # expect(response.status).to eq 200
-        # expect(json['id']).to be 1
-        # expect(Dentist.find(1).work_calendar.workable_days.first.day).to eq 'Monday' TODO: No se porque no anda esto
-        # expect(Dentist.find(1).work_calendar.workable_days[1].day).to eq 'Tuesday'
-      end
     end
   end
 
   describe 'update dentist' do
     let!(:visit) { build(:visit, visitor: build(:visitor)) }
-    let!(:work_calendar) {WorkCalendar.new({workable_days: [build(:workable_day_monday, workable_hours: [build(:workable_hour_afternoon)])]})}
-    let!(:dentist) { build(:dentist, visits: [visit], name: 'Ale', work_calendar: WorkCalendar.new) }
-    before { post :create, {dentist: dentist.as_json, visit: visit.as_json, visitor: {}, work_calendar: work_calendar.as_json} }
+    let!(:dentist) { build(:dentist, visits: [visit], name: 'Ale') }
+
+    before(:each) do
+      request = {dentist: dentist.as_json}
+      request[:dentist][:visits_attributes] = visit.as_json
+      request[:dentist][:visits_attributes][:visitor_attributes] = {}
+      post :create, request
+    end
 
     it 'updates dentist' do
       expect(dentist.name).to eq 'Ale'
 
-      # put :update, id: 1, dentist: {id: 1, name: 'NewAle'}
+      put :update, id: 1, dentist: {id: 1, name: 'NewAle'}
       json = JSON.parse(response.body)
 
-      # expect(response.status).to eq 200
-      # expect(json['name']).to eq 'NewAle'
+      expect(response.status).to eq 200
+      expect(json['name']).to eq 'NewAle'
     end
-  end
 
-  describe 'create visit from dentist' do
-    let!(:visit) { create(:visit, visitor: create(:visitor)) }
-    let!(:dentist) { create(:dentist, visits: [visit], name: 'Ale', work_calendar: WorkCalendar.new) }
-
-    it 'creates a new visit' do
-      expect(Dentist.find(dentist.id).visits.size).to eq 1
-
-      # post :create_visit, id: 1, visit: build(:visit, visitor: build(:visitor)).as_json, visitor: {}
-
-      # expect(response.status).to eq 200
-      # expect(Dentist.find(dentist.id).visits.size).to eq 2
-    end
   end
 
 end

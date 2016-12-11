@@ -11,14 +11,14 @@ RSpec.describe Dentist, :type => :model do
 
   describe 'with data' do
     let(:visit) { build(:visit, visitor: build(:visitor)) }
-    let(:dentist) { build(:dentist, visits: [visit], work_calendar: WorkCalendar.new) }
+    let(:dentist) { build(:dentist, visits: [visit]) }
 
     it 'should can save a dentist with visits' do
       expect(dentist.save).to be true
     end
 
     it 'should not can save two dentists with equals enrollments' do
-      dentist2 = build(:dentist, visits: [visit], work_calendar: WorkCalendar.new, enrollment: dentist.enrollment)
+      dentist2 = build(:dentist, visits: [visit], enrollment: dentist.enrollment)
 
       expect(dentist.save).to be true
       expect(dentist2.save).to be false
@@ -27,11 +27,8 @@ RSpec.describe Dentist, :type => :model do
     it 'should can save a dentist with a lot of workable days' do
       hours = [build(:workable_hour_morning), build(:workable_hour_afternoon)]
       days = [build(:workable_day_monday, workable_hours: hours), build(:workable_day_tuesday, workable_hours: hours)]
-      dentist.work_calendar.workable_days = days
 
       expect(dentist.save).to be true
-      expect(dentist.work_calendar.workable_days.first.day).to eq 'Monday'
-      expect(dentist.work_calendar.workable_days[1].day).to eq 'Tuesday'
     end
 
     it 'with institutes' do

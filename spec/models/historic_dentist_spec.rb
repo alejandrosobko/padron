@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe HistoricDentist, :type => :model do
 
   let(:visit) { build(:visit, visitor: build(:visitor)) }
-  let(:dentist) { build(:dentist, visits: [visit], work_calendar: WorkCalendar.new) }
+  let(:dentist) { build(:dentist, visits: [visit]) }
 
   before(:each) {dentist.save!}
 

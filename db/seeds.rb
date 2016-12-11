@@ -4,6 +4,11 @@ institutes = [Institute.new({name: 'Super dientes', location: 'Quilmes', street:
               Institute.new({name: 'Instituto de dentistas de Ezpeleta', location: 'Ezpeleta', street: 'La guarda', number: 5020}),
               Institute.new({name: 'Dental pro', location: 'Buenos Aires', street: 'Balcarce', number: 50})]
 
+institutes.each do |i|
+  days = WorkableDay.new({day: 'Lunes', workable_hours: [WorkableHour.new({from: '09:30', to: '18:00'})]})
+  i.work_calendar = WorkCalendar.new({workable_days: [days]})
+end
+
 dentists = [{name: 'Alejandro', surname: 'Sobko', enrollment: 1234, telephones: [42789999], cellphones: [1534498431],
              emails: ['alejandro@gmail.com'], specialty: 'Ortodoncia', institutes: [institutes[0]]},
 
@@ -28,6 +33,5 @@ dentists.zip(visitors, [0, 1, 2, 3, 4]).each do |dentist, visitor, index|
                      visit_date: visit_dates[index],
                      observations: observations[index]})
 
-  days = WorkableDay.new({day: 'Lunes', workable_hours: [WorkableHour.new({from: '09:30', to: '18:00'})]})
-  Dentist.create!(dentist.merge(visits: [visit], work_calendar: WorkCalendar.new({workable_days: [days]})))
+  Dentist.create!(dentist.merge(visits: [visit]))
 end
