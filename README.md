@@ -4,9 +4,9 @@
 ![Padrón](/app/assets/images/logo.png) 
 
 
-# Padron
+# Padron de odontólogos
 
- Load administrative information and saves them to the database.
+Load administrative information and save them to the database.
 
 ### Circuit
 
