@@ -1,12 +1,12 @@
-angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, errorHandler, $location, $uibModal) ->
+angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, errorHandler, $location, $uibModal, Institute) ->
   @editMode = $stateParams.dentistId
-  @dentistToEdit = new Dentist().completeData()
+  @dentistToEdit = new Dentist()
   @newVisit = {visitDate: new Date}
   @newVisitor = {}
 
   if @editMode
     Dentist.get($stateParams.dentistId).then(
-      (response) => @dentistToEdit = response
+      (response) => @dentistToEdit = Dentist.build(response)
       (error) => errorHandler.error("Ocurrió un error interno obteniendo al odontólogo. Por favor intente nuevamente")
     )
 
@@ -56,13 +56,13 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
 
   @removeToView = -> $location.path('/')
 
-  @viewAttentionTime = =>
+  @attentionTimeFor = (institute) =>
     $uibModal.open(
       templateUrl: 'modals/attention_time.html'
       size: 'lg'
-      controller: 'AttentionTimeCtrl as AttentionTimeCtrl'
+      controller: 'AttentionTimeCtrl as timeCtrl'
       resolve:
-        dentist: => @dentistToEdit
+        institute: => institute
     )
 
   @removeFieldFrom = (list, field) ->
@@ -70,7 +70,7 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
       list.splice(field, 1)
 
   @newInstitute = ->
-    @dentistToEdit.institutes.push({name: '', location: '', street: '', number: ''})
+    @dentistToEdit.institutes.push(new Institute)
 
   @removeInstitute = (index) ->
     @dentistToEdit.institutes_to_remove ||= []

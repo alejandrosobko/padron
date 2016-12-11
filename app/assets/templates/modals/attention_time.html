@@ -4,37 +4,36 @@
     </div>
     <div class="modal-body" id="modal-body">
         <div class="form-group">
-            <label>Odontólogo:</label> {{AttentionTimeCtrl.dentist.name}} {{AttentionTimeCtrl.dentist.surname}}
+            <label>Odontólogo:</label> {{timeCtrl.dentist.name}} {{timeCtrl.dentist.surname}} <br>
+            <label data-ng-show="timeCtrl.institute">Instituto:</label> {{timeCtrl.institute.name}}
         </div>
         <table class="table attention-time">
             <thead>
             <tr>
-                <th data-ng-repeat="day in AttentionTimeCtrl.days">{{day}}</th>
+                <th data-ng-repeat="day in timeCtrl.days">{{day}}</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td class="time"
-                    data-ng-repeat="day in AttentionTimeCtrl.days">
-                    <div data-ng-repeat="time in AttentionTimeCtrl.workCalendar.workableHoursFor(day) | orderBy:'from'">
+                <td class="time" data-ng-repeat="day in timeCtrl.days">
+                    <div data-ng-repeat="time in timeCtrl.workCalendar.workableHoursFor(day) | orderBy:'from'">
                         <div class="printed">{{time.from}} a {{time.to}}</div>
                         <button type="button" title="Borrar horario"
                                 class="btn btn-xs minus-value glyphicon glyphicon-minus"
-                                data-ng-click="AttentionTimeCtrl.removeHourFrom(day, time)"></button>
+                                data-ng-click="timeCtrl.removeHourFrom(day, time)"></button>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td class="time"
-                    data-ng-repeat="day in AttentionTimeCtrl.days">
+                <td class="time" data-ng-repeat="day in timeCtrl.days">
                     <input type="text" class="form-control text-center timepicker" placeholder="Desde"
-                           data-ng-model="AttentionTimeCtrl.newWorkableHours[day]['from']">
+                           data-ng-model="timeCtrl.newWorkableHours[day]['from']">
 
                     <input type="text" class="form-control text-center to timepicker" placeholder="Hasta"
-                           data-ng-model="AttentionTimeCtrl.newWorkableHours[day]['to']">
+                           data-ng-model="timeCtrl.newWorkableHours[day]['to']">
                     <button type="button" title="Cargar horario"
                             class="btn btn-xs plus-value glyphicon glyphicon-plus"
-                            data-ng-click="AttentionTimeCtrl.addHoursFor(day)"></button>
+                            data-ng-click="timeCtrl.addHoursFor(day)"></button>
                 </td>
             </tr>
             </tbody>
@@ -42,11 +41,11 @@
     </div>
 </div>
 <div class="modal-footer">
-    <span title="Borrar horarios no cargados" class="clear-all" data-ng-click="AttentionTimeCtrl.clearAll()">Limpiar
+    <span title="Borrar horarios no cargados" class="clear-all" data-ng-click="timeCtrl.clearAll()">Limpiar
         <span class="glyphicon glyphicon-trash"></span>
     </span>
-    <button class="btn btn-success" type="button" data-ng-click="AttentionTimeCtrl.save()">Guardar</button>
-    <button class="btn btn-default" type="button" data-ng-click="AttentionTimeCtrl.cancel()">Cancelar</button>
+    <button class="btn btn-success" type="button" data-ng-click="timeCtrl.save()" title="Guardar horarios de atención">Guardar</button>
+    <button class="btn btn-default" type="button" data-ng-click="timeCtrl.cancel()">Cancelar</button>
 </div>
 
 <script>

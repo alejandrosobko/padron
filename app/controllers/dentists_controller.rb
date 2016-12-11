@@ -10,7 +10,6 @@ class DentistsController < ApplicationController
 
   def create
     dentist = Dentist.new(dentist_params)
-    dentist.work_calendar ||= WorkCalendar.new
     begin
       dentist.save!
       render json: dentist
@@ -22,9 +21,7 @@ class DentistsController < ApplicationController
   def update
     dentist = Dentist.find(params[:dentist][:id])
     begin
-      destroy_hours(params[:dentist][:hours_to_remove])
-      destroy_days(params[:dentist][:days_to_remove])
-      destroy_institutes(params[:dentist][:institutes_to_remove]) # TODO: Refactor
+      destroy_institutes(params[:dentist][:institutes_to_remove])
       dentist.update!(dentist_params)
       render json: dentist
     rescue => e
@@ -37,16 +34,7 @@ class DentistsController < ApplicationController
     render json: Dentist.all
   end
 
-
   private
-
-  def destroy_hours(hours)
-    WorkableHour.where(id: hours).destroy_all
-  end
-
-  def destroy_days(days)
-    WorkableDay.where(id: days).destroy_all
-  end
 
   def destroy_institutes(institutes)
     Institute.where(id: institutes).destroy_all
@@ -54,12 +42,12 @@ class DentistsController < ApplicationController
 
   def dentist_params
     params.require(:dentist).permit(
-        :name, :surname, :enrollment, :specialty, :attention_datetime, telephones: [], cellphones: [], emails: [],
+        :id, :name, :surname, :enrollment, :specialty, :attention_datetime, telephones: [], cellphones: [], emails: [],
         visits_attributes: [:id, :visit_date, :observations, visitor_attributes: [:id, :name]],
-        work_calendar_attributes: [:id,
-                                   workable_days_attributes: [:work_calendar_id, :id, :day,
-                                                              workable_hours_attributes: [:id, :from, :to, :workable_day_id]]],
-        institutes_attributes: [:id, :name, :location, :street, :number])
+        institutes_attributes: [:id, :name, :location, :street, :number,
+            work_calendar_attributes: [:id,
+                workable_days_attributes: [:work_calendar_id, :id, :day,
+                    workable_hours_attributes: [:id, :from, :to, :workable_day_id]]]])
   end
 
 end

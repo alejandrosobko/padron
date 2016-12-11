@@ -1,45 +1,37 @@
-angular.module('padronApp').factory('Dentist', ['railsResourceFactory', 'railsSerializer', 'WorkCalendar',
-  (railsResourceFactory, railsSerializer, WorkCalendar) ->
+angular.module('padronApp').factory('Dentist', ['railsSerializer', 'RailsResource', 'Institute',
+  (railsSerializer, RailsResource, Institute) ->
 
-    resource = railsResourceFactory(
-      url: '/dentists'
-      name: 'dentist'
-      serializer: railsSerializer(->
-        @nestedAttribute('visits', 'visitor', 'institutes', 'workCalendar', 'workableDays', 'workableHours')
-      )
-    )
+    class Dentist extends RailsResource
+      constructor: ->
+        @telephones ||= [""]
+        @cellphones ||= [""]
+        @emails     ||= [""]
+        @institutes ||= [new Institute]
 
-    #-----------------------
-    # Model methods
-    #-----------------------
+      @configure
+        url: '/dentists'
+        name: 'dentist'
+        serializer: railsSerializer ->
+          @nestedAttribute('visits', 'visitor', 'institutes', 'workCalendar', 'workableDays', 'workableHours')
+          @resource('institutes', 'Institute')
 
-    resource.prototype.build = ->
-      @workCalendar = WorkCalendar.build(@workCalendar)
-      @
+      @build: (response) ->
+        dentist = angular.extend(new Dentist, response)
+        dentist.institutes = _.map(response.institutes, (institute) -> new Institute.build(institute))
+        dentist
 
-    resource.prototype.completeData = ->
-      @institutes ||= [{name: '', street: '', number: '', location: ''}]
-      @telephones ||= [""]
-      @cellphones ||= [""]
-      @emails     ||= [""]
-      @
+      empty: ->
+        @emptyValue(@name) && @emptyValue(@surname) && @emptyValue(@enrollment) && @emptyValue(@telephones) &&
+        @emptyValue(@cellphones) && @emptyValue(@emails) && @emptyValue(@specialty)
 
-    resource.prototype.getWorkCalendar = ->
-      if @workCalendar then WorkCalendar.build(@workCalendar) else new WorkCalendar
+      emptyValue: (value) ->
+        value == undefined || value == null || value == "" || value.length == 0 || (value.length == 1 && value[0] == "")
 
-    resource.prototype.empty = ->
-      @emptyValue(@name) && @emptyValue(@surname) && @emptyValue(@enrollment) && @emptyValue(@telephones) &&
-      @emptyValue(@cellphones) && @emptyValue(@emails) && @emptyValue(@specialty)
-
-    resource.prototype.emptyValue = (value) ->
-      value == undefined || value == null || value == "" || value.length == 0 || (value.length == 1 && value[0] == "")
-
-    resource.prototype.removeEmptyValues = ->
-      @telephones   = _.compact(@telephones) if @telephones.length > 1
-      @cellphones   = _.compact(@cellphones) if @cellphones.length > 1
-      @emails       = _.compact(@emails)     if @emails.length > 1
+      removeEmptyValues: ->
+        @telephones   = _.compact(@telephones) if @telephones.length > 1
+        @cellphones   = _.compact(@cellphones) if @cellphones.length > 1
+        @emails       = _.compact(@emails)     if @emails.length > 1
 
 
-
-    resource
+    Dentist
 ])

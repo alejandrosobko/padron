@@ -1,7 +1,6 @@
-angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, dentist, WorkCalendar, errorHandler) ->
+angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, $stateParams, institute, Institute, WorkCalendar, errorHandler) ->
   @days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
-  @dentist = dentist
-  @workCalendar = dentist.getWorkCalendar()
+  @workCalendar = institute.workCalendar
   @newWorkableHours = {}
   @hoursToRemove = []
   @daysToRemove = []
@@ -24,8 +23,8 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
     @_checkHours()
     if @canSave
       _.each(@days, (day) => @addHoursFor(day)) # save hours in the inputs
-      dentist.workCalendar = @workCalendar
-      if dentist.id
+      institute.workCalendar = @workCalendar
+      if $stateParams.dentistId
         @_update()
       else
         @_notifyOk()
@@ -45,10 +44,6 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
     @newWorkableHours = {}
 
 
-  #-----------------------
-  # Private functions
-  #-----------------------
-
   @_checkHours = ->
     @canSave = _.every(@days, (day) =>
       if @_isEmpty(@newWorkableHours[day]) # to not save empty hours
@@ -62,7 +57,7 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
   @_isEmpty = (newHours) ->
     (!newHours) || newHours['from'] == '' || newHours['to'] == ''
 
-  # Checks like to > from, and check the time with regex
+  # Checks like: to > from, and check the time with regex
   @_passSimpleCheck = (day) ->
     newHours = @newWorkableHours[day]
     pattern = RegExp(/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/)
@@ -93,14 +88,13 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
     (newFrom > hourFrom  && newTo < hourTo)                          # estoy en el medio
 
   @_showErrors = ->
-    for error in @errors
-      errorHandler.error(error)
+    _.each(@errors, (error) -> errorHandler.error(error))
     @errors = []
 
   @_update = ->
-    dentist.hours_to_remove = @hoursToRemove
-    dentist.days_to_remove = @daysToRemove
-    dentist.update().then(
+    institute.hours_to_remove = @hoursToRemove
+    institute.days_to_remove = @daysToRemove
+    institute.update().then(
       (success) =>
         @_notifyOk()
       (error) =>

@@ -36,6 +36,16 @@
           <div class="width-115" data-ng-show="$index > 0"><span class="title">Número ({{$index + 1}}): </span></div>
           <span>{{institute.number}}</span>
         </div>
+        <div>
+          <div class="padding-top-20"><span class="title">Horarios de atención</span></div>
+          <div data-ng-repeat="day in institute.workCalendar.workableDays">
+            <span class="width-115">{{day.day}}: </span>
+            <span data-ng-repeat="hour in institute.workCalendar.workableHoursFor(day.day) | orderBy:'from' track by $index">
+            <span data-ng-show="$index == 0">{{hour.from}} a {{hour.to}}</span>
+            <span data-ng-show="$index > 0"> / {{hour.from}} a {{hour.to}}</span>
+          </span>
+          </div>
+        </div>
       </div>
       <div data-ng-repeat="telephone in showCtrl.dentist.telephones track by $index">
         <div class="width-115" data-ng-show="$index == 0"><span class="title">Teléfono: </span></div>
@@ -55,16 +65,6 @@
       <div>
         <div class="width-115"><span class="title">Especialidad: </span></div>
         <span>{{showCtrl.dentist.specialty}}</span>
-      </div>
-      <div>
-        <div class="padding-top-20"><span class="title">Horarios de atención</span></div>
-        <div data-ng-repeat="day in showCtrl.dentist.workCalendar.workableDays">
-          <span class="width-115">{{day.day}}: </span>
-          <span data-ng-repeat="hour in showCtrl.dentist.workCalendar.workableHoursFor(day.day) | orderBy:'from' track by $index">
-            <span data-ng-show="$index == 0">{{hour.from}} a {{hour.to}}</span>
-            <span data-ng-show="$index > 0"> / {{hour.from}} a {{hour.to}}</span>
-          </span>
-        </div>
       </div>
     </div>
 

@@ -3,11 +3,11 @@
         <h4 class="modal-title" id="modal-title">Eliminar</h4>
     </div>
     <div class="modal-body" id="modal-body">
-        <p>¿Seguro quiere eliminar a <b>{{ModalDentistCtrl.dentistFullName}}</b>?</p>
+        <p>¿Seguro quiere eliminar a <b>{{modalCtrl.dentistFullName}}</b>?</p>
         <p>Esta operación no se puede deshacer.</p>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-danger" type="button" data-ng-click="ModalDentistCtrl.delete()">Eliminar</button>
-        <button class="btn btn-default" type="button" data-ng-click="ModalDentistCtrl.cancel()">Cancelar</button>
+        <button class="btn btn-danger" type="button" data-ng-click="modalCtrl.delete()">Eliminar</button>
+        <button class="btn btn-default" type="button" data-ng-click="modalCtrl.cancel()">Cancelar</button>
     </div>
 </div>

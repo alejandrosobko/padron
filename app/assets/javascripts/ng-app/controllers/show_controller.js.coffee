@@ -2,9 +2,9 @@ angular.module('padronApp').controller('ShowCtrl', ($stateParams, Dentist, $uibM
   @dentist = undefined
 
   Dentist.get(id: $stateParams.dentistId).then(
-    (dentist) =>
-      @dentist = dentist.build()
-      @years = _.uniq(_.map(dentist.visits, (visit) -> moment(visit.visitDate).year()))
+    (response) =>
+      @dentist = Dentist.build(response)
+      @years = _.uniq(_.map(response.visits, (visit) -> moment(visit.visitDate).year()))
     (error) =>
       $location.path('/')
       errorHandler.error("No existe un odontólogo con id: #{$stateParams.dentistId}")
@@ -15,8 +15,8 @@ angular.module('padronApp').controller('ShowCtrl', ($stateParams, Dentist, $uibM
 
   @delete = ->
     $uibModal.open(
-      templateUrl: 'modals/dentist_warning.html'
-      controller: 'ModalDentistCtrl as ModalDentistCtrl'
+      templateUrl: 'modals/delete_dentist.html'
+      controller: 'ModalDeleteDentistCtrl as modalCtrl'
       resolve:
         deleteFunction: => @deleteFunction
         dentist: => @dentist
