@@ -63,7 +63,7 @@
             <span class="dentist-value">{{institute.location}}</span>
           </div>
           <div>
-            <div style="font-weight: bold; padding-top: 10px;"><span class="title">Horarios de atención: </span></div>
+            <div style="font-weight: bold; padding-top: 10px;"><span class="title">Horarios de atención</span></div>
             <div class="margin-left-20">
               <i class="dentist-value" data-ng-show="institute.workCalendar.workableDays.length == 0">Sin cargar todavía.</i>
               <div data-ng-repeat="day in institute.workCalendar.workableDays | orderBy:showCtrl.sortByDay">

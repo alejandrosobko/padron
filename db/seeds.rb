@@ -1,6 +1,6 @@
 institutes = [Institute.new({name: 'Super dientes', location: 'Quilmes', street: 'Lavalle', number: 1818}),
               Institute.new({name: 'Dentistas Bernal', location: 'Bernal', street: 'Saens Peña', number: 3000}),
-              Institute.new({name: '', location: '', street: '', number: nil}),
+              Institute.new({name: 'UNQ Dientes', location: 'Bernal', street: 'Saens Peña', number: '4000'}),
               Institute.new({name: 'Instituto de dentistas de Ezpeleta', location: 'Ezpeleta', street: 'La guarda', number: 5020}),
               Institute.new({name: 'Dental pro', location: 'Buenos Aires', street: 'Balcarce', number: 50})]
 
