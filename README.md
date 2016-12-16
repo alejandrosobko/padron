@@ -18,7 +18,11 @@ Architecture documentation [Architecture Doc](https://github.com/alejandrosobko/
 
 Architecture documentation (2nd release) [Architecture Doc - 2nd release](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Arquitectura-2)
 
+Architecture documentation (3rd release) [Architecture Doc - 3rd release](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Arquitectura-3)
+
 Responsibility of the components [Components Doc](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Responsabilidades)
+
+Responsibility of the components (new) [Components Doc Updated](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Responsabilidades Nuevo)
 
 1st release doc: [1 Doc] (https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Entrega-1)
 
