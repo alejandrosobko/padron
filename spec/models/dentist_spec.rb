@@ -24,13 +24,6 @@ RSpec.describe Dentist, :type => :model do
       expect(dentist2.save).to be false
     end
 
-    it 'should can save a dentist with a lot of workable days' do
-      hours = [build(:workable_hour_morning), build(:workable_hour_afternoon)]
-      days = [build(:workable_day_monday, workable_hours: hours), build(:workable_day_tuesday, workable_hours: hours)]
-
-      expect(dentist.save).to be true
-    end
-
     it 'with institutes' do
       dentist.institutes = [build(:institute)]
       expect(dentist.save).to be true
