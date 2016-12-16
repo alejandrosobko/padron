@@ -34,10 +34,18 @@
   }
   span.title {
     font-size: 17px;
-    line-height: 1.8;
-    color: #0B465D;
+    line-height: 1.6;
   }
   .body-visit {
     line-height: 1.8;
+  }
+  .dentist-value {
+    font-size: 15px;
+  }
+  .btn-link {
+    margin: 0 0 5px 5px;
+    &:hover {
+      color: red;
+    }
   }
 }

@@ -46,5 +46,10 @@ angular.module('padronApp').controller('ShowCtrl', ($stateParams, Dentist, $uibM
     _.sortBy(visits, (visit) -> -moment(visit.visitDate))
 
 
+  @sortByDay = (day) ->
+    days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
+    days.indexOf(day.day)
+
+
   @
 )

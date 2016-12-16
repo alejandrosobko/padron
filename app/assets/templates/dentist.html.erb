@@ -1,6 +1,6 @@
 <div class="container show-dentist">
   <div class="row">
-    <div class="col-xs-12 light-title padding-top-20">
+    <div class="col-xs-12 light-title padding-top-20" style="padding-bottom: 0">
       <span>{{showCtrl.dentist.name}} {{showCtrl.dentist.surname}} - {{showCtrl.dentist.enrollment}}</span>
       <div class="buttons">
         <button type="button" class="btn edit-dentist glyphicon glyphicon-pencil" data-ui-sref="form.edit({dentistId: showCtrl.dentist.id})" title="Editar"></button>
@@ -10,66 +10,77 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-7">
+    <div class="col-xs-6">
+      <div class="section-title"><h3>Contacto</h3></div>
+      <div class="margin-left-20">
+        <div data-ng-repeat="telephone in showCtrl.dentist.telephones track by $index" data-ng-show="telephone">
+          <div class="width-115" data-ng-show="$index == 0"><span class="title">Teléfono: </span></div>
+          <div class="width-115" data-ng-show="$index > 0"><span class="title">Teléfono ({{$index + 1}}): </span>
+          </div>
+          <span class="dentist-value">{{telephone}}</span>
+        </div>
+        <div data-ng-repeat="cellphone in showCtrl.dentist.cellphones track by $index" data-ng-show="cellphone">
+          <div class="width-115" data-ng-show="$index == 0"><span class="title">Celular: </span></div>
+          <div class="width-115" data-ng-show="$index > 0"><span class="title">Celular ({{$index + 1}}): </span></div>
+          <span class="dentist-value">{{cellphone}}</span>
+        </div>
+        <div data-ng-repeat="email in showCtrl.dentist.emails track by $index" data-ng-show="email">
+          <div class="width-115" data-ng-show="$index == 0"><span class="title">E-mail: </span></div>
+          <div class="width-115" data-ng-show="$index > 0"><span class="title">E-mail ({{$index + 1}}): </span></div>
+          <span class="dentist-value">{{email}}</span>
+        </div>
+      </div>
+
+      <div data-ng-show="showCtrl.dentist.specialty">
+        <div class="section-title"><h3>Especialidad</h3></div>
+        <span class="margin-left-20">{{showCtrl.dentist.specialty}}</span>
+      </div>
+
       <div data-ng-repeat="institute in showCtrl.dentist.institutes track by $index">
-        <div>
-          <div class="width-115" data-ng-show="$index == 0"><span class="title">Instituto: </span></div>
-          <div class="width-115" data-ng-show="$index > 0"><span class="title">Instituto ({{$index + 1}}): </span></div>
-          <span>{{institute.name}}</span>
-          <button class="btn btn-xs btn-link" style="margin-left: 10px;" title="Ver en Google Maps" data-ng-click="showCtrl.openMaps($index)"
-                  data-ng-show="institute.location && institute.street && institute.number">
-            <span class="glyphicon glyphicon-map-marker"></span>
-          </button>
+        <div class="section-title">
+          <h3>Instituto <span data-ng-show="showCtrl.dentist.institutes.length > 1">({{$index + 1}})</span></h3>
         </div>
-        <div>
-          <div class="width-115" data-ng-show="$index == 0"><span class="title">Localidad: </span></div>
-          <div class="width-115" data-ng-show="$index > 0"><span class="title">Localidad ({{$index + 1}}): </span></div>
-          <span>{{institute.location}}</span>
-        </div>
-        <div>
-          <div class="width-115" data-ng-show="$index == 0"><span class="title">Calle: </span></div>
-          <div class="width-115" data-ng-show="$index > 0"><span class="title">Calle ({{$index + 1}}): </span></div>
-          <span>{{institute.street}}</span>
-        </div>
-        <div>
-          <div class="width-115" data-ng-show="$index == 0"><span class="title">Número: </span></div>
-          <div class="width-115" data-ng-show="$index > 0"><span class="title">Número ({{$index + 1}}): </span></div>
-          <span>{{institute.number}}</span>
-        </div>
-        <div>
-          <div class="padding-top-20"><span class="title">Horarios de atención</span></div>
-          <div data-ng-repeat="day in institute.workCalendar.workableDays">
-            <span class="width-115">{{day.day}}: </span>
-            <span data-ng-repeat="hour in institute.workCalendar.workableHoursFor(day.day) | orderBy:'from' track by $index">
-            <span data-ng-show="$index == 0">{{hour.from}} a {{hour.to}}</span>
-            <span data-ng-show="$index > 0"> / {{hour.from}} a {{hour.to}}</span>
-          </span>
+        <div class="margin-left-20">
+          <div>
+            <div class="width-115"><span class="title">Nombre: </span></div>
+            <i class="dentist-value" data-ng-show="!institute.name">Sin cargar todavía. </i>
+            <span class="dentist-value">{{institute.name}}</span>
+            <button class="btn btn-xs btn-link" title="Ver en Google Maps" data-ng-click="showCtrl.openMaps($index)"
+                    data-ng-show="institute.location && institute.street && institute.number">
+              <span class="glyphicon glyphicon-map-marker"></span>
+            </button>
+          </div>
+          <div data-ng-show="institute.street">
+            <div class="width-115"><span class="title">Calle: </span></div>
+            <span class="dentist-value">{{institute.street}}</span>
+          </div>
+          <div data-ng-show="institute.number">
+            <div class="width-115"><span class="title">Número: </span></div>
+            <span class="dentist-value">{{institute.number}}</span>
+          </div>
+          <div data-ng-show="institute.location">
+            <div class="width-115"><span class="title">Localidad: </span></div>
+            <span class="dentist-value">{{institute.location}}</span>
+          </div>
+          <div>
+            <div style="font-weight: bold; padding-top: 10px;"><span class="title">Horarios de atención: </span></div>
+            <div class="margin-left-20">
+              <i class="dentist-value" data-ng-show="institute.workCalendar.workableDays.length == 0">Sin cargar todavía.</i>
+              <div data-ng-repeat="day in institute.workCalendar.workableDays | orderBy:showCtrl.sortByDay">
+                <span class="width-115 title">{{day.day}}: </span>
+                <span data-ng-repeat="hour in institute.workCalendar.workableHoursFor(day.day) | orderBy:'from' track by $index" class="title">
+                <span class="dentist-value" data-ng-show="$index == 0">{{hour.from}} a {{hour.to}}</span>
+                <span class="dentist-value" data-ng-show="$index > 0"> / {{hour.from}} a {{hour.to}}</span>
+              </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div data-ng-repeat="telephone in showCtrl.dentist.telephones track by $index">
-        <div class="width-115" data-ng-show="$index == 0"><span class="title">Teléfono: </span></div>
-        <div class="width-115" data-ng-show="$index > 0"><span class="title">Teléfono ({{$index + 1}}): </span></div>
-        <span>{{telephone}}</span>
-      </div>
-      <div data-ng-repeat="cellphone in showCtrl.dentist.cellphones track by $index">
-        <div class="width-115" data-ng-show="$index == 0"><span class="title">Celular: </span></div>
-        <div class="width-115" data-ng-show="$index > 0"><span class="title">Celular ({{$index + 1}}): </span></div>
-        <span>{{cellphone}}</span>
-      </div>
-      <div data-ng-repeat="email in showCtrl.dentist.emails track by $index">
-        <div class="width-115" data-ng-show="$index == 0"><span class="title">E-mail: </span></div>
-        <div class="width-115" data-ng-show="$index > 0"><span class="title">E-mail ({{$index + 1}}): </span></div>
-        <span>{{email}}</span>
-      </div>
-      <div>
-        <div class="width-115"><span class="title">Especialidad: </span></div>
-        <span>{{showCtrl.dentist.specialty}}</span>
-      </div>
     </div>
 
-    <div class="col-xs-5">
-      <div><span class="title">Visitas</span></div>
+    <div class="col-xs-5 col-xs-offset-1">
+      <div class="section-title"><h3>Visitas</h3></div>
       <uib-accordion data-ng-repeat="year in showCtrl.years">
         <div uib-accordion-group class="panel-default" heading="{{year}}">
           <div data-ng-repeat="visit in showCtrl.visitsInYear(year) track by $index">
