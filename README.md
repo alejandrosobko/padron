@@ -14,7 +14,7 @@ The workflow is described in the following link. Here you can look a normal flow
 
 Workflow:  [workflow](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Workflow) 
 
-Architecture documentation [Architecture Doc](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Arquitectura)
+Architecture documentation [Architecture Doc](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Arquitectura-1)
 
 Architecture documentation (2nd release) [Architecture Doc - 2nd release](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Arquitectura-2)
 
@@ -22,7 +22,7 @@ Architecture documentation (3rd release) [Architecture Doc - 3rd release](https:
 
 Responsibility of the components [Components Doc](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Responsabilidades)
 
-Responsibility of the components (new) [Components Doc Updated](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Responsabilidades Nuevo)
+Responsibility of the components (new) [Components Doc Updated](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Responsabilidades-(Nuevo))
 
 1st release doc: [1 Doc] (https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Entrega-1)
 
