@@ -27,6 +27,9 @@ angular.module('padronApp').factory('Dentist', ['railsSerializer', 'RailsResourc
       emptyValue: (value) ->
         value == undefined || value == null || value == "" || value.length == 0 || (value.length == 1 && value[0] == "")
 
+      hasContact: -> # TODO: combinar el metodo empty con este
+        !@emptyValue(@telephones) || !@emptyValue(@cellphones) || !@emptyValue(@emails)
+
       removeEmptyValues: ->
         @telephones   = _.compact(@telephones) if @telephones.length > 1
         @cellphones   = _.compact(@cellphones) if @cellphones.length > 1

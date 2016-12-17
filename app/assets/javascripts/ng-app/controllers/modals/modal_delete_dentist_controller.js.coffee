@@ -1,5 +1,5 @@
 angular.module('padronApp').controller('ModalDeleteDentistCtrl', ($uibModalInstance, dentist, deleteFunction) ->
-  @dentistFullName = (dentist.name + " " + dentist.surname).replace("null", "")
+  @dentistFullName = (dentist.surname + " " + dentist.name).replace("null", "")
 
   @cancel = ->
     $uibModalInstance.dismiss()

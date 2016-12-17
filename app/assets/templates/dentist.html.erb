@@ -1,7 +1,7 @@
 <div class="container show-dentist">
   <div class="row">
     <div class="col-xs-12 light-title padding-top-20" style="padding-bottom: 0">
-      <span>{{showCtrl.dentist.name}} {{showCtrl.dentist.surname}} - {{showCtrl.dentist.enrollment}}</span>
+      <span>{{showCtrl.dentist.surname}} {{showCtrl.dentist.name}} - {{showCtrl.dentist.enrollment}}</span>
       <div class="buttons">
         <button type="button" class="btn edit-dentist glyphicon glyphicon-pencil" data-ui-sref="form.edit({dentistId: showCtrl.dentist.id})" title="Editar"></button>
         <button type="button" class="btn delete-dentist glyphicon glyphicon-trash" data-ng-click="showCtrl.delete()" title="Eliminar"></button>
@@ -11,23 +11,25 @@
   </div>
   <div class="row">
     <div class="col-xs-6">
-      <div class="section-title"><h3>Contacto</h3></div>
-      <div class="margin-left-20">
-        <div data-ng-repeat="telephone in showCtrl.dentist.telephones track by $index" data-ng-show="telephone">
-          <div class="width-115" data-ng-show="$index == 0"><span class="title">Teléfono: </span></div>
-          <div class="width-115" data-ng-show="$index > 0"><span class="title">Teléfono ({{$index + 1}}): </span>
+      <div data-ng-show="showCtrl.dentist.hasContact()">
+        <div class="section-title"><h3>Contacto</h3></div>
+        <div class="margin-left-20">
+          <div data-ng-repeat="telephone in showCtrl.dentist.telephones track by $index" data-ng-show="telephone">
+            <div class="width-115" data-ng-show="$index == 0"><span class="title">Teléfono: </span></div>
+            <div class="width-115" data-ng-show="$index > 0"><span class="title">Teléfono ({{$index + 1}}): </span>
+            </div>
+            <span class="dentist-value">{{telephone}}</span>
           </div>
-          <span class="dentist-value">{{telephone}}</span>
-        </div>
-        <div data-ng-repeat="cellphone in showCtrl.dentist.cellphones track by $index" data-ng-show="cellphone">
-          <div class="width-115" data-ng-show="$index == 0"><span class="title">Celular: </span></div>
-          <div class="width-115" data-ng-show="$index > 0"><span class="title">Celular ({{$index + 1}}): </span></div>
-          <span class="dentist-value">{{cellphone}}</span>
-        </div>
-        <div data-ng-repeat="email in showCtrl.dentist.emails track by $index" data-ng-show="email">
-          <div class="width-115" data-ng-show="$index == 0"><span class="title">E-mail: </span></div>
-          <div class="width-115" data-ng-show="$index > 0"><span class="title">E-mail ({{$index + 1}}): </span></div>
-          <span class="dentist-value">{{email}}</span>
+          <div data-ng-repeat="cellphone in showCtrl.dentist.cellphones track by $index" data-ng-show="cellphone">
+            <div class="width-115" data-ng-show="$index == 0"><span class="title">Celular: </span></div>
+            <div class="width-115" data-ng-show="$index > 0"><span class="title">Celular ({{$index + 1}}): </span></div>
+            <span class="dentist-value">{{cellphone}}</span>
+          </div>
+          <div data-ng-repeat="email in showCtrl.dentist.emails track by $index" data-ng-show="email">
+            <div class="width-115" data-ng-show="$index == 0"><span class="title">E-mail: </span></div>
+            <div class="width-115" data-ng-show="$index > 0"><span class="title">E-mail ({{$index + 1}}): </span></div>
+            <span class="dentist-value">{{email}}</span>
+          </div>
         </div>
       </div>
 

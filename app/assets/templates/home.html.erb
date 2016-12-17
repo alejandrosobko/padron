@@ -48,7 +48,7 @@
           <tbody data-ng-repeat="dentist in dentistCtrl.dentists | orderBy:dentistCtrl.fieldToOrder:dentistCtrl.reversed
                                                                  | filter:dentistCtrl.searched">
           <tr>
-            <td class="row-pointer" data-ui-sref="show({dentistId: dentist.id})">{{dentist.name}} {{dentist.surname}}</td>
+            <td class="row-pointer" data-ui-sref="show({dentistId: dentist.id})">{{dentist.surname}} {{dentist.name}}</td>
             <td>{{dentist.enrollment}}</td>
             <td>
               <div data-ng-repeat="institute in dentist.institutes">{{institute.name}}</div>
