@@ -2,7 +2,7 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
   @days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
   @dentist = dentist
   @institute = institute
-  @workCalendar = @institute.workCalendar
+  @workCalendar = @institute.getWorkCalendar()
   @newWorkableHours = {}
   @hoursToRemove = []
   @daysToRemove = []
@@ -27,7 +27,7 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
       _.each(@days, (day) => @addHoursFor(day)) # save hours in the inputs
       @institute.workCalendar = @workCalendar
       if $stateParams.dentistId
-        @_update()
+        @_create_or_update()
       else
         @_notifyOk()
 
@@ -93,19 +93,27 @@ angular.module('padronApp').controller('AttentionTimeCtrl', ($uibModalInstance, 
     _.each(@errors, (error) -> errorHandler.error(error))
     @errors = []
 
-  @_update = ->
+
+  @_create_or_update = ->
     @institute.hours_to_remove = @hoursToRemove
     @institute.days_to_remove = @daysToRemove
-    @institute.update().then(
+    onSuccessCallback =
       (success) =>
         @_notifyOk()
+
+    onErrorCallback =
       (error) =>
         if error.status == 500 # server fails and I don't know why
           errorHandler.error('Ocurrió un error guardando los horarios. Por favor, contacte con el administrador.')
         else
           for key_error in Object.keys(error.data)
             errorHandler.error(error.data[key_error][0])
-    )
+
+    if @institute.id
+      @institute.update().then(onSuccessCallback, onErrorCallback)
+    else
+      @institute.dentist_id = @dentist.id
+      @institute.create().then(onSuccessCallback, onErrorCallback)
 
   @_notifyOk = ->
     errorHandler.success('Se guardaron los horarios correctamente')

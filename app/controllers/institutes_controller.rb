@@ -1,5 +1,15 @@
 class InstitutesController < ApplicationController
 
+  def create
+    institute = Institute.new(institute_params)
+    begin
+      institute.save!
+      render json: institute
+    rescue => e
+      render json: institute.errors.messages, status: :unprocessable_entity
+    end
+  end
+
   def update
     institute = Institute.find(params[:institute][:id])
     begin
@@ -23,7 +33,7 @@ class InstitutesController < ApplicationController
   end
 
   def institute_params
-    params.require(:institute).permit(:id, :name, :street, :number, :location,
+    params.require(:institute).permit(:id, :name, :street, :number, :location, :dentist_id,
         work_calendar_attributes: [:id,
             workable_days_attributes: [:work_calendar_id, :id, :day,
                 workable_hours_attributes: [:id, :from, :to, :workable_day_id]]])

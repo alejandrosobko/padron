@@ -20,5 +20,9 @@ angular.module('padronApp').factory('Institute', ['railsSerializer', 'RailsResou
         institute.workCalendar = new WorkCalendar.build(response.workCalendar)
         institute
 
+      # It's returns a work calendar builded, if not, the js object "workCalendar" will not have the methods needded
+      getWorkCalendar: ->
+        WorkCalendar.build(@workCalendar)
+
     Institute
 ])
