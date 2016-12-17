@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="panel-body">
-        <table class="table table-hover">
+        <table class="table table-hover all-dentists">
           <thead>
           <tr>
             <th data-ng-click="dentistCtrl.orderBy('surname')" class="row-pointer col-xs-2">
@@ -38,9 +38,8 @@
               </span>
             </th>
             <th class="col-xs-1">Matrícula</th>
-            <th class="col-xs-2">Instituto</th>
-            <th class="col-xs-2">Ubicación</th>
-            <th class="col-xs-2">Especialidad</th>
+            <th class="col-xs-4">Instituto y ubicación</th>
+            <th class="col-xs-1">Especialidad</th>
             <th class="col-xs-2">Contacto</th>
             <th class="col-xs-1">Nueva visita</th>
           </tr>
@@ -51,11 +50,9 @@
             <td class="row-pointer" data-ui-sref="show({dentistId: dentist.id})">{{dentist.surname}} {{dentist.name}}</td>
             <td>{{dentist.enrollment}}</td>
             <td>
-              <div data-ng-repeat="institute in dentist.institutes">{{institute.name}}</div>
-            </td>
-            <td>
               <div data-ng-repeat="institute in dentist.institutes">
-                <span data-ng-hide="dentist.emptyValue(institute.street)">{{institute.street}}, </span>
+                <span class="institute-name">{{dentistCtrl.getInstituteName(institute)}}</span>
+                <span data-ng-hide="dentist.emptyValue(institute.street)">{{institute.street}} </span>
                 <span data-ng-hide="dentist.emptyValue(institute.number)">{{institute.number}} </span>
                 <span data-ng-hide="dentist.emptyValue(institute.location)">({{institute.location}})</span>
               </div>

@@ -20,6 +20,10 @@ angular.module('padronApp').controller('DentistCtrl', (Dentist, errorHandler, $u
     @fieldToOrder = field
     @reversed = !@reversed
 
+  @getInstituteName = (institute) ->
+    name = institute.name
+    name = "#{institute.name}: " unless institute.name.length == 0 || institute.street.length == 0
+    name
 
   @
 )
