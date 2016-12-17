@@ -20,8 +20,11 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
           errorHandler.success("Se actualizó el odontólogo correctamente")
           $location.path('/')
         (error) =>
-          for key_error in Object.keys(error.data)
-            errorHandler.error(error.data[key_error][0])
+          if error.status == 500 # server fails and I don't know why
+            errorHandler.error('Ocurrió un error actualizando al dentista. Por favor, contacte con un administrador.')
+          else
+            for key_error in Object.keys(error.data)
+              errorHandler.error(error.data[key_error][0])
       )
 
   @save = ->
@@ -40,8 +43,11 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
         errorHandler.success("Se creó el odontólogo correctamente")
         $location.path('/')
       (error) =>
-        for key_error in Object.keys(error.data)
-          errorHandler.error(error.data[key_error][0])
+        if error.status == 500 # server fails and I don't know why
+          errorHandler.error('Ocurrió un error guardando al dentista. Por favor, contacte con un administrador.')
+        else
+          for key_error in Object.keys(error.data)
+            errorHandler.error(error.data[key_error][0])
     )
 
   @new_visit = ->
@@ -63,6 +69,7 @@ angular.module('padronApp').controller('NewOrEditCtrl', ($stateParams, Dentist, 
       controller: 'AttentionTimeCtrl as timeCtrl'
       resolve:
         institute: => institute
+        dentist: => @dentistToEdit
     )
 
   @removeFieldFrom = (list, field) ->
