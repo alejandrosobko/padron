@@ -30,6 +30,8 @@ Responsibility of the components (new) [Components Doc Updated](https://github.c
 
 3rd release doc: [3 Doc](https://github.com/alejandrosobko/UNQ-TIP-Padron/wiki/Entrega-3)
 
+DER: [DER](https://github.com/alejandrosobko/UNQ-TIP-Padron/blob/master/app/assets/images/doc/der.png?raw=true)
+
 ### Installation
 
 * Clone this repo
